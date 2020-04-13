@@ -46,44 +46,40 @@ void MainWindow::on_pushButtonLogin_clicked()
     QSqlQuery qry;
     // RANK 2 IS USED FOR ADMINS
     // RANK 1 IS USED FOR STUDENTS
-    qry.prepare("select * from login where username ='"+username+"' and password ='"+hashed_password+"' and rank= '2'");
-    if (qry.exec())
+    qry.prepare("select * from login where username ='"+username+"'");
+
+    if(!qry.exec())
     {
-        int count = 0;
-        while (qry.next())
+        qDebug() << "Error";
+    }
+    else if(qry.exec("select * from login where password = '"+hashed_password+"'"))
+    {
+        if(username == "admin")
         {
-            count++;
-        }
-           if(count == 1)
-           {
-            QMessageBox::information(this, "Login", "Username and Password is correct");
+            QMessageBox::information(this,"Login", "Username and Password is correct");
             changeToAdmin();
             this->ui->lineEditUsername->setText("");
             this->ui->lineEditPassword->setText("");
-           }
-           else if (count!= 1)
-           {
-               if(qry.exec("select * from login where username ='"+username+"' and password ='"+hashed_password+"' and rank= '1'"))
-                   count  = 0;
-                    while(qry.next())
-                    {
-                        count++;
-                    }
-                    if (count == 1)
-                    {
-                       QMessageBox::information(this,"Login", "Username and Password is correct");
-                       changetoUser();
-                       this->ui->lineEditUsername->setText("");
-                       this->ui->lineEditPassword->setText("");
-                    }
-                    else
-                    {
-                        QMessageBox::warning(this,"Login","Username and password is not correct");
-                        this->ui->lineEditUsername->setText("");
-                        this->ui->lineEditPassword->setText("");
-                    }
-           }
+
+        }
+        else
+        {
+            QMessageBox::information(this,"Login", "Username and Password is correct");
+            changetoUser();
+            this->ui->lineEditUsername->setText("");
+            this->ui->lineEditPassword->setText("");
+
+        }
+
     }
+    else
+    {
+        QMessageBox::warning(this,"Login","Username and password is not correct");
+        this->ui->lineEditUsername->setText("");
+        this->ui->lineEditPassword->setText("");
+
+    }
+
 }
 
 
