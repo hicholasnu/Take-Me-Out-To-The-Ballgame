@@ -39,6 +39,8 @@ private slots:
 
     void on_pushButtonSortByLeastFromCenter_clicked();
 
+    void resetSortLabel(QString label);
+
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;

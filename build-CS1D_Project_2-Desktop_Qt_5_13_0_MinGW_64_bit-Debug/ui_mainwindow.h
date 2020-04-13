@@ -67,7 +67,7 @@ public:
     QPushButton *pushButtonSortByGreatestFromCenter;
     QLabel *labelSortByLeastDistance;
     QPushButton *pushButtonSortByLeastFromCenter;
-    QPushButton *pushButton;
+    QLabel *labelAdditionalInfo;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -144,7 +144,7 @@ public:
         tableviewAllStadiums->setLineWidth(2);
         labelShowCurrentSort = new QLabel(UserScreen);
         labelShowCurrentSort->setObjectName(QString::fromUtf8("labelShowCurrentSort"));
-        labelShowCurrentSort->setGeometry(QRect(50, 20, 431, 20));
+        labelShowCurrentSort->setGeometry(QRect(50, 20, 651, 20));
         labelShowCurrentSort->setFont(font);
         labelShowCurrentSort->setFrameShape(QFrame::Box);
         labelShowCurrentSort->setFrameShadow(QFrame::Plain);
@@ -297,9 +297,14 @@ public:
 
         formLayout_3->setWidget(6, QFormLayout::FieldRole, pushButtonSortByLeastFromCenter);
 
-        pushButton = new QPushButton(UserScreen);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(590, 20, 61, 21));
+        labelAdditionalInfo = new QLabel(UserScreen);
+        labelAdditionalInfo->setObjectName(QString::fromUtf8("labelAdditionalInfo"));
+        labelAdditionalInfo->setGeometry(QRect(80, 410, 371, 61));
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("Courier"));
+        font3.setPointSize(10);
+        labelAdditionalInfo->setFont(font3);
+        labelAdditionalInfo->setFrameShape(QFrame::Box);
         stackedWidget->addWidget(UserScreen);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -346,7 +351,7 @@ public:
         pushButtonSortByGreatestFromCenter->setText(QString());
         labelSortByLeastDistance->setText(QCoreApplication::translate("MainWindow", "Min Dist Cent.", nullptr));
         pushButtonSortByLeastFromCenter->setText(QString());
-        pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        labelAdditionalInfo->setText(QString());
     } // retranslateUi
 
 };

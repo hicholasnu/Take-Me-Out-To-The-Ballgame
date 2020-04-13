@@ -46,8 +46,16 @@ void MainWindow::on_pushButtonLogin_clicked()
     }
 }
 
+void MainWindow::resetSortLabel(QString label) {
+
+    ui->labelShowCurrentSort->setText(label);
+    ui->labelAdditionalInfo->clear();
+}
+
 void MainWindow::on_comboBoxChooseTeamName_activated(const QString &arg1)
 {
+    resetSortLabel("Currently Sorted By: " + arg1);
+
     QString query = "select TeamName, StadiumName, SeatingCapacity, Location, PlayingSurface, "
                     "League, DateOpened, DistanceToCenterField, BallparkTypology, RoofType from Stadiums WHERE TeamName = '"+arg1+"';";
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
@@ -56,6 +64,8 @@ void MainWindow::on_comboBoxChooseTeamName_activated(const QString &arg1)
 
 void MainWindow::on_pushButtonSortByTeamNames_clicked()
 {
+    resetSortLabel("Currently Sorted By: Team Name");
+
     QString query = "select TeamName, StadiumName from Stadiums ORDER BY TeamName ASC;";
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableviewAllStadiums->resizeColumnsToContents();
@@ -63,6 +73,8 @@ void MainWindow::on_pushButtonSortByTeamNames_clicked()
 
 void MainWindow::on_pushButtonSortByStadiumNames_clicked()
 {
+    resetSortLabel("Currently Sorted By: Stadium Name");
+
     QString query = "select StadiumName, TeamName from Stadiums ORDER BY StadiumName ASC;";
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableviewAllStadiums->resizeColumnsToContents();
@@ -70,6 +82,8 @@ void MainWindow::on_pushButtonSortByStadiumNames_clicked()
 
 void MainWindow::on_comboBoxChooseLeague_activated(const QString &arg1)
 {
+    resetSortLabel("Currently Sorted By: " + arg1 + " League");
+
     QString query;
 
     if (arg1 == "American") {
@@ -87,6 +101,8 @@ void MainWindow::on_comboBoxChooseLeague_activated(const QString &arg1)
 
 void MainWindow::on_pushButtonSortByBallparkTypology_clicked()
 {
+    resetSortLabel("Currently Sorted By: Ballpark Typology");
+
     QString query = "select BallparkTypology, StadiumName, TeamName from Stadiums ORDER BY BallparkTypology ASC;";
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableviewAllStadiums->resizeColumnsToContents();
@@ -94,13 +110,20 @@ void MainWindow::on_pushButtonSortByBallparkTypology_clicked()
 
 void MainWindow::on_comboBoxChooseRoofType_activated(const QString &arg1)
 {
+    resetSortLabel("Currently Sorted By: " + arg1 + " Rooftype");
+
     QString query = "select TeamName from Stadiums WHERE RoofType = '"+arg1+"' ORDER BY TeamName ASC;";
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableviewAllStadiums->resizeColumnsToContents();
+
+    QString roofTypeCount = QString::number(m_controller->getStadiumsQueryModel(query)->rowCount());
+    ui->labelAdditionalInfo->setText(arg1 + " RoofType Count: " + roofTypeCount);
 }
 
 void MainWindow::on_pushButtonSortByDateOpened_clicked()
 {
+    resetSortLabel("Currently Sorted By: Date Opened");
+
     QString query = "select DateOpened, StadiumName, TeamName from Stadiums ORDER BY DateOpened ASC";
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableviewAllStadiums->resizeColumnsToContents();
@@ -108,14 +131,20 @@ void MainWindow::on_pushButtonSortByDateOpened_clicked()
 
 void MainWindow::on_pushButtonSortBySeatingCapacity_clicked()
 {
+    resetSortLabel("Currently Sorted By: Seating Capacity");
+
     QString query = "select SeatingCapacity, TeamName from Stadiums ORDER BY SeatingCapacity ASC";
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableviewAllStadiums->resizeColumnsToContents();
+
+
 
 }
 
 void MainWindow::on_pushButtonSortByGreatestFromCenter_clicked()
 {
+    resetSortLabel("Currently Sorted By: Greatest Distance From Center Field");
+
     QString query = "select StadiumName, TeamName from Stadiums where DistanceToCenterField = (select MAX(DistanceToCenterField) from Stadiums);";
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableviewAllStadiums->resizeColumnsToContents();
@@ -123,6 +152,8 @@ void MainWindow::on_pushButtonSortByGreatestFromCenter_clicked()
 
 void MainWindow::on_pushButtonSortByLeastFromCenter_clicked()
 {
+    resetSortLabel("Currently Sorted By: Least Distance From Center Field");
+
     QString query = "select StadiumName, TeamName from Stadiums where DistanceToCenterField = (select MIN(DistanceToCenterField) from Stadiums);";
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableviewAllStadiums->resizeColumnsToContents();
