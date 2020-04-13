@@ -108,12 +108,12 @@ public:
         lineEditUsername->setObjectName(QString::fromUtf8("lineEditUsername"));
         lineEditUsername->setGeometry(QRect(280, 210, 211, 31));
         lineEditUsername->setFont(font);
-        lineEditUsername->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        lineEditUsername->setStyleSheet(QString::fromUtf8(""));
         lineEditPassword = new QLineEdit(LoginScreen);
         lineEditPassword->setObjectName(QString::fromUtf8("lineEditPassword"));
         lineEditPassword->setGeometry(QRect(280, 250, 211, 31));
         lineEditPassword->setFont(font);
-        lineEditPassword->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        lineEditPassword->setStyleSheet(QString::fromUtf8(""));
         lineEditPassword->setEchoMode(QLineEdit::Password);
         pushButtonLogin = new QPushButton(LoginScreen);
         pushButtonLogin->setObjectName(QString::fromUtf8("pushButtonLogin"));
@@ -340,7 +340,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
         pushButtonResetLogin->setDefault(false);
 
 
