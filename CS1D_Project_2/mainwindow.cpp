@@ -12,7 +12,9 @@ MainWindow::MainWindow(Controller *controller, QWidget *parent)
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel("select * from Stadiums;"));
     ui->tableviewAllStadiums->resizeColumnsToContents();
 
-    ui->comboBoxStadiumNames->setModel(m_controller->getStadiumsQueryModel("select StadiumName from Stadiums"));
+    ui->comboBoxChooseTeamName->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums ORDER BY TeamName ASC;"));
+    ui->comboBoxChooseLeague->setModel(m_controller->getStadiumsQueryModel("select DISTINCT League from Stadiums ORDER BY League ASC;"));
+    ui->comboBoxChooseRoofType->setModel(m_controller->getStadiumsQueryModel("select DISTINCT RoofType from Stadiums ORDER BY RoofType ASC;"));
 }
 
 MainWindow::~MainWindow()
@@ -20,34 +22,61 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_comboBox_activated(const QString &arg1)
+void MainWindow::on_comboBoxChooseTeamName_activated(const QString &arg1)
 {
-
-}
-
-void MainWindow::on_comboBoxStadiumNames_currentIndexChanged(const QString &arg1)
-{
-//    QString query = "select * from Stadiums WHERE StadiumName = '"+arg1+"';";
-//    ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
-}
-
-void MainWindow::on_comboBoxStadiumNames_activated(const QString &arg1)
-{
-    QString query = "select * from Stadiums WHERE StadiumName = '"+arg1+"';";
+    QString query = "select TeamName, * EXCEPT TeamName from Stadiums WHERE TeamName = '"+arg1+"';";
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableviewAllStadiums->resizeColumnsToContents();
 }
 
 void MainWindow::on_pushButtonSortByTeamNames_clicked()
 {
-    QString query = "select TeamName, StadiumName from Stadiums";
+    QString query = "select TeamName, StadiumName from Stadiums ORDER BY TeamName ASC;";
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableviewAllStadiums->resizeColumnsToContents();
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_pushButtonSortByStadiumNames_clicked()
 {
-    QString query = "select StadiumName, TeamName from Stadiums";
+    QString query = "select StadiumName, TeamName from Stadiums ORDER BY StadiumName ASC;";
+    ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
+    ui->tableviewAllStadiums->resizeColumnsToContents();
+}
+
+void MainWindow::on_comboBoxChooseLeague_activated(const QString &arg1)
+{
+    QString query;
+
+    if (arg1 == "American") {
+
+        query = "select TeamName, StadiumName from Stadiums WHERE League = '"+arg1+"' ORDER BY TeamName ASC;";
+    }
+    else {
+
+        query = "select StadiumName, TeamName from Stadiums WHERE League = '"+arg1+"' ORDER BY StadiumName ASC;";
+    }
+
+    ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
+    ui->tableviewAllStadiums->resizeColumnsToContents();
+}
+
+void MainWindow::on_pushButtonSortByBallparkTypology_clicked()
+{
+    QString query = "select BallparkTypology, StadiumName, TeamName from Stadiums ORDER BY BallparkTypology ASC;";
+    ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
+    ui->tableviewAllStadiums->resizeColumnsToContents();
+}
+
+void MainWindow::on_comboBoxChooseRoofType_activated(const QString &arg1)
+{
+    QString query = "select TeamName from Stadiums WHERE RoofType = '"+arg1+"' ORDER BY TeamName ASC;";
+    ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
+    ui->tableviewAllStadiums->resizeColumnsToContents();
+}
+
+void MainWindow::on_pushButtonSortByDateOpened_clicked()
+{
+    QString query = "select DateOpened, StadiumName, TeamName from Stadiums ORDER BY DateOpened ASC";
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableviewAllStadiums->resizeColumnsToContents();
 }
