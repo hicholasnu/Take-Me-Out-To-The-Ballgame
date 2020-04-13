@@ -14,9 +14,12 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="enabled">
      <bool>true</bool>
@@ -40,7 +43,7 @@
     </property>
     <widget class="QWidget" name="LoginScreen">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(150, 150, 150);</string>
+      <string notr="true"/>
      </property>
      <widget class="QLabel" name="labelUsername">
       <property name="geometry">
@@ -180,7 +183,7 @@
     </widget>
     <widget class="QWidget" name="UserScreen">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(193, 193, 193);</string>
+      <string notr="true"/>
      </property>
      <widget class="QTableView" name="tableviewAllStadiums">
       <property name="geometry">
@@ -201,7 +204,7 @@
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);
+       <string notr="true">
 font: 8pt &quot;Courier&quot;;</string>
       </property>
       <property name="frameShape">
@@ -271,7 +274,7 @@ font: 8pt &quot;Courier&quot;;</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
@@ -283,7 +286,7 @@ font: 8pt &quot;Courier&quot;;</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
@@ -295,7 +298,7 @@ font: 8pt &quot;Courier&quot;;</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
