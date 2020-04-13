@@ -7,7 +7,8 @@ MainWindow::MainWindow(Controller *controller, QWidget *parent)
       m_controller(controller)
 {
     ui->setupUi(this);
-    ui->stackedWidget->setCurrentWidget(ui->UserScreen);
+    ui->stackedWidget->setCurrentWidget(ui->LoginScreen);
+    // ui->stackedWidget->setCurrentWidget(ui->UserScreen);
 
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel("select * from Stadiums;"));
     ui->tableviewAllStadiums->resizeColumnsToContents();
@@ -22,28 +23,68 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::changeToAdmin()
+{
+    // ui->stackedWidget->setCurrentWidget(ui->Admin_page);
+
+}
+
+void MainWindow::changetoUser()
+{
+    ui->stackedWidget->setCurrentWidget(ui->UserScreen);
+}
+
 void MainWindow::on_pushButtonLogin_clicked()
 {
     QString username = ui->lineEditUsername->text();
     QString password = ui->lineEditPassword->text();
 
+    // Encrypte the password
     QByteArray encrypte_password (password.toStdString().c_str());
     encrypte_password.append(password);
     QString hashed_password = QCryptographicHash::hash(encrypte_password, QCryptographicHash::Sha256).toHex();
-
     // qDebug() << hashed_password;
 
     QSqlQuery qry;
-    qry.prepare("select username from login where username = '"+username+"';");
-    if (!qry.exec()) {
 
-        qDebug() << "ERROR: LOGIN QUERY FAILED." << endl;
+    qry.prepare("select * from login where username ='"+username+"'");
+    if (!qry.exec())
+    {
+        qDebug() << "Error";
     }
-    else {
+    else if(qry.exec("select * from Login where password = '"+hashed_password+"'"))
+    {
+        if(username == "admin")
+        {
+            QMessageBox::information(this,"Login", "Username and Password is correct");
+            changeToAdmin();
+            this->ui->lineEditUsername->setText("");
+            this->ui->lineEditPassword->setText("");
 
-
+        }
+        else
+        {
+            QMessageBox::information(this,"Login", "Username and Password is correct");
+            changetoUser();
+            this->ui->lineEditUsername->setText("");
+            this->ui->lineEditPassword->setText("");
+        }
 
     }
+    else
+    {
+        QMessageBox::warning(this,"Login","Username and password is not correct");
+        this->ui->lineEditUsername->setText("");
+        this->ui->lineEditPassword->setText("");
+
+    }
+}
+
+void MainWindow::on_pushButtonReset_clicked()
+{
+    ui->lineEditUsername->clear();
+    ui->lineEditPassword->clear();
 }
 
 void MainWindow::resetSortLabel(QString label) {
@@ -158,4 +199,6 @@ void MainWindow::on_pushButtonSortByLeastFromCenter_clicked()
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableviewAllStadiums->resizeColumnsToContents();
 }
+
+
 
