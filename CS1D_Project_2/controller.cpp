@@ -3,7 +3,7 @@
 Controller::Controller(QObject *parent) : QObject(parent) {
 
     m_database = QSqlDatabase::addDatabase("QSQLITE");
-    QString databasePath = "C://Users//Nicholas//Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
+    QString databasePath = "C://Users//krist//Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
     m_database.setDatabaseName(databasePath);
 
     if (!m_database.open()) {
@@ -59,6 +59,8 @@ void Controller::createTables() {
 
     qry.clear();
 
+    //========================================
+    // Creating login table
     QString createLoginTable =
             "create table IF NOT EXISTS Login("
             "Username          text,    "
@@ -76,11 +78,12 @@ void Controller::createTables() {
         qDebug() << "LOGIN TABLE IS CREATED.";
     }
 
-//    qry.clear();
-//    qry.exec("insert into login (username, password) values ('user', 'e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf');");
-//    qry.clear();
-//    qry.exec("insert into login (username, password) values ('admin', 'd82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892');");
-//    qry.clear();
+    qry.clear();
+
+    qry.exec("insert into login (Username, Password) values ('admin', 'd82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892')");
+    qry.exec("insert into login (Username, Password) values ('user', 'e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf')");
+
+
 }
 
 QSqlQueryModel *Controller::getStadiumNamesQueryOnStartModel() {

@@ -15,9 +15,14 @@ public:
     MainWindow(Controller *controller, QWidget *parent = nullptr);
     ~MainWindow();
 
+    void changeToAdmin();
+    void changetoUser();
+
 private slots:
 
     void on_pushButtonLogin_clicked();
+
+    void on_pushButtonReset_clicked();
 
     void on_comboBoxChooseTeamName_activated(const QString &arg1);
 
