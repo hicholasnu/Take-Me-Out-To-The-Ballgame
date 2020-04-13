@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -38,7 +39,8 @@ public:
     QPushButton *pushButtonReset;
     QWidget *StudentScreen;
     QTableView *tableviewAllStadiums;
-    QPushButton *pushButton;
+    QComboBox *comboBoxStadiumNames;
+    QPushButton *pushButtonSortByTeamNames;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -100,9 +102,12 @@ public:
         tableviewAllStadiums = new QTableView(StudentScreen);
         tableviewAllStadiums->setObjectName(QString::fromUtf8("tableviewAllStadiums"));
         tableviewAllStadiums->setGeometry(QRect(65, 50, 641, 391));
-        pushButton = new QPushButton(StudentScreen);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(60, 480, 93, 28));
+        comboBoxStadiumNames = new QComboBox(StudentScreen);
+        comboBoxStadiumNames->setObjectName(QString::fromUtf8("comboBoxStadiumNames"));
+        comboBoxStadiumNames->setGeometry(QRect(70, 470, 141, 22));
+        pushButtonSortByTeamNames = new QPushButton(StudentScreen);
+        pushButtonSortByTeamNames->setObjectName(QString::fromUtf8("pushButtonSortByTeamNames"));
+        pushButtonSortByTeamNames->setGeometry(QRect(230, 470, 71, 28));
         stackedWidget->addWidget(StudentScreen);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -130,7 +135,7 @@ public:
         lineEditUsername->setText(QString());
         pushButtonLogin->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         pushButtonReset->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButtonSortByTeamNames->setText(QCoreApplication::translate("MainWindow", "Sort T.N", nullptr));
     } // retranslateUi
 
 };

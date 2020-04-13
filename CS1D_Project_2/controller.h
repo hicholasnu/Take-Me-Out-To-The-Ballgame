@@ -31,6 +31,7 @@ public:
 
     QSqlQueryModel *getStadiumNamesQueryOnStartModel();
     QSqlQueryModel *getStadiumQueryOnStartModel();
+    QSqlQueryModel *getStadiumsQueryModel(QString query);
 
 private:
     QSqlDatabase m_database;

@@ -189,27 +189,27 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QComboBox" name="comboBoxStadiumNames">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>480</y>
-        <width>93</width>
+        <x>70</x>
+        <y>470</y>
+        <width>141</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonSortByTeamNames">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>470</y>
+        <width>71</width>
         <height>28</height>
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="comboBoxStadiumNames">
-      <property name="geometry">
-       <rect>
-        <x>170</x>
-        <y>480</y>
-        <width>141</width>
-        <height>22</height>
-       </rect>
+       <string>Sort T.N</string>
       </property>
      </widget>
     </widget>

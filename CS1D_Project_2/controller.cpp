@@ -30,23 +30,20 @@ Controller::~Controller() {
 
 void Controller::createTable() {
 
-    qDebug() << "TEST" << endl;
-
     QSqlQuery qry;
-
     QString createStadiumsTable =
     "create table IF NOT EXISTS  Stadiums("
-    "'Stadium Name'       text,           "
-    "'Seating Capacity'   integer,        "
+    "'StadiumName'       text,            "
+    "'SeatingCapacity'   integer,         "
     "'Location'           text,           "
-    "'Playing Surface'    text,           "
-    "'Team Name'          text,           "
+    "'PlayingSurface'    text,            "
+    "'TeamName'          text,            "
     "'League'             text,           "
-    "'Date Opened'        integer,        "
-    "'Distance To Center' integer,        "
-    "'Ballpark Typology'  text,           "
-    "'Roof Type'          text            "
-    ");                                 ";
+    "'DateOpened'        integer,         "
+    "'DistanceToCenter' integer,          "
+    "'BallparkTypology'  text,            "
+    "'RoofType'          text             "
+    ");                                   ";
 
     qry.prepare(createStadiumsTable);
 
@@ -65,13 +62,13 @@ void Controller::createTable() {
 QSqlQueryModel *Controller::getStadiumNamesQueryOnStartModel() {
 
     QSqlQueryModel* model = new QSqlQueryModel();
-
     QSqlQuery qry;
-    qry.prepare("select 'Stadium Names' from Stadiums;");
+
+    qry.prepare("select StadiumName from Stadiums;");
 
     if (!qry.exec()) {
 
-        qDebug() << "ERROR: getStadiumQueryOnStartModel" << endl;
+        qDebug() << "ERROR: getStadiumNamesQueryOnStartModel()" << endl;
     }
     model->setQuery(qry);
 
@@ -82,15 +79,32 @@ QSqlQueryModel *Controller::getStadiumNamesQueryOnStartModel() {
 QSqlQueryModel *Controller::getStadiumQueryOnStartModel() {
 
     QSqlQueryModel* model = new QSqlQueryModel();
-
     QSqlQuery qry;
+
     qry.prepare("select * from Stadiums;");
 
     if (!qry.exec()) {
 
-        qDebug() << "ERROR: getStadiumQueryOnStartModel" << endl;
+        qDebug() << "ERROR: getStadiumQueryOnStartModel()" << endl;
     }
     model->setQuery(qry);
 
     return model;
 }
+
+QSqlQueryModel *Controller::getStadiumsQueryModel(QString query) {
+
+    QSqlQueryModel* model = new QSqlQueryModel();
+    QSqlQuery qry;
+    qry.prepare(query);
+
+    if (!qry.exec()) {
+
+        qDebug() << "ERROR: getQueryModel(" << query << ")";
+    }
+
+    model->setQuery(qry);
+
+    return model;
+}
+
