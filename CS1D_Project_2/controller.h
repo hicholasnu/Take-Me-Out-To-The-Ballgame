@@ -26,8 +26,10 @@ public:
     Controller(Controller& controller);
     ~Controller();
 
-//    void createTable();
+    void createTable();
+    void loadStadiums();
 
+    QSqlQueryModel *getStadiumNamesQueryOnStartModel();
     QSqlQueryModel *getStadiumQueryOnStartModel();
 
 private:

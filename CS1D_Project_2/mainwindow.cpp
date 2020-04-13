@@ -9,7 +9,8 @@ MainWindow::MainWindow(Controller *controller, QWidget *parent)
     ui->setupUi(this);
     ui->stackedWidget->setCurrentWidget(ui->StudentScreen);
 
-
+    ui->tableviewAllStadiums->setModel(m_controller->getStadiumQueryOnStartModel());
+    ui->tableviewAllStadiums->resizeColumnsToContents();
 }
 
 MainWindow::~MainWindow()
@@ -20,6 +21,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    ui->tableviewAllStadiums->setModel(m_controller->getStadiumQueryOnStartModel());
-    ui->tableviewAllStadiums->resizeColumnsToContents();
+}
+
+void MainWindow::loadComboBoxWithStadiumNames() {
+
+}
+
+void MainWindow::on_comboBox_activated(const QString &arg1)
+{
+
 }
