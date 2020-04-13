@@ -29,6 +29,9 @@
       <height>531</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="frameShape">
      <enum>QFrame::Box</enum>
     </property>
@@ -175,139 +178,361 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="StudentScreen">
+    <widget class="QWidget" name="UserScreen">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
+      <string notr="true">background-color: rgb(193, 193, 193);</string>
      </property>
      <widget class="QTableView" name="tableviewAllStadiums">
       <property name="geometry">
        <rect>
-        <x>65</x>
+        <x>30</x>
         <y>50</y>
-        <width>571</width>
-        <height>391</height>
+        <width>461</width>
+        <height>331</height>
        </rect>
       </property>
-     </widget>
-     <widget class="QComboBox" name="comboBoxChooseTeamName">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>470</y>
-        <width>141</width>
-        <height>22</height>
-       </rect>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+        <pointsize>8</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);
+font: 8pt &quot;Courier&quot;;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>2</number>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonSortByTeamNames">
+     <widget class="QLabel" name="labelShowCurrentSort">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>470</y>
-        <width>61</width>
-        <height>28</height>
+        <x>50</x>
+        <y>20</y>
+        <width>651</width>
+        <height>20</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
       </property>
       <property name="text">
-       <string>Sort T.N</string>
+       <string>Currently Sorted By: All</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonSortByStadiumNames">
+     <widget class="QWidget" name="gridLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>470</y>
-        <width>61</width>
-        <height>28</height>
+        <x>520</x>
+        <y>50</y>
+        <width>211</width>
+        <height>176</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Sort S.N</string>
-      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="0">
+        <widget class="QLabel" name="labelSortByTeam">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Sort by Team Name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QComboBox" name="comboBoxChooseRoofType">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QComboBox" name="comboBoxChooseTeamName">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QComboBox" name="comboBoxChooseLeague">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="labelSortByLeague">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Sort by League</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="labelSortByRoofType">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Sort by Roof Type</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="labelGridLayout">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>true</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>Sorting Menu</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
-     <widget class="QComboBox" name="comboBoxChooseLeague">
+     <widget class="QWidget" name="formLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>380</x>
-        <y>470</y>
-        <width>91</width>
-        <height>22</height>
+        <x>520</x>
+        <y>240</y>
+        <width>206</width>
+        <height>241</height>
        </rect>
       </property>
+      <layout class="QFormLayout" name="formLayout_3">
+       <property name="rightMargin">
+        <number>45</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="labelSortByTeamName">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Team Name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pushButtonSortByTeamNames">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(225, 225, 225);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="labelSortByStadiumName">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Stadium Name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="pushButtonSortByStadiumNames">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(225, 225, 225);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="labelSortByBallparkType">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Ballpark Type</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="pushButtonSortByBallparkTypology">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(225, 225, 225);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="labelSortByDateOpened">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Date Opened</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QPushButton" name="pushButtonSortByDateOpened">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(225, 225, 225);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="labelSortBySeatingCapacity">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Seating Capa.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QPushButton" name="pushButtonSortBySeatingCapacity">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(225, 225, 225);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="labelSortByGreatestDistance">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Max Dist Cent.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QPushButton" name="pushButtonSortByGreatestFromCenter">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(225, 225, 225);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="labelSortByLeastDistance">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Min Dist Cent.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QPushButton" name="pushButtonSortByLeastFromCenter">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(225, 225, 225);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
-     <widget class="QPushButton" name="pushButtonSortByBallparkTypology">
+     <widget class="QLabel" name="labelAdditionalInfo">
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>470</y>
-        <width>61</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Sort BP.T</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="comboBoxChooseRoofType">
-      <property name="geometry">
-       <rect>
-        <x>570</x>
-        <y>470</y>
-        <width>111</width>
-        <height>21</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelSortByTeam">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>450</y>
-        <width>91</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Sort by Team</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelSortByLeague">
-      <property name="geometry">
-       <rect>
-        <x>380</x>
-        <y>450</y>
-        <width>91</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Sort by League</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelSortByRoofType">
-      <property name="geometry">
-       <rect>
-        <x>570</x>
-        <y>450</y>
-        <width>91</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Sort by Roof</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButtonSortByDateOpened">
-      <property name="geometry">
-       <rect>
-        <x>660</x>
+        <x>80</x>
         <y>410</y>
-        <width>61</width>
-        <height>28</height>
+        <width>371</width>
+        <height>61</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
       <property name="text">
-       <string>Sort D.O</string>
+       <string/>
       </property>
      </widget>
     </widget>

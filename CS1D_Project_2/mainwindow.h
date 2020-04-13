@@ -17,6 +17,8 @@ public:
 
 private slots:
 
+    void on_pushButtonLogin_clicked();
+
     void on_comboBoxChooseTeamName_activated(const QString &arg1);
 
     void on_pushButtonSortByTeamNames_clicked();
@@ -30,6 +32,14 @@ private slots:
     void on_comboBoxChooseRoofType_activated(const QString &arg1);
 
     void on_pushButtonSortByDateOpened_clicked();
+
+    void on_pushButtonSortBySeatingCapacity_clicked();
+
+    void on_pushButtonSortByGreatestFromCenter_clicked();
+
+    void on_pushButtonSortByLeastFromCenter_clicked();
+
+    void resetSortLabel(QString label);
 
 private:
     Ui::MainWindow *ui;
