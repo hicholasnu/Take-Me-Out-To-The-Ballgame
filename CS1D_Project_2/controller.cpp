@@ -61,6 +61,8 @@ void Controller::createTable() {
 
     qry.clear();
 
+
+    //=========================================
     // Creating the login table
     QString createLoginTable =
     "create table IF NOT EXISTS login(                             "
