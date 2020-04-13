@@ -128,7 +128,3 @@ void MainWindow::on_pushButtonSortByLeastFromCenter_clicked()
     ui->tableviewAllStadiums->resizeColumnsToContents();
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-
-}

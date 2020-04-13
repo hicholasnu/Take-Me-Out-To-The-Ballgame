@@ -180,7 +180,7 @@
     </widget>
     <widget class="QWidget" name="UserScreen">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(198, 198, 198);</string>
+      <string notr="true">background-color: rgb(193, 193, 193);</string>
      </property>
      <widget class="QTableView" name="tableviewAllStadiums">
       <property name="geometry">
@@ -283,10 +283,7 @@ font: 8pt &quot;Courier&quot;;</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">QListView {
-    alternate-background-color: yellow;
-}
-</string>
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
          </property>
         </widget>
        </item>
@@ -515,19 +512,6 @@ font: 8pt &quot;Courier&quot;;</string>
         </widget>
        </item>
       </layout>
-     </widget>
-     <widget class="QPushButton" name="pushButton">
-      <property name="geometry">
-       <rect>
-        <x>590</x>
-        <y>20</y>
-        <width>61</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>PushButton</string>
-      </property>
      </widget>
     </widget>
    </widget>

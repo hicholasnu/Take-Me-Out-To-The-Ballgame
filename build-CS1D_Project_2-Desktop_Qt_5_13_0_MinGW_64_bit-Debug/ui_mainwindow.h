@@ -126,7 +126,7 @@ public:
         stackedWidget->addWidget(LoginScreen);
         UserScreen = new QWidget();
         UserScreen->setObjectName(QString::fromUtf8("UserScreen"));
-        UserScreen->setStyleSheet(QString::fromUtf8("background-color: rgb(198, 198, 198);"));
+        UserScreen->setStyleSheet(QString::fromUtf8("background-color: rgb(193, 193, 193);"));
         tableviewAllStadiums = new QTableView(UserScreen);
         tableviewAllStadiums->setObjectName(QString::fromUtf8("tableviewAllStadiums"));
         tableviewAllStadiums->setGeometry(QRect(30, 50, 461, 331));
@@ -171,10 +171,7 @@ public:
         comboBoxChooseTeamName = new QComboBox(gridLayoutWidget);
         comboBoxChooseTeamName->setObjectName(QString::fromUtf8("comboBoxChooseTeamName"));
         comboBoxChooseTeamName->setFont(font);
-        comboBoxChooseTeamName->setStyleSheet(QString::fromUtf8("QListView {\n"
-"    alternate-background-color: yellow;\n"
-"}\n"
-""));
+        comboBoxChooseTeamName->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
 
         gridLayout->addWidget(comboBoxChooseTeamName, 4, 0, 1, 1);
 

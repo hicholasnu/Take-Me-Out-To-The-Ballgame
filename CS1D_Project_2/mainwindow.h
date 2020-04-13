@@ -33,15 +33,11 @@ private slots:
 
     void on_pushButtonSortByDateOpened_clicked();
 
-
-
     void on_pushButtonSortBySeatingCapacity_clicked();
 
     void on_pushButtonSortByGreatestFromCenter_clicked();
 
     void on_pushButtonSortByLeastFromCenter_clicked();
-
-    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
