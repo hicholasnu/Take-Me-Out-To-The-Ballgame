@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[17];
-    char stringdata0[489];
+    QByteArrayData data[20];
+    char stringdata0[589];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,24 +34,27 @@ static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
 QT_MOC_LITERAL(1, 11, 26), // "on_pushButtonLogin_clicked"
 QT_MOC_LITERAL(2, 38, 0), // ""
-QT_MOC_LITERAL(3, 39, 26), // "on_pushButtonReset_clicked"
-QT_MOC_LITERAL(4, 66, 35), // "on_comboBoxChooseTeamName_act..."
-QT_MOC_LITERAL(5, 102, 4), // "arg1"
-QT_MOC_LITERAL(6, 107, 36), // "on_pushButtonSortByTeamNames_..."
-QT_MOC_LITERAL(7, 144, 39), // "on_pushButtonSortByStadiumNam..."
-QT_MOC_LITERAL(8, 184, 33), // "on_comboBoxChooseLeague_activ..."
-QT_MOC_LITERAL(9, 218, 43), // "on_pushButtonSortByBallparkTy..."
-QT_MOC_LITERAL(10, 262, 35), // "on_comboBoxChooseRoofType_act..."
-QT_MOC_LITERAL(11, 298, 37), // "on_pushButtonSortByDateOpened..."
-QT_MOC_LITERAL(12, 336, 42), // "on_pushButtonSortBySeatingCap..."
-QT_MOC_LITERAL(13, 379, 45), // "on_pushButtonSortByGreatestFr..."
-QT_MOC_LITERAL(14, 425, 42), // "on_pushButtonSortByLeastFromC..."
-QT_MOC_LITERAL(15, 468, 14), // "resetSortLabel"
-QT_MOC_LITERAL(16, 483, 5) // "label"
+QT_MOC_LITERAL(3, 39, 31), // "on_pushButtonResetLogin_clicked"
+QT_MOC_LITERAL(4, 71, 35), // "on_comboBoxChooseTeamName_act..."
+QT_MOC_LITERAL(5, 107, 4), // "arg1"
+QT_MOC_LITERAL(6, 112, 36), // "on_pushButtonSortByTeamNames_..."
+QT_MOC_LITERAL(7, 149, 39), // "on_pushButtonSortByStadiumNam..."
+QT_MOC_LITERAL(8, 189, 33), // "on_comboBoxChooseLeague_activ..."
+QT_MOC_LITERAL(9, 223, 43), // "on_pushButtonSortByBallparkTy..."
+QT_MOC_LITERAL(10, 267, 35), // "on_comboBoxChooseRoofType_act..."
+QT_MOC_LITERAL(11, 303, 37), // "on_pushButtonSortByDateOpened..."
+QT_MOC_LITERAL(12, 341, 42), // "on_pushButtonSortBySeatingCap..."
+QT_MOC_LITERAL(13, 384, 45), // "on_pushButtonSortByGreatestFr..."
+QT_MOC_LITERAL(14, 430, 42), // "on_pushButtonSortByLeastFromC..."
+QT_MOC_LITERAL(15, 473, 39), // "on_pushButtonResetStadiumsTab..."
+QT_MOC_LITERAL(16, 513, 14), // "resetSortLabel"
+QT_MOC_LITERAL(17, 528, 5), // "label"
+QT_MOC_LITERAL(18, 534, 22), // "fillStadiumsComboBoxes"
+QT_MOC_LITERAL(19, 557, 31) // "on_pushButtonUserLogout_clicked"
 
     },
     "MainWindow\0on_pushButtonLogin_clicked\0"
-    "\0on_pushButtonReset_clicked\0"
+    "\0on_pushButtonResetLogin_clicked\0"
     "on_comboBoxChooseTeamName_activated\0"
     "arg1\0on_pushButtonSortByTeamNames_clicked\0"
     "on_pushButtonSortByStadiumNames_clicked\0"
@@ -62,7 +65,9 @@ QT_MOC_LITERAL(16, 483, 5) // "label"
     "on_pushButtonSortBySeatingCapacity_clicked\0"
     "on_pushButtonSortByGreatestFromCenter_clicked\0"
     "on_pushButtonSortByLeastFromCenter_clicked\0"
-    "resetSortLabel\0label"
+    "on_pushButtonResetStadiumsTable_clicked\0"
+    "resetSortLabel\0label\0fillStadiumsComboBoxes\0"
+    "on_pushButtonUserLogout_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -72,7 +77,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -80,19 +85,22 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   79,    2, 0x08 /* Private */,
-       3,    0,   80,    2, 0x08 /* Private */,
-       4,    1,   81,    2, 0x08 /* Private */,
-       6,    0,   84,    2, 0x08 /* Private */,
-       7,    0,   85,    2, 0x08 /* Private */,
-       8,    1,   86,    2, 0x08 /* Private */,
-       9,    0,   89,    2, 0x08 /* Private */,
-      10,    1,   90,    2, 0x08 /* Private */,
-      11,    0,   93,    2, 0x08 /* Private */,
-      12,    0,   94,    2, 0x08 /* Private */,
-      13,    0,   95,    2, 0x08 /* Private */,
-      14,    0,   96,    2, 0x08 /* Private */,
-      15,    1,   97,    2, 0x08 /* Private */,
+       1,    0,   94,    2, 0x08 /* Private */,
+       3,    0,   95,    2, 0x08 /* Private */,
+       4,    1,   96,    2, 0x08 /* Private */,
+       6,    0,   99,    2, 0x08 /* Private */,
+       7,    0,  100,    2, 0x08 /* Private */,
+       8,    1,  101,    2, 0x08 /* Private */,
+       9,    0,  104,    2, 0x08 /* Private */,
+      10,    1,  105,    2, 0x08 /* Private */,
+      11,    0,  108,    2, 0x08 /* Private */,
+      12,    0,  109,    2, 0x08 /* Private */,
+      13,    0,  110,    2, 0x08 /* Private */,
+      14,    0,  111,    2, 0x08 /* Private */,
+      15,    0,  112,    2, 0x08 /* Private */,
+      16,    1,  113,    2, 0x08 /* Private */,
+      18,    0,  116,    2, 0x08 /* Private */,
+      19,    0,  117,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -107,7 +115,10 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   16,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   17,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -119,7 +130,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_pushButtonLogin_clicked(); break;
-        case 1: _t->on_pushButtonReset_clicked(); break;
+        case 1: _t->on_pushButtonResetLogin_clicked(); break;
         case 2: _t->on_comboBoxChooseTeamName_activated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 3: _t->on_pushButtonSortByTeamNames_clicked(); break;
         case 4: _t->on_pushButtonSortByStadiumNames_clicked(); break;
@@ -130,7 +141,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 9: _t->on_pushButtonSortBySeatingCapacity_clicked(); break;
         case 10: _t->on_pushButtonSortByGreatestFromCenter_clicked(); break;
         case 11: _t->on_pushButtonSortByLeastFromCenter_clicked(); break;
-        case 12: _t->resetSortLabel((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 12: _t->on_pushButtonResetStadiumsTable_clicked(); break;
+        case 13: _t->resetSortLabel((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 14: _t->fillStadiumsComboBoxes(); break;
+        case 15: _t->on_pushButtonUserLogout_clicked(); break;
         default: ;
         }
     }
@@ -165,13 +179,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 16;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 13)
+        if (_id < 16)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 13;
+        _id -= 16;
     }
     return _id;
 }
