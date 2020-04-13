@@ -10,12 +10,8 @@ MainWindow::MainWindow(Controller *controller, QWidget *parent)
     ui->stackedWidget->setCurrentWidget(ui->LoginScreen);
     // ui->stackedWidget->setCurrentWidget(ui->UserScreen);
 
-    ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel("select * from Stadiums;"));
-    ui->tableviewAllStadiums->resizeColumnsToContents();
-
-    ui->comboBoxChooseTeamName->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums ORDER BY TeamName ASC;"));
-    ui->comboBoxChooseLeague->setModel(m_controller->getStadiumsQueryModel("select DISTINCT League from Stadiums ORDER BY League ASC;"));
-    ui->comboBoxChooseRoofType->setModel(m_controller->getStadiumsQueryModel("select DISTINCT RoofType from Stadiums ORDER BY RoofType ASC;"));
+    on_pushButtonResetStadiumsTable_clicked();
+    fillStadiumsComboBoxes();
 }
 
 MainWindow::~MainWindow()
@@ -23,6 +19,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+// LOGIN SCREEN START ===========================================================================================
 
 void MainWindow::changeToAdmin()
 {
@@ -57,7 +54,12 @@ void MainWindow::on_pushButtonLogin_clicked()
     {
         if(username == "admin")
         {
-            QMessageBox::information(this,"Login", "Username and Password is correct");
+            QMessageBox *msg = new QMessageBox;
+            msg->setText("Username and Password are correct.");
+            msg->setStyleSheet("background-color: white;");
+            msg->show();
+
+//            QMessageBox::information(this,"Login", "Username and Password is correct");
             changeToAdmin();
             this->ui->lineEditUsername->setText("");
             this->ui->lineEditPassword->setText("");
@@ -81,11 +83,15 @@ void MainWindow::on_pushButtonLogin_clicked()
     }
 }
 
-void MainWindow::on_pushButtonReset_clicked()
+void MainWindow::on_pushButtonResetLogin_clicked()
 {
     ui->lineEditUsername->clear();
     ui->lineEditPassword->clear();
 }
+
+// LOGIN SCREEN END ===========================================================================================
+
+// STADIUMS DISPLAY/SORT START ================================================================================
 
 void MainWindow::resetSortLabel(QString label) {
 
@@ -199,6 +205,29 @@ void MainWindow::on_pushButtonSortByLeastFromCenter_clicked()
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableviewAllStadiums->resizeColumnsToContents();
 }
+
+void MainWindow::on_pushButtonResetStadiumsTable_clicked()
+{
+    resetSortLabel("Currently Sorted By: All");
+
+    QString query = "select * from Stadiums;";
+    ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
+    ui->tableviewAllStadiums->resizeColumnsToContents();
+}
+
+void MainWindow::fillStadiumsComboBoxes() {
+
+    ui->comboBoxChooseTeamName->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums ORDER BY TeamName ASC;"));
+    ui->comboBoxChooseLeague->setModel(m_controller->getStadiumsQueryModel("select DISTINCT League from Stadiums ORDER BY League ASC;"));
+    ui->comboBoxChooseRoofType->setModel(m_controller->getStadiumsQueryModel("select DISTINCT RoofType from Stadiums ORDER BY RoofType ASC;"));
+}
+
+void MainWindow::on_pushButtonUserLogout_clicked()
+{
+    on_pushButtonResetStadiumsTable_clicked();
+    ui->stackedWidget->setCurrentWidget(ui->LoginScreen);
+}
+// STADIUMS DISPLAY/SORT END ==================================================================================
 
 
 

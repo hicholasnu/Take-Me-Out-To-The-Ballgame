@@ -22,7 +22,7 @@ private slots:
 
     void on_pushButtonLogin_clicked();
 
-    void on_pushButtonReset_clicked();
+    void on_pushButtonResetLogin_clicked();
 
     void on_comboBoxChooseTeamName_activated(const QString &arg1);
 
@@ -44,7 +44,14 @@ private slots:
 
     void on_pushButtonSortByLeastFromCenter_clicked();
 
+    void on_pushButtonResetStadiumsTable_clicked();
+
     void resetSortLabel(QString label);
+
+    void fillStadiumsComboBoxes();
+
+
+    void on_pushButtonUserLogout_clicked();
 
 private:
     Ui::MainWindow *ui;

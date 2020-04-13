@@ -38,7 +38,7 @@ public:
     QLineEdit *lineEditUsername;
     QLineEdit *lineEditPassword;
     QPushButton *pushButtonLogin;
-    QPushButton *pushButtonReset;
+    QPushButton *pushButtonResetLogin;
     QWidget *UserScreen;
     QTableView *tableviewAllStadiums;
     QLabel *labelShowCurrentSort;
@@ -67,7 +67,10 @@ public:
     QPushButton *pushButtonSortByGreatestFromCenter;
     QLabel *labelSortByLeastDistance;
     QPushButton *pushButtonSortByLeastFromCenter;
+    QLabel *labelResetStadiumsTable;
+    QPushButton *pushButtonResetStadiumsTable;
     QLabel *labelAdditionalInfo;
+    QPushButton *pushButtonUserLogout;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -76,7 +79,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(800, 600);
-        MainWindow->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));"));
+        MainWindow->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         stackedWidget = new QStackedWidget(centralwidget);
@@ -115,14 +118,14 @@ public:
         pushButtonLogin->setObjectName(QString::fromUtf8("pushButtonLogin"));
         pushButtonLogin->setGeometry(QRect(510, 250, 61, 31));
         pushButtonLogin->setFont(font);
-        pushButtonReset = new QPushButton(LoginScreen);
-        pushButtonReset->setObjectName(QString::fromUtf8("pushButtonReset"));
-        pushButtonReset->setGeometry(QRect(510, 210, 61, 31));
-        pushButtonReset->setFont(font);
-        pushButtonReset->setStyleSheet(QString::fromUtf8(""));
-        pushButtonReset->setCheckable(false);
-        pushButtonReset->setAutoDefault(false);
-        pushButtonReset->setFlat(false);
+        pushButtonResetLogin = new QPushButton(LoginScreen);
+        pushButtonResetLogin->setObjectName(QString::fromUtf8("pushButtonResetLogin"));
+        pushButtonResetLogin->setGeometry(QRect(510, 210, 61, 31));
+        pushButtonResetLogin->setFont(font);
+        pushButtonResetLogin->setStyleSheet(QString::fromUtf8(""));
+        pushButtonResetLogin->setCheckable(false);
+        pushButtonResetLogin->setAutoDefault(false);
+        pushButtonResetLogin->setFlat(false);
         stackedWidget->addWidget(LoginScreen);
         UserScreen = new QWidget();
         UserScreen->setObjectName(QString::fromUtf8("UserScreen"));
@@ -144,7 +147,7 @@ public:
         tableviewAllStadiums->setLineWidth(2);
         labelShowCurrentSort = new QLabel(UserScreen);
         labelShowCurrentSort->setObjectName(QString::fromUtf8("labelShowCurrentSort"));
-        labelShowCurrentSort->setGeometry(QRect(50, 20, 651, 20));
+        labelShowCurrentSort->setGeometry(QRect(110, 20, 621, 20));
         labelShowCurrentSort->setFont(font);
         labelShowCurrentSort->setFrameShape(QFrame::Box);
         labelShowCurrentSort->setFrameShadow(QFrame::Plain);
@@ -208,7 +211,7 @@ public:
 
         formLayoutWidget = new QWidget(UserScreen);
         formLayoutWidget->setObjectName(QString::fromUtf8("formLayoutWidget"));
-        formLayoutWidget->setGeometry(QRect(520, 240, 206, 241));
+        formLayoutWidget->setGeometry(QRect(520, 240, 206, 275));
         formLayout_3 = new QFormLayout(formLayoutWidget);
         formLayout_3->setObjectName(QString::fromUtf8("formLayout_3"));
         formLayout_3->setContentsMargins(0, 0, 45, 0);
@@ -297,6 +300,18 @@ public:
 
         formLayout_3->setWidget(6, QFormLayout::FieldRole, pushButtonSortByLeastFromCenter);
 
+        labelResetStadiumsTable = new QLabel(formLayoutWidget);
+        labelResetStadiumsTable->setObjectName(QString::fromUtf8("labelResetStadiumsTable"));
+        labelResetStadiumsTable->setFont(font);
+
+        formLayout_3->setWidget(7, QFormLayout::LabelRole, labelResetStadiumsTable);
+
+        pushButtonResetStadiumsTable = new QPushButton(formLayoutWidget);
+        pushButtonResetStadiumsTable->setObjectName(QString::fromUtf8("pushButtonResetStadiumsTable"));
+        pushButtonResetStadiumsTable->setStyleSheet(QString::fromUtf8("background-color: rgb(225, 225, 225);"));
+
+        formLayout_3->setWidget(7, QFormLayout::FieldRole, pushButtonResetStadiumsTable);
+
         labelAdditionalInfo = new QLabel(UserScreen);
         labelAdditionalInfo->setObjectName(QString::fromUtf8("labelAdditionalInfo"));
         labelAdditionalInfo->setGeometry(QRect(80, 410, 371, 61));
@@ -305,6 +320,13 @@ public:
         font3.setPointSize(10);
         labelAdditionalInfo->setFont(font3);
         labelAdditionalInfo->setFrameShape(QFrame::Box);
+        pushButtonUserLogout = new QPushButton(UserScreen);
+        pushButtonUserLogout->setObjectName(QString::fromUtf8("pushButtonUserLogout"));
+        pushButtonUserLogout->setGeometry(QRect(30, 20, 61, 21));
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Courier"));
+        font4.setPointSize(6);
+        pushButtonUserLogout->setFont(font4);
         stackedWidget->addWidget(UserScreen);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -318,7 +340,7 @@ public:
         retranslateUi(MainWindow);
 
         stackedWidget->setCurrentIndex(1);
-        pushButtonReset->setDefault(false);
+        pushButtonResetLogin->setDefault(false);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -331,15 +353,15 @@ public:
         labelPassword->setText(QCoreApplication::translate("MainWindow", "Password", nullptr));
         lineEditUsername->setText(QString());
         pushButtonLogin->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
-        pushButtonReset->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
+        pushButtonResetLogin->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
         labelShowCurrentSort->setText(QCoreApplication::translate("MainWindow", "Currently Sorted By: All", nullptr));
         labelSortByTeam->setText(QCoreApplication::translate("MainWindow", "Sort by Team Name", nullptr));
         labelSortByLeague->setText(QCoreApplication::translate("MainWindow", "Sort by League", nullptr));
         labelSortByRoofType->setText(QCoreApplication::translate("MainWindow", "Sort by Roof Type", nullptr));
         labelGridLayout->setText(QCoreApplication::translate("MainWindow", "Sorting Menu", nullptr));
-        labelSortByTeamName->setText(QCoreApplication::translate("MainWindow", "Team Name", nullptr));
+        labelSortByTeamName->setText(QCoreApplication::translate("MainWindow", "All Teams", nullptr));
         pushButtonSortByTeamNames->setText(QString());
-        labelSortByStadiumName->setText(QCoreApplication::translate("MainWindow", "Stadium Name", nullptr));
+        labelSortByStadiumName->setText(QCoreApplication::translate("MainWindow", "All Stadiums", nullptr));
         pushButtonSortByStadiumNames->setText(QString());
         labelSortByBallparkType->setText(QCoreApplication::translate("MainWindow", "Ballpark Type", nullptr));
         pushButtonSortByBallparkTypology->setText(QString());
@@ -351,7 +373,10 @@ public:
         pushButtonSortByGreatestFromCenter->setText(QString());
         labelSortByLeastDistance->setText(QCoreApplication::translate("MainWindow", "Min Dist Cent.", nullptr));
         pushButtonSortByLeastFromCenter->setText(QString());
+        labelResetStadiumsTable->setText(QCoreApplication::translate("MainWindow", "RESET", nullptr));
+        pushButtonResetStadiumsTable->setText(QString());
         labelAdditionalInfo->setText(QString());
+        pushButtonUserLogout->setText(QCoreApplication::translate("MainWindow", "Logout", nullptr));
     } // retranslateUi
 
 };
