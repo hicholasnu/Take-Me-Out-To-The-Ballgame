@@ -16,13 +16,20 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_comboBox_activated(const QString &arg1);
 
-    void on_comboBoxStadiumNames_currentIndexChanged(const QString &arg1);
-
-    void on_comboBoxStadiumNames_activated(const QString &arg1);
+    void on_comboBoxChooseTeamName_activated(const QString &arg1);
 
     void on_pushButtonSortByTeamNames_clicked();
+
+    void on_pushButtonSortByStadiumNames_clicked();
+
+    void on_comboBoxChooseLeague_activated(const QString &arg1);
+
+    void on_pushButtonSortByBallparkTypology_clicked();
+
+    void on_comboBoxChooseRoofType_activated(const QString &arg1);
+
+    void on_pushButtonSortByDateOpened_clicked();
 
 private:
     Ui::MainWindow *ui;
