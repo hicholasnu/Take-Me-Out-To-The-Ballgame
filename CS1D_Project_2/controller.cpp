@@ -15,7 +15,8 @@ Controller::Controller(QObject *parent) : QObject(parent) {
         qDebug() << "DATABASE IS OPEN.";
     }
 
-    createTable();
+    createTables();
+
 }
 
 Controller::Controller(Controller &controller)
@@ -28,35 +29,58 @@ Controller::~Controller() {
     m_database.close();
 }
 
-void Controller::createTable() {
+void Controller::createTables() {
 
     QSqlQuery qry;
     QString createStadiumsTable =
     "create table IF NOT EXISTS  Stadiums("
     "'StadiumName'       text,            "
     "'SeatingCapacity'   integer,         "
-    "'Location'           text,           "
+    "'Location'          text,            "
     "'PlayingSurface'    text,            "
     "'TeamName'          text,            "
-    "'League'             text,           "
+    "'League'            text,            "
     "'DateOpened'        integer,         "
-    "'DistanceToCenter' integer,          "
-    "'BallparkTypology'  text,            "
+    "'DistanceToCenterField'  integer,         "
+    "'BallparkTypology'         text,            "
     "'RoofType'          text             "
     ");                                   ";
 
     qry.prepare(createStadiumsTable);
 
-    if(!qry.exec()) {
+    if (!qry.exec()) {
 
-        qDebug() << "ERROR: createTable()" << endl;
+        qDebug() << "ERROR: createTable(): STADIUMS" << endl;
     }
     else {
 
-        qDebug() << "TABLE IS CREATED.";
+        qDebug() << "STADIUMS TABLE IS CREATED." << endl;
     }
 
     qry.clear();
+
+    QString createLoginTable =
+            "create table IF NOT EXISTS Login("
+            "Username          text,    "
+            "Password          text     "
+            ");                         ";
+
+    qry.prepare(createLoginTable);
+
+    if (!qry.exec()) {
+
+        qDebug() << "ERROR: createTable(): Login" << endl;
+    }
+    else {
+
+        qDebug() << "LOGIN TABLE IS CREATED.";
+    }
+
+//    qry.clear();
+//    qry.exec("insert into login (username, password) values ('user', 'e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf');");
+//    qry.clear();
+//    qry.exec("insert into login (username, password) values ('admin', 'd82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892');");
+//    qry.clear();
 }
 
 QSqlQueryModel *Controller::getStadiumNamesQueryOnStartModel() {
@@ -107,4 +131,5 @@ QSqlQueryModel *Controller::getStadiumsQueryModel(QString query) {
 
     return model;
 }
+
 

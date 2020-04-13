@@ -12,6 +12,8 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QFormLayout>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -37,18 +39,35 @@ public:
     QLineEdit *lineEditPassword;
     QPushButton *pushButtonLogin;
     QPushButton *pushButtonReset;
-    QWidget *StudentScreen;
+    QWidget *UserScreen;
     QTableView *tableviewAllStadiums;
-    QComboBox *comboBoxChooseTeamName;
-    QPushButton *pushButtonSortByTeamNames;
-    QPushButton *pushButtonSortByStadiumNames;
-    QComboBox *comboBoxChooseLeague;
-    QPushButton *pushButtonSortByBallparkTypology;
-    QComboBox *comboBoxChooseRoofType;
+    QLabel *labelShowCurrentSort;
+    QWidget *gridLayoutWidget;
+    QGridLayout *gridLayout;
     QLabel *labelSortByTeam;
+    QComboBox *comboBoxChooseRoofType;
+    QComboBox *comboBoxChooseTeamName;
+    QComboBox *comboBoxChooseLeague;
     QLabel *labelSortByLeague;
     QLabel *labelSortByRoofType;
+    QLabel *labelGridLayout;
+    QWidget *formLayoutWidget;
+    QFormLayout *formLayout_3;
+    QLabel *labelSortByTeamName;
+    QPushButton *pushButtonSortByTeamNames;
+    QLabel *labelSortByStadiumName;
+    QPushButton *pushButtonSortByStadiumNames;
+    QLabel *labelSortByBallparkType;
+    QPushButton *pushButtonSortByBallparkTypology;
+    QLabel *labelSortByDateOpened;
     QPushButton *pushButtonSortByDateOpened;
+    QLabel *labelSortBySeatingCapacity;
+    QPushButton *pushButtonSortBySeatingCapacity;
+    QLabel *labelSortByGreatestDistance;
+    QPushButton *pushButtonSortByGreatestFromCenter;
+    QLabel *labelSortByLeastDistance;
+    QPushButton *pushButtonSortByLeastFromCenter;
+    QPushButton *pushButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -64,6 +83,7 @@ public:
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
         stackedWidget->setEnabled(true);
         stackedWidget->setGeometry(QRect(10, 10, 781, 531));
+        stackedWidget->setStyleSheet(QString::fromUtf8(""));
         stackedWidget->setFrameShape(QFrame::Box);
         LoginScreen = new QWidget();
         LoginScreen->setObjectName(QString::fromUtf8("LoginScreen"));
@@ -104,43 +124,186 @@ public:
         pushButtonReset->setAutoDefault(false);
         pushButtonReset->setFlat(false);
         stackedWidget->addWidget(LoginScreen);
-        StudentScreen = new QWidget();
-        StudentScreen->setObjectName(QString::fromUtf8("StudentScreen"));
-        StudentScreen->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
-        tableviewAllStadiums = new QTableView(StudentScreen);
+        UserScreen = new QWidget();
+        UserScreen->setObjectName(QString::fromUtf8("UserScreen"));
+        UserScreen->setStyleSheet(QString::fromUtf8("background-color: rgb(198, 198, 198);"));
+        tableviewAllStadiums = new QTableView(UserScreen);
         tableviewAllStadiums->setObjectName(QString::fromUtf8("tableviewAllStadiums"));
-        tableviewAllStadiums->setGeometry(QRect(65, 50, 571, 391));
-        comboBoxChooseTeamName = new QComboBox(StudentScreen);
-        comboBoxChooseTeamName->setObjectName(QString::fromUtf8("comboBoxChooseTeamName"));
-        comboBoxChooseTeamName->setGeometry(QRect(70, 470, 141, 22));
-        pushButtonSortByTeamNames = new QPushButton(StudentScreen);
-        pushButtonSortByTeamNames->setObjectName(QString::fromUtf8("pushButtonSortByTeamNames"));
-        pushButtonSortByTeamNames->setGeometry(QRect(230, 470, 61, 28));
-        pushButtonSortByStadiumNames = new QPushButton(StudentScreen);
-        pushButtonSortByStadiumNames->setObjectName(QString::fromUtf8("pushButtonSortByStadiumNames"));
-        pushButtonSortByStadiumNames->setGeometry(QRect(300, 470, 61, 28));
-        comboBoxChooseLeague = new QComboBox(StudentScreen);
-        comboBoxChooseLeague->setObjectName(QString::fromUtf8("comboBoxChooseLeague"));
-        comboBoxChooseLeague->setGeometry(QRect(380, 470, 91, 22));
-        pushButtonSortByBallparkTypology = new QPushButton(StudentScreen);
-        pushButtonSortByBallparkTypology->setObjectName(QString::fromUtf8("pushButtonSortByBallparkTypology"));
-        pushButtonSortByBallparkTypology->setGeometry(QRect(490, 470, 61, 28));
-        comboBoxChooseRoofType = new QComboBox(StudentScreen);
-        comboBoxChooseRoofType->setObjectName(QString::fromUtf8("comboBoxChooseRoofType"));
-        comboBoxChooseRoofType->setGeometry(QRect(570, 470, 111, 21));
-        labelSortByTeam = new QLabel(StudentScreen);
+        tableviewAllStadiums->setGeometry(QRect(30, 50, 461, 331));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Courier"));
+        font1.setPointSize(8);
+        font1.setBold(false);
+        font1.setItalic(false);
+        font1.setWeight(50);
+        tableviewAllStadiums->setFont(font1);
+        tableviewAllStadiums->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"font: 8pt \"Courier\";"));
+        tableviewAllStadiums->setFrameShape(QFrame::Box);
+        tableviewAllStadiums->setFrameShadow(QFrame::Plain);
+        tableviewAllStadiums->setLineWidth(2);
+        labelShowCurrentSort = new QLabel(UserScreen);
+        labelShowCurrentSort->setObjectName(QString::fromUtf8("labelShowCurrentSort"));
+        labelShowCurrentSort->setGeometry(QRect(50, 20, 431, 20));
+        labelShowCurrentSort->setFont(font);
+        labelShowCurrentSort->setFrameShape(QFrame::Box);
+        labelShowCurrentSort->setFrameShadow(QFrame::Plain);
+        labelShowCurrentSort->setLineWidth(1);
+        gridLayoutWidget = new QWidget(UserScreen);
+        gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
+        gridLayoutWidget->setGeometry(QRect(520, 50, 211, 176));
+        gridLayout = new QGridLayout(gridLayoutWidget);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        labelSortByTeam = new QLabel(gridLayoutWidget);
         labelSortByTeam->setObjectName(QString::fromUtf8("labelSortByTeam"));
-        labelSortByTeam->setGeometry(QRect(70, 450, 91, 16));
-        labelSortByLeague = new QLabel(StudentScreen);
+        labelSortByTeam->setFont(font);
+
+        gridLayout->addWidget(labelSortByTeam, 3, 0, 1, 1);
+
+        comboBoxChooseRoofType = new QComboBox(gridLayoutWidget);
+        comboBoxChooseRoofType->setObjectName(QString::fromUtf8("comboBoxChooseRoofType"));
+        comboBoxChooseRoofType->setFont(font);
+        comboBoxChooseRoofType->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+
+        gridLayout->addWidget(comboBoxChooseRoofType, 8, 0, 1, 1);
+
+        comboBoxChooseTeamName = new QComboBox(gridLayoutWidget);
+        comboBoxChooseTeamName->setObjectName(QString::fromUtf8("comboBoxChooseTeamName"));
+        comboBoxChooseTeamName->setFont(font);
+        comboBoxChooseTeamName->setStyleSheet(QString::fromUtf8("QListView {\n"
+"    alternate-background-color: yellow;\n"
+"}\n"
+""));
+
+        gridLayout->addWidget(comboBoxChooseTeamName, 4, 0, 1, 1);
+
+        comboBoxChooseLeague = new QComboBox(gridLayoutWidget);
+        comboBoxChooseLeague->setObjectName(QString::fromUtf8("comboBoxChooseLeague"));
+        comboBoxChooseLeague->setFont(font);
+        comboBoxChooseLeague->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+
+        gridLayout->addWidget(comboBoxChooseLeague, 6, 0, 1, 1);
+
+        labelSortByLeague = new QLabel(gridLayoutWidget);
         labelSortByLeague->setObjectName(QString::fromUtf8("labelSortByLeague"));
-        labelSortByLeague->setGeometry(QRect(380, 450, 91, 16));
-        labelSortByRoofType = new QLabel(StudentScreen);
+        labelSortByLeague->setFont(font);
+
+        gridLayout->addWidget(labelSortByLeague, 5, 0, 1, 1);
+
+        labelSortByRoofType = new QLabel(gridLayoutWidget);
         labelSortByRoofType->setObjectName(QString::fromUtf8("labelSortByRoofType"));
-        labelSortByRoofType->setGeometry(QRect(570, 450, 91, 16));
-        pushButtonSortByDateOpened = new QPushButton(StudentScreen);
+        labelSortByRoofType->setFont(font);
+
+        gridLayout->addWidget(labelSortByRoofType, 7, 0, 1, 1);
+
+        labelGridLayout = new QLabel(gridLayoutWidget);
+        labelGridLayout->setObjectName(QString::fromUtf8("labelGridLayout"));
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Courier"));
+        font2.setPointSize(10);
+        font2.setBold(true);
+        font2.setUnderline(true);
+        font2.setWeight(75);
+        labelGridLayout->setFont(font2);
+
+        gridLayout->addWidget(labelGridLayout, 2, 0, 1, 1);
+
+        formLayoutWidget = new QWidget(UserScreen);
+        formLayoutWidget->setObjectName(QString::fromUtf8("formLayoutWidget"));
+        formLayoutWidget->setGeometry(QRect(520, 240, 206, 241));
+        formLayout_3 = new QFormLayout(formLayoutWidget);
+        formLayout_3->setObjectName(QString::fromUtf8("formLayout_3"));
+        formLayout_3->setContentsMargins(0, 0, 45, 0);
+        labelSortByTeamName = new QLabel(formLayoutWidget);
+        labelSortByTeamName->setObjectName(QString::fromUtf8("labelSortByTeamName"));
+        labelSortByTeamName->setFont(font);
+
+        formLayout_3->setWidget(0, QFormLayout::LabelRole, labelSortByTeamName);
+
+        pushButtonSortByTeamNames = new QPushButton(formLayoutWidget);
+        pushButtonSortByTeamNames->setObjectName(QString::fromUtf8("pushButtonSortByTeamNames"));
+        pushButtonSortByTeamNames->setStyleSheet(QString::fromUtf8("background-color: rgb(225, 225, 225);"));
+        pushButtonSortByTeamNames->setFlat(false);
+
+        formLayout_3->setWidget(0, QFormLayout::FieldRole, pushButtonSortByTeamNames);
+
+        labelSortByStadiumName = new QLabel(formLayoutWidget);
+        labelSortByStadiumName->setObjectName(QString::fromUtf8("labelSortByStadiumName"));
+        labelSortByStadiumName->setFont(font);
+
+        formLayout_3->setWidget(1, QFormLayout::LabelRole, labelSortByStadiumName);
+
+        pushButtonSortByStadiumNames = new QPushButton(formLayoutWidget);
+        pushButtonSortByStadiumNames->setObjectName(QString::fromUtf8("pushButtonSortByStadiumNames"));
+        pushButtonSortByStadiumNames->setStyleSheet(QString::fromUtf8("background-color: rgb(225, 225, 225);"));
+
+        formLayout_3->setWidget(1, QFormLayout::FieldRole, pushButtonSortByStadiumNames);
+
+        labelSortByBallparkType = new QLabel(formLayoutWidget);
+        labelSortByBallparkType->setObjectName(QString::fromUtf8("labelSortByBallparkType"));
+        labelSortByBallparkType->setFont(font);
+
+        formLayout_3->setWidget(2, QFormLayout::LabelRole, labelSortByBallparkType);
+
+        pushButtonSortByBallparkTypology = new QPushButton(formLayoutWidget);
+        pushButtonSortByBallparkTypology->setObjectName(QString::fromUtf8("pushButtonSortByBallparkTypology"));
+        pushButtonSortByBallparkTypology->setStyleSheet(QString::fromUtf8("background-color: rgb(225, 225, 225);"));
+
+        formLayout_3->setWidget(2, QFormLayout::FieldRole, pushButtonSortByBallparkTypology);
+
+        labelSortByDateOpened = new QLabel(formLayoutWidget);
+        labelSortByDateOpened->setObjectName(QString::fromUtf8("labelSortByDateOpened"));
+        labelSortByDateOpened->setFont(font);
+
+        formLayout_3->setWidget(3, QFormLayout::LabelRole, labelSortByDateOpened);
+
+        pushButtonSortByDateOpened = new QPushButton(formLayoutWidget);
         pushButtonSortByDateOpened->setObjectName(QString::fromUtf8("pushButtonSortByDateOpened"));
-        pushButtonSortByDateOpened->setGeometry(QRect(660, 410, 61, 28));
-        stackedWidget->addWidget(StudentScreen);
+        pushButtonSortByDateOpened->setStyleSheet(QString::fromUtf8("background-color: rgb(225, 225, 225);"));
+
+        formLayout_3->setWidget(3, QFormLayout::FieldRole, pushButtonSortByDateOpened);
+
+        labelSortBySeatingCapacity = new QLabel(formLayoutWidget);
+        labelSortBySeatingCapacity->setObjectName(QString::fromUtf8("labelSortBySeatingCapacity"));
+        labelSortBySeatingCapacity->setFont(font);
+
+        formLayout_3->setWidget(4, QFormLayout::LabelRole, labelSortBySeatingCapacity);
+
+        pushButtonSortBySeatingCapacity = new QPushButton(formLayoutWidget);
+        pushButtonSortBySeatingCapacity->setObjectName(QString::fromUtf8("pushButtonSortBySeatingCapacity"));
+        pushButtonSortBySeatingCapacity->setStyleSheet(QString::fromUtf8("background-color: rgb(225, 225, 225);"));
+
+        formLayout_3->setWidget(4, QFormLayout::FieldRole, pushButtonSortBySeatingCapacity);
+
+        labelSortByGreatestDistance = new QLabel(formLayoutWidget);
+        labelSortByGreatestDistance->setObjectName(QString::fromUtf8("labelSortByGreatestDistance"));
+        labelSortByGreatestDistance->setFont(font);
+
+        formLayout_3->setWidget(5, QFormLayout::LabelRole, labelSortByGreatestDistance);
+
+        pushButtonSortByGreatestFromCenter = new QPushButton(formLayoutWidget);
+        pushButtonSortByGreatestFromCenter->setObjectName(QString::fromUtf8("pushButtonSortByGreatestFromCenter"));
+        pushButtonSortByGreatestFromCenter->setStyleSheet(QString::fromUtf8("background-color: rgb(225, 225, 225);"));
+
+        formLayout_3->setWidget(5, QFormLayout::FieldRole, pushButtonSortByGreatestFromCenter);
+
+        labelSortByLeastDistance = new QLabel(formLayoutWidget);
+        labelSortByLeastDistance->setObjectName(QString::fromUtf8("labelSortByLeastDistance"));
+        labelSortByLeastDistance->setFont(font);
+
+        formLayout_3->setWidget(6, QFormLayout::LabelRole, labelSortByLeastDistance);
+
+        pushButtonSortByLeastFromCenter = new QPushButton(formLayoutWidget);
+        pushButtonSortByLeastFromCenter->setObjectName(QString::fromUtf8("pushButtonSortByLeastFromCenter"));
+        pushButtonSortByLeastFromCenter->setStyleSheet(QString::fromUtf8("background-color: rgb(225, 225, 225);"));
+
+        formLayout_3->setWidget(6, QFormLayout::FieldRole, pushButtonSortByLeastFromCenter);
+
+        pushButton = new QPushButton(UserScreen);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(590, 20, 61, 21));
+        stackedWidget->addWidget(UserScreen);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -167,13 +330,26 @@ public:
         lineEditUsername->setText(QString());
         pushButtonLogin->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         pushButtonReset->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
-        pushButtonSortByTeamNames->setText(QCoreApplication::translate("MainWindow", "Sort T.N", nullptr));
-        pushButtonSortByStadiumNames->setText(QCoreApplication::translate("MainWindow", "Sort S.N", nullptr));
-        pushButtonSortByBallparkTypology->setText(QCoreApplication::translate("MainWindow", "Sort BP.T", nullptr));
-        labelSortByTeam->setText(QCoreApplication::translate("MainWindow", "Sort by Team", nullptr));
+        labelShowCurrentSort->setText(QCoreApplication::translate("MainWindow", "Currently Sorted By: All", nullptr));
+        labelSortByTeam->setText(QCoreApplication::translate("MainWindow", "Sort by Team Name", nullptr));
         labelSortByLeague->setText(QCoreApplication::translate("MainWindow", "Sort by League", nullptr));
-        labelSortByRoofType->setText(QCoreApplication::translate("MainWindow", "Sort by Roof", nullptr));
-        pushButtonSortByDateOpened->setText(QCoreApplication::translate("MainWindow", "Sort D.O", nullptr));
+        labelSortByRoofType->setText(QCoreApplication::translate("MainWindow", "Sort by Roof Type", nullptr));
+        labelGridLayout->setText(QCoreApplication::translate("MainWindow", "Sorting Menu", nullptr));
+        labelSortByTeamName->setText(QCoreApplication::translate("MainWindow", "Team Name", nullptr));
+        pushButtonSortByTeamNames->setText(QString());
+        labelSortByStadiumName->setText(QCoreApplication::translate("MainWindow", "Stadium Name", nullptr));
+        pushButtonSortByStadiumNames->setText(QString());
+        labelSortByBallparkType->setText(QCoreApplication::translate("MainWindow", "Ballpark Type", nullptr));
+        pushButtonSortByBallparkTypology->setText(QString());
+        labelSortByDateOpened->setText(QCoreApplication::translate("MainWindow", "Date Opened", nullptr));
+        pushButtonSortByDateOpened->setText(QString());
+        labelSortBySeatingCapacity->setText(QCoreApplication::translate("MainWindow", "Seating Capa.", nullptr));
+        pushButtonSortBySeatingCapacity->setText(QString());
+        labelSortByGreatestDistance->setText(QCoreApplication::translate("MainWindow", "Max Dist Cent.", nullptr));
+        pushButtonSortByGreatestFromCenter->setText(QString());
+        labelSortByLeastDistance->setText(QCoreApplication::translate("MainWindow", "Min Dist Cent.", nullptr));
+        pushButtonSortByLeastFromCenter->setText(QString());
+        pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
     } // retranslateUi
 
 };

@@ -1566,6 +1566,7 @@ debug/mainwindow.o: ../CS1D_Project_2/mainwindow.cpp ../CS1D_Project_2/mainwindo
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qdesktopwidget.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qguiapplication.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QComboBox \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QHeaderView \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qheaderview.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QLabel \
