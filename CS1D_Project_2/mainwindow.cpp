@@ -48,37 +48,33 @@ void MainWindow::on_pushButtonLogin_clicked()
 
     QSqlQuery qry;
 
-    qry.prepare("select * from login where username ='"+username+"'");
+    qry.prepare("select * from login where username ='"+username+"' and password ='"+password+"'");
     if (!qry.exec())
     {
         qDebug() << "Error";
     }
-    else if(qry.exec("select * from Login where password = '"+hashed_password+"'"))
+
+    if(username == "admin")
     {
-        if(username == "admin")
-        {
-            QMessageBox::information(this,"Login", "Username and Password is correct");
-            changeToAdmin();
-            this->ui->lineEditUsername->setText("");
-            this->ui->lineEditPassword->setText("");
-
-        }
-        else
-        {
-            QMessageBox::information(this,"Login", "Username and Password is correct");
-            changetoUser();
-            this->ui->lineEditUsername->setText("");
-            this->ui->lineEditPassword->setText("");
-        }
-
+        QMessageBox::information(this,"Login", "Username and Password is correct");
+        changeToAdmin();
+        this->ui->lineEditUsername->setText("");
+        this->ui->lineEditPassword->setText("");
+    }
+    else if(username == "user")
+    {
+        QMessageBox::information(this,"Login", "Username and Password is correct");
+        changetoUser();
+        this->ui->lineEditUsername->setText("");
+        this->ui->lineEditPassword->setText("");
     }
     else
     {
         QMessageBox::warning(this,"Login","Username and password is not correct");
         this->ui->lineEditUsername->setText("");
         this->ui->lineEditPassword->setText("");
-
     }
+
 }
 
 void MainWindow::on_pushButtonReset_clicked()
