@@ -49,6 +49,7 @@ void MainWindow::on_pushButtonLogin_clicked()
     QSqlQuery qry;
 
     qry.prepare("select * from login where username ='"+username+"' and password ='"+password+"'");
+
     if (!qry.exec())
     {
         qDebug() << "Error";
