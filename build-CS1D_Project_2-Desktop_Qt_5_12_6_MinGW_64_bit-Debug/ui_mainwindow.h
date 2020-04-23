@@ -79,9 +79,10 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(800, 600);
-        MainWindow->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setStyleSheet(QString::fromUtf8(""));
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
         stackedWidget->setEnabled(true);
@@ -90,7 +91,7 @@ public:
         stackedWidget->setFrameShape(QFrame::Box);
         LoginScreen = new QWidget();
         LoginScreen->setObjectName(QString::fromUtf8("LoginScreen"));
-        LoginScreen->setStyleSheet(QString::fromUtf8("background-color: rgb(150, 150, 150);"));
+        LoginScreen->setStyleSheet(QString::fromUtf8(""));
         labelUsername = new QLabel(LoginScreen);
         labelUsername->setObjectName(QString::fromUtf8("labelUsername"));
         labelUsername->setGeometry(QRect(180, 210, 81, 31));
@@ -107,12 +108,12 @@ public:
         lineEditUsername->setObjectName(QString::fromUtf8("lineEditUsername"));
         lineEditUsername->setGeometry(QRect(280, 210, 211, 31));
         lineEditUsername->setFont(font);
-        lineEditUsername->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        lineEditUsername->setStyleSheet(QString::fromUtf8(""));
         lineEditPassword = new QLineEdit(LoginScreen);
         lineEditPassword->setObjectName(QString::fromUtf8("lineEditPassword"));
         lineEditPassword->setGeometry(QRect(280, 250, 211, 31));
         lineEditPassword->setFont(font);
-        lineEditPassword->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        lineEditPassword->setStyleSheet(QString::fromUtf8(""));
         lineEditPassword->setEchoMode(QLineEdit::Password);
         pushButtonLogin = new QPushButton(LoginScreen);
         pushButtonLogin->setObjectName(QString::fromUtf8("pushButtonLogin"));
@@ -129,7 +130,7 @@ public:
         stackedWidget->addWidget(LoginScreen);
         UserScreen = new QWidget();
         UserScreen->setObjectName(QString::fromUtf8("UserScreen"));
-        UserScreen->setStyleSheet(QString::fromUtf8("background-color: rgb(193, 193, 193);"));
+        UserScreen->setStyleSheet(QString::fromUtf8(""));
         tableviewAllStadiums = new QTableView(UserScreen);
         tableviewAllStadiums->setObjectName(QString::fromUtf8("tableviewAllStadiums"));
         tableviewAllStadiums->setGeometry(QRect(30, 50, 461, 331));
@@ -140,7 +141,7 @@ public:
         font1.setItalic(false);
         font1.setWeight(50);
         tableviewAllStadiums->setFont(font1);
-        tableviewAllStadiums->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+        tableviewAllStadiums->setStyleSheet(QString::fromUtf8("\n"
 "font: 8pt \"Courier\";"));
         tableviewAllStadiums->setFrameShape(QFrame::Box);
         tableviewAllStadiums->setFrameShadow(QFrame::Plain);
@@ -167,21 +168,21 @@ public:
         comboBoxChooseRoofType = new QComboBox(gridLayoutWidget);
         comboBoxChooseRoofType->setObjectName(QString::fromUtf8("comboBoxChooseRoofType"));
         comboBoxChooseRoofType->setFont(font);
-        comboBoxChooseRoofType->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        comboBoxChooseRoofType->setStyleSheet(QString::fromUtf8(""));
 
         gridLayout->addWidget(comboBoxChooseRoofType, 8, 0, 1, 1);
 
         comboBoxChooseTeamName = new QComboBox(gridLayoutWidget);
         comboBoxChooseTeamName->setObjectName(QString::fromUtf8("comboBoxChooseTeamName"));
         comboBoxChooseTeamName->setFont(font);
-        comboBoxChooseTeamName->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        comboBoxChooseTeamName->setStyleSheet(QString::fromUtf8(""));
 
         gridLayout->addWidget(comboBoxChooseTeamName, 4, 0, 1, 1);
 
         comboBoxChooseLeague = new QComboBox(gridLayoutWidget);
         comboBoxChooseLeague->setObjectName(QString::fromUtf8("comboBoxChooseLeague"));
         comboBoxChooseLeague->setFont(font);
-        comboBoxChooseLeague->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        comboBoxChooseLeague->setStyleSheet(QString::fromUtf8(""));
 
         gridLayout->addWidget(comboBoxChooseLeague, 6, 0, 1, 1);
 

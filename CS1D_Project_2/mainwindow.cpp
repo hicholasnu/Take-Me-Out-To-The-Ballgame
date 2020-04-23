@@ -46,41 +46,38 @@ void MainWindow::on_pushButtonLogin_clicked()
     QSqlQuery qry;
 
     qry.prepare("select * from Login where username ='"+username+"' and password ='"+password+"'");
+
     if (!qry.exec())
     {
         qDebug() << "Error";
     }
-    else
+
+    if(username == "admin")
     {
-        if(username == "admin")
-        {
-            QMessageBox *msg = new QMessageBox;
-            msg->setText("Username and Password are correct.");
-            msg->setStyleSheet("background-color: white;");
-            msg->show();
+        QMessageBox *msg = new QMessageBox;
+        msg->setText("Username and Password are correct.");
+        msg->setStyleSheet("background-color: white;");
+        msg->show();
 
-            // QMessageBox::information(this,"Login", "Username and Password is correct");
-            changeToAdmin();
-            this->ui->lineEditUsername->setText("");
-            this->ui->lineEditPassword->setText("");
-
-        }
-        else if(username == "user")
-        {
-            QMessageBox::information(this,"Login", "Username and Password is correct");
-            changetoUser();
-            this->ui->lineEditUsername->setText("");
-            this->ui->lineEditPassword->setText("");
-        }
-        else
-        {
-            QMessageBox::warning(this,"Login","Username and password is not correct");
-            this->ui->lineEditUsername->setText("");
-            this->ui->lineEditPassword->setText("");
-        }
+        // QMessageBox::information(this,"Login", "Username and Password is correct");
+        changeToAdmin();
+        this->ui->lineEditUsername->setText("");
+        this->ui->lineEditPassword->setText("");
 
     }
-
+    else if(username == "user")
+    {
+        QMessageBox::information(this,"Login", "Username and Password is correct");
+        changetoUser();
+        this->ui->lineEditUsername->setText("");
+        this->ui->lineEditPassword->setText("");
+    }
+    else
+    {
+        QMessageBox::warning(this,"Login","Username and password is not correct");
+        this->ui->lineEditUsername->setText("");
+        this->ui->lineEditPassword->setText("");
+    }
 }
 
 void MainWindow::on_pushButtonResetLogin_clicked()
