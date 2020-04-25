@@ -29,9 +29,8 @@ public:
     void createTables();
     void loadStadiums();
 
-    QSqlQueryModel *getStadiumNamesQueryOnStartModel();
-    QSqlQueryModel *getStadiumQueryOnStartModel();
     QSqlQueryModel *getStadiumsQueryModel(QString query);
+    QSqlQueryModel *getSouvenirsQueryModel(QString query);
 
 private:
     QSqlDatabase m_database;

@@ -3,7 +3,7 @@
 Controller::Controller(QObject *parent) : QObject(parent) {
 
     m_database = QSqlDatabase::addDatabase("QSQLITE");
-    QString databasePath = "C://Users//krist//Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
+    QString databasePath = "C://Users//Nicholas//Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
     m_database.setDatabaseName(databasePath);
 
     if (!m_database.open()) {
@@ -86,40 +86,23 @@ void Controller::createTables() {
 
 }
 
-QSqlQueryModel *Controller::getStadiumNamesQueryOnStartModel() {
-
-    QSqlQueryModel* model = new QSqlQueryModel();
-    QSqlQuery qry;
-
-    qry.prepare("select StadiumName from Stadiums;");
-
-    if (!qry.exec()) {
-
-        qDebug() << "ERROR: getStadiumNamesQueryOnStartModel()" << endl;
-    }
-    model->setQuery(qry);
-
-    return model;
-
-}
-
-QSqlQueryModel *Controller::getStadiumQueryOnStartModel() {
-
-    QSqlQueryModel* model = new QSqlQueryModel();
-    QSqlQuery qry;
-
-    qry.prepare("select * from Stadiums;");
-
-    if (!qry.exec()) {
-
-        qDebug() << "ERROR: getStadiumQueryOnStartModel()" << endl;
-    }
-    model->setQuery(qry);
-
-    return model;
-}
-
 QSqlQueryModel *Controller::getStadiumsQueryModel(QString query) {
+
+    QSqlQueryModel* model = new QSqlQueryModel();
+    QSqlQuery qry;
+    qry.prepare(query);
+
+    if (!qry.exec()) {
+
+        qDebug() << "ERROR: getQueryModel(" << query << ")";
+    }
+
+    model->setQuery(qry);
+
+    return model;
+}
+
+QSqlQueryModel *Controller::getSouvenirsQueryModel(QString query) {
 
     QSqlQueryModel* model = new QSqlQueryModel();
     QSqlQuery qry;

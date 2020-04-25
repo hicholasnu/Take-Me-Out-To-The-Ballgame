@@ -53,6 +53,12 @@ private slots:
 
     void on_pushButtonUserLogout_clicked();
 
+    void on_pushButtonResetAllSouvenirs_clicked();
+
+    void on_comboBoxChooseStadium_activated(const QString &arg1);
+
+    void fillChooseSouvenirsComboBox(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;

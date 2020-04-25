@@ -71,6 +71,13 @@ public:
     QPushButton *pushButtonResetStadiumsTable;
     QLabel *labelAdditionalInfo;
     QPushButton *pushButtonUserLogout;
+    QWidget *AdminScreen;
+    QTableView *tableviewAllSouvenirs;
+    QPushButton *pushButtonResetAllSouvenirs;
+    QComboBox *comboBoxChooseStadium;
+    QComboBox *comboBoxChooseSouvenir;
+    QLineEdit *lineEditPrice;
+    QPushButton *pushButtonEditPrice;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -329,6 +336,27 @@ public:
         font4.setPointSize(6);
         pushButtonUserLogout->setFont(font4);
         stackedWidget->addWidget(UserScreen);
+        AdminScreen = new QWidget();
+        AdminScreen->setObjectName(QString::fromUtf8("AdminScreen"));
+        tableviewAllSouvenirs = new QTableView(AdminScreen);
+        tableviewAllSouvenirs->setObjectName(QString::fromUtf8("tableviewAllSouvenirs"));
+        tableviewAllSouvenirs->setGeometry(QRect(20, 20, 461, 301));
+        pushButtonResetAllSouvenirs = new QPushButton(AdminScreen);
+        pushButtonResetAllSouvenirs->setObjectName(QString::fromUtf8("pushButtonResetAllSouvenirs"));
+        pushButtonResetAllSouvenirs->setGeometry(QRect(40, 350, 93, 28));
+        comboBoxChooseStadium = new QComboBox(AdminScreen);
+        comboBoxChooseStadium->setObjectName(QString::fromUtf8("comboBoxChooseStadium"));
+        comboBoxChooseStadium->setGeometry(QRect(160, 350, 211, 22));
+        comboBoxChooseSouvenir = new QComboBox(AdminScreen);
+        comboBoxChooseSouvenir->setObjectName(QString::fromUtf8("comboBoxChooseSouvenir"));
+        comboBoxChooseSouvenir->setGeometry(QRect(510, 40, 211, 22));
+        lineEditPrice = new QLineEdit(AdminScreen);
+        lineEditPrice->setObjectName(QString::fromUtf8("lineEditPrice"));
+        lineEditPrice->setGeometry(QRect(520, 170, 113, 22));
+        pushButtonEditPrice = new QPushButton(AdminScreen);
+        pushButtonEditPrice->setObjectName(QString::fromUtf8("pushButtonEditPrice"));
+        pushButtonEditPrice->setGeometry(QRect(530, 220, 93, 28));
+        stackedWidget->addWidget(AdminScreen);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -340,7 +368,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
         pushButtonResetLogin->setDefault(false);
 
 
@@ -378,6 +406,8 @@ public:
         pushButtonResetStadiumsTable->setText(QString());
         labelAdditionalInfo->setText(QString());
         pushButtonUserLogout->setText(QCoreApplication::translate("MainWindow", "Logout", nullptr));
+        pushButtonResetAllSouvenirs->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
+        pushButtonEditPrice->setText(QCoreApplication::translate("MainWindow", "Edit Price", nullptr));
     } // retranslateUi
 
 };

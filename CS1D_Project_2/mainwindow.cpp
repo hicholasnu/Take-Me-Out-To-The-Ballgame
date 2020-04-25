@@ -12,6 +12,7 @@ MainWindow::MainWindow(Controller *controller, QWidget *parent)
 
     on_pushButtonResetStadiumsTable_clicked();
     fillStadiumsComboBoxes();
+    on_pushButtonResetAllSouvenirs_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -23,8 +24,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::changeToAdmin()
 {
-    // ui->stackedWidget->setCurrentWidget(ui->Admin_page);
-
+     ui->stackedWidget->setCurrentWidget(ui->AdminScreen);
 }
 
 void MainWindow::changetoUser()
@@ -54,12 +54,12 @@ void MainWindow::on_pushButtonLogin_clicked()
 
     if(username == "admin")
     {
-        QMessageBox *msg = new QMessageBox;
-        msg->setText("Username and Password are correct.");
-        msg->setStyleSheet("background-color: white;");
-        msg->show();
+//        QMessageBox *msg = new QMessageBox;
+//        msg->setText("Username and Password are correct.");
+//        msg->setStyleSheet("background-color: white;");
+//        msg->show();
 
-        // QMessageBox::information(this,"Login", "Username and Password is correct");
+        QMessageBox::information(this,"Login", "Username and Password is correct");
         changeToAdmin();
         this->ui->lineEditUsername->setText("");
         this->ui->lineEditPassword->setText("");
@@ -180,9 +180,6 @@ void MainWindow::on_pushButtonSortBySeatingCapacity_clicked()
     QString query = "select SeatingCapacity, TeamName from Stadiums ORDER BY SeatingCapacity ASC";
     ui->tableviewAllStadiums->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableviewAllStadiums->resizeColumnsToContents();
-
-
-
 }
 
 void MainWindow::on_pushButtonSortByGreatestFromCenter_clicked()
@@ -217,6 +214,7 @@ void MainWindow::fillStadiumsComboBoxes() {
     ui->comboBoxChooseTeamName->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums ORDER BY TeamName ASC;"));
     ui->comboBoxChooseLeague->setModel(m_controller->getStadiumsQueryModel("select DISTINCT League from Stadiums ORDER BY League ASC;"));
     ui->comboBoxChooseRoofType->setModel(m_controller->getStadiumsQueryModel("select DISTINCT RoofType from Stadiums ORDER BY RoofType ASC;"));
+    ui->comboBoxChooseStadium->setModel(m_controller->getSouvenirsQueryModel("select DISTINCT Stadium from [Stadium Souvenirs] ORDER BY Stadium ASC;"));
 }
 
 void MainWindow::on_pushButtonUserLogout_clicked()
@@ -224,7 +222,34 @@ void MainWindow::on_pushButtonUserLogout_clicked()
     on_pushButtonResetStadiumsTable_clicked();
     ui->stackedWidget->setCurrentWidget(ui->LoginScreen);
 }
+
 // STADIUMS DISPLAY/SORT END ==================================================================================
+
+void MainWindow::on_pushButtonResetAllSouvenirs_clicked() {
+
+    const QString ANGEL_STADIUM = "Angel Stadium";
+
+    QString query = "select * from [Stadium Souvenirs] where Stadium = '"+ANGEL_STADIUM+"';";
+    ui->tableviewAllSouvenirs->setModel(m_controller->getSouvenirsQueryModel(query));
+    ui->tableviewAllSouvenirs->resizeColumnsToContents();
+}
+
+void MainWindow::on_comboBoxChooseStadium_activated(const QString &arg1) {
+
+    QString query = "select * from [Stadium Souvenirs] where Stadium = '"+arg1+"';";
+    ui->tableviewAllSouvenirs->setModel(m_controller->getSouvenirsQueryModel(query));
+    ui->tableviewAllSouvenirs->resizeColumnsToContents();
+
+
+}
+
+void MainWindow::fillChooseSouvenirsComboBox(const QString &arg1) {
+
+    QString query = "select Item from [Stadium Souvenirs] where Stadium = '"+arg1+"';";
+    ui->comboBoxChooseSouvenir->setModel(m_controller->getSouvenirQueryModel("select Item from [Stadium Souvenirs] where Stadium = '"+arg1+"' ORDER BY Otem ASC;"
+}
+
+
 
 
 
