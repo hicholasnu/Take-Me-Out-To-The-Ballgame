@@ -19,12 +19,16 @@ SOURCES += \
     controller.cpp \
     login.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    team.cpp \
+    trip.cpp
 
 HEADERS += \
     controller.h \
     login.h \
-    mainwindow.h
+    mainwindow.h \
+    team.h \
+    trip.h
 
 FORMS += \
     mainwindow.ui
