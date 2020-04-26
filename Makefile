@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = CS1D_Project_21.0.0
-DISTDIR = /Users/alvarohernandez/Desktop/CS1D\ project\ 2/Take-Me-Out-To-The-Ballgame-master/.tmp/CS1D_Project_21.0.0
+DISTDIR = /Users/alvarohernandez/Desktop/CS1D\ project\ 2/Take-Me-Out-To-The-Ballgame-alvaro/.tmp/CS1D_Project_21.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.13 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/Users/alvarohernandez/Qt/5.14.1/clang_64/lib
 LIBS          = $(SUBLIBS) -F/Users/alvarohernandez/Qt/5.14.1/clang_64/lib -framework QtWidgets -framework QtGui -framework AppKit -framework Metal -framework QtSql -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL   
@@ -53,14 +53,14 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = CS1D_Project_2/controller.cpp \
-		CS1D_Project_2/graph.cpp \
+		CS1D_Project_2/dijkstra.cpp \
 		CS1D_Project_2/login.cpp \
 		CS1D_Project_2/main.cpp \
 		CS1D_Project_2/mainwindow.cpp moc_controller.cpp \
 		moc_login.cpp \
 		moc_mainwindow.cpp
 OBJECTS       = controller.o \
-		graph.o \
+		dijkstra.o \
 		login.o \
 		main.o \
 		mainwindow.o \
@@ -245,10 +245,10 @@ DIST          = ../../Qt/5.14.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.14.1/clang_64/mkspecs/features/yacc.prf \
 		../../Qt/5.14.1/clang_64/mkspecs/features/lex.prf \
 		CS1D_Project_2/CS1D_Project_2/CS1D_Project_2.pro CS1D_Project_2/controller.h \
-		CS1D_Project_2/graph.h \
+		CS1D_Project_2/dijkstra.h \
 		CS1D_Project_2/login.h \
 		CS1D_Project_2/mainwindow.h CS1D_Project_2/controller.cpp \
-		CS1D_Project_2/graph.cpp \
+		CS1D_Project_2/dijkstra.cpp \
 		CS1D_Project_2/login.cpp \
 		CS1D_Project_2/main.cpp \
 		CS1D_Project_2/mainwindow.cpp
@@ -263,7 +263,7 @@ EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
 EXPORT_VALID_ARCHS = x86_64
 EXPORT_ACTIVE_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(ARCHS))
 EXPORT_ARCH_ARGS = $(foreach arch, $(if $(EXPORT_ACTIVE_ARCHS), $(EXPORT_ACTIVE_ARCHS), $(EXPORT_VALID_ARCHS)), -arch $(arch))
-EXPORT__PRO_FILE_ = /Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-master/CS1D_Project_2/CS1D_Project_2.pro
+EXPORT__PRO_FILE_ = /Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-alvaro/CS1D_Project_2/CS1D_Project_2.pro
 
 
 include /Users/alvarohernandez/Qt/5.14.1/clang_64/mkspecs/features/mac/sdk.mk
@@ -669,8 +669,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.14.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents CS1D_Project_2/controller.h CS1D_Project_2/graph.h CS1D_Project_2/login.h CS1D_Project_2/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents CS1D_Project_2/controller.cpp CS1D_Project_2/graph.cpp CS1D_Project_2/login.cpp CS1D_Project_2/main.cpp CS1D_Project_2/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents CS1D_Project_2/controller.h CS1D_Project_2/dijkstra.h CS1D_Project_2/login.h CS1D_Project_2/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents CS1D_Project_2/controller.cpp CS1D_Project_2/dijkstra.cpp CS1D_Project_2/login.cpp CS1D_Project_2/main.cpp CS1D_Project_2/mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents CS1D_Project_2/mainwindow.ui $(DISTDIR)/
 
 
@@ -746,11 +746,13 @@ moc_controller.cpp: CS1D_Project_2/controller.h \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/qspinbox.h \
 		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/QSize \
 		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qsize.h \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/QVector \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/QTableWidgetItem \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/qtablewidget.h \
 		moc_predefs.h \
 		../../../Qt/5.14.1/clang_64/bin/moc
-	/Users/alvarohernandez/Qt/5.14.1/clang_64/bin/moc $(DEFINES) --include '/Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-master/moc_predefs.h' -I/Users/alvarohernandez/Qt/5.14.1/clang_64/mkspecs/macx-clang -I'/Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-master/CS1D_Project_2' -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtGui.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtSql.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -F/Users/alvarohernandez/Qt/5.14.1/clang_64/lib CS1D_Project_2/controller.h -o moc_controller.cpp
+	/Users/alvarohernandez/Qt/5.14.1/clang_64/bin/moc $(DEFINES) --include '/Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-alvaro/moc_predefs.h' -I/Users/alvarohernandez/Qt/5.14.1/clang_64/mkspecs/macx-clang -I'/Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-alvaro/CS1D_Project_2' -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtGui.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtSql.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -F/Users/alvarohernandez/Qt/5.14.1/clang_64/lib CS1D_Project_2/controller.h -o moc_controller.cpp
 
 moc_login.cpp: CS1D_Project_2/login.h \
 		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/QObject \
@@ -761,9 +763,14 @@ moc_login.cpp: CS1D_Project_2/login.h \
 		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qcryptographichash.h \
 		moc_predefs.h \
 		../../../Qt/5.14.1/clang_64/bin/moc
-	/Users/alvarohernandez/Qt/5.14.1/clang_64/bin/moc $(DEFINES) --include '/Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-master/moc_predefs.h' -I/Users/alvarohernandez/Qt/5.14.1/clang_64/mkspecs/macx-clang -I'/Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-master/CS1D_Project_2' -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtGui.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtSql.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -F/Users/alvarohernandez/Qt/5.14.1/clang_64/lib CS1D_Project_2/login.h -o moc_login.cpp
+	/Users/alvarohernandez/Qt/5.14.1/clang_64/bin/moc $(DEFINES) --include '/Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-alvaro/moc_predefs.h' -I/Users/alvarohernandez/Qt/5.14.1/clang_64/mkspecs/macx-clang -I'/Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-alvaro/CS1D_Project_2' -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtGui.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtSql.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -F/Users/alvarohernandez/Qt/5.14.1/clang_64/lib CS1D_Project_2/login.h -o moc_login.cpp
 
 moc_mainwindow.cpp: CS1D_Project_2/mainwindow.h \
+		CS1D_Project_2/dijkstra.h \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/QVector \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
 		CS1D_Project_2/controller.h \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
@@ -803,9 +810,11 @@ moc_mainwindow.cpp: CS1D_Project_2/mainwindow.h \
 		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qsize.h \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/QTableWidgetItem \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/QInputDialog \
+		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/qinputdialog.h \
 		moc_predefs.h \
 		../../../Qt/5.14.1/clang_64/bin/moc
-	/Users/alvarohernandez/Qt/5.14.1/clang_64/bin/moc $(DEFINES) --include '/Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-master/moc_predefs.h' -I/Users/alvarohernandez/Qt/5.14.1/clang_64/mkspecs/macx-clang -I'/Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-master/CS1D_Project_2' -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtGui.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtSql.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -F/Users/alvarohernandez/Qt/5.14.1/clang_64/lib CS1D_Project_2/mainwindow.h -o moc_mainwindow.cpp
+	/Users/alvarohernandez/Qt/5.14.1/clang_64/bin/moc $(DEFINES) --include '/Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-alvaro/moc_predefs.h' -I/Users/alvarohernandez/Qt/5.14.1/clang_64/mkspecs/macx-clang -I'/Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-alvaro/CS1D_Project_2' -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtGui.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtSql.framework/Headers -I/Users/alvarohernandez/Qt/5.14.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -F/Users/alvarohernandez/Qt/5.14.1/clang_64/lib CS1D_Project_2/mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -867,14 +876,18 @@ controller.o: CS1D_Project_2/controller.cpp CS1D_Project_2/controller.h \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/qspinbox.h \
 		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/QSize \
 		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qsize.h \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/QVector \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/QTableWidgetItem \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/qtablewidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controller.o CS1D_Project_2/controller.cpp
 
-graph.o: CS1D_Project_2/graph.cpp CS1D_Project_2/graph.h \
+dijkstra.o: CS1D_Project_2/dijkstra.cpp CS1D_Project_2/dijkstra.h \
 		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/QString \
-		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qstring.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graph.o CS1D_Project_2/graph.cpp
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/QVector \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qvector.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dijkstra.o CS1D_Project_2/dijkstra.cpp
 
 login.o: CS1D_Project_2/login.cpp CS1D_Project_2/login.h \
 		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/QObject \
@@ -886,6 +899,11 @@ login.o: CS1D_Project_2/login.cpp CS1D_Project_2/login.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o login.o CS1D_Project_2/login.cpp
 
 main.o: CS1D_Project_2/main.cpp CS1D_Project_2/mainwindow.h \
+		CS1D_Project_2/dijkstra.h \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/QVector \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
 		CS1D_Project_2/controller.h \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
@@ -925,11 +943,18 @@ main.o: CS1D_Project_2/main.cpp CS1D_Project_2/mainwindow.h \
 		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qsize.h \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/QTableWidgetItem \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/QInputDialog \
+		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/qinputdialog.h \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o CS1D_Project_2/main.cpp
 
 mainwindow.o: CS1D_Project_2/mainwindow.cpp CS1D_Project_2/mainwindow.h \
+		CS1D_Project_2/dijkstra.h \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/QVector \
+		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
 		CS1D_Project_2/controller.h \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
@@ -969,6 +994,8 @@ mainwindow.o: CS1D_Project_2/mainwindow.cpp CS1D_Project_2/mainwindow.h \
 		../../../Qt/5.14.1/clang_64/lib/QtCore.framework/Headers/qsize.h \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/QTableWidgetItem \
 		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/QInputDialog \
+		../../../Qt/5.14.1/clang_64/lib/QtWidgets.framework/Headers/qinputdialog.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o CS1D_Project_2/mainwindow.cpp
 

@@ -14,6 +14,7 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -77,6 +78,9 @@ public:
     QPushButton *pushButtonLogOut;
     QTableView *tableViewCustom;
     QComboBox *comboBoxNames;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
+    QLabel *labelStart;
     QPushButton *pushButtonDodger;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -353,9 +357,22 @@ public:
         comboBoxNames = new QComboBox(customScreen);
         comboBoxNames->setObjectName(QString::fromUtf8("comboBoxNames"));
         comboBoxNames->setGeometry(QRect(520, 60, 151, 32));
-        pushButtonDodger = new QPushButton(customScreen);
+        widget = new QWidget(customScreen);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(530, 100, 182, 32));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        labelStart = new QLabel(widget);
+        labelStart->setObjectName(QString::fromUtf8("labelStart"));
+
+        horizontalLayout->addWidget(labelStart);
+
+        pushButtonDodger = new QPushButton(widget);
         pushButtonDodger->setObjectName(QString::fromUtf8("pushButtonDodger"));
-        pushButtonDodger->setGeometry(QRect(520, 110, 121, 32));
+
+        horizontalLayout->addWidget(pushButtonDodger);
+
         stackedWidget->addWidget(customScreen);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -409,6 +426,7 @@ public:
         pushButtonPlan->setText(QCoreApplication::translate("MainWindow", "Plan Vacation", nullptr));
         pushButtonMainWin->setText(QCoreApplication::translate("MainWindow", "Main", nullptr));
         pushButtonLogOut->setText(QCoreApplication::translate("MainWindow", "Logout", nullptr));
+        labelStart->setText(QCoreApplication::translate("MainWindow", "Start:", nullptr));
         pushButtonDodger->setText(QCoreApplication::translate("MainWindow", "Dodger Stadium", nullptr));
     } // retranslateUi
 
