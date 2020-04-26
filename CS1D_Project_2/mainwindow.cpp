@@ -246,7 +246,7 @@ void MainWindow::on_comboBoxChooseStadium_activated(const QString &arg1) {
 void MainWindow::fillChooseSouvenirsComboBox(const QString &arg1) {
 
     QString query = "select Item from [Stadium Souvenirs] where Stadium = '"+arg1+"';";
-    ui->comboBoxChooseSouvenir->setModel(m_controller->getSouvenirQueryModel("select Item from [Stadium Souvenirs] where Stadium = '"+arg1+"' ORDER BY Otem ASC;"
+    ui->comboBoxChooseSouvenir->setModel(m_controller->getSouvenirsQueryModel("select Item from [Stadium Souvenirs] where Stadium = '"+arg1+"' ORDER BY Otem ASC;"));
 }
 
 
