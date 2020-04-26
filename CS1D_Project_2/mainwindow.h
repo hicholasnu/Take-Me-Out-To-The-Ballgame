@@ -1,8 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "graph.h"
+#include "dijkstra.h"
 #include "controller.h"
+#include <QInputDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -64,6 +65,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;
-    Graph g_graph;
+    Dijkstra d_dij;
 };
 #endif // MAINWINDOW_H
