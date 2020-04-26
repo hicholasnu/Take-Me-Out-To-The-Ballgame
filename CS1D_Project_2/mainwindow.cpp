@@ -232,6 +232,8 @@ void MainWindow::on_pushButtonResetAllSouvenirs_clicked() {
     QString query = "select * from [Stadium Souvenirs] where Stadium = '"+ANGEL_STADIUM+"';";
     ui->tableviewAllSouvenirs->setModel(m_controller->getSouvenirsQueryModel(query));
     ui->tableviewAllSouvenirs->resizeColumnsToContents();
+    ui->doubleSpinBoxEditPrice->setValue(0.00);
+    resetSouvenirScreenLabels();
 }
 
 void MainWindow::on_comboBoxChooseStadium_activated(const QString &arg1) {
@@ -239,17 +241,41 @@ void MainWindow::on_comboBoxChooseStadium_activated(const QString &arg1) {
     QString query = "select * from [Stadium Souvenirs] where Stadium = '"+arg1+"';";
     ui->tableviewAllSouvenirs->setModel(m_controller->getSouvenirsQueryModel(query));
     ui->tableviewAllSouvenirs->resizeColumnsToContents();
-
-
 }
 
-void MainWindow::fillChooseSouvenirsComboBox(const QString &arg1) {
+void MainWindow::resetSouvenirScreenLabels() {
 
-    QString query = "select Item from [Stadium Souvenirs] where Stadium = '"+arg1+"';";
-    ui->comboBoxChooseSouvenir->setModel(m_controller->getSouvenirsQueryModel("select Item from [Stadium Souvenirs] where Stadium = '"+arg1+"' ORDER BY Otem ASC;"));
+    ui->labelShowStadium->setText("Stadium Name");
+    ui->labelShowItem->setText("Souvenir Name");
 }
 
+void MainWindow::on_tableviewAllSouvenirs_activated(const QModelIndex &index) {
 
+    QString selectedSouvenir;
+    QString selectedStadium;
 
+    if (index.isValid()) {
 
+        QSqlQuery qry;
+        double price;
+        selectedSouvenir = index.data().toString();
+        selectedStadium = ui->comboBoxChooseStadium->currentText();
+        qry.prepare("Select * from [Stadium Souvenirs] where Item = '"+selectedSouvenir+"' and Stadium = '"+selectedStadium+"'");
 
+        if (!qry.exec()) {
+
+            qDebug() << "ERROR: on_tableviewAllSouvenirs_activated(const QModelIndex &index)";
+        }
+        else {
+
+            do {
+
+                price = qry.value(2).toDouble();
+                ui->doubleSpinBoxEditPrice->setValue(price);
+                ui->labelShowStadium->setText(selectedStadium);
+                ui->labelShowItem->setText(selectedSouvenir);
+
+            } while (qry.next());
+        }
+    }
+}

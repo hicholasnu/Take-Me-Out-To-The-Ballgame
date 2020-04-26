@@ -26,7 +26,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>10</y>
       <width>781</width>
       <height>531</height>
@@ -585,7 +585,7 @@ font: 8pt &quot;Courier&quot;;</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>20</y>
+        <y>50</y>
         <width>461</width>
         <height>301</height>
        </rect>
@@ -594,8 +594,8 @@ font: 8pt &quot;Courier&quot;;</string>
      <widget class="QPushButton" name="pushButtonResetAllSouvenirs">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>350</y>
+        <x>20</x>
+        <y>370</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -607,29 +607,9 @@ font: 8pt &quot;Courier&quot;;</string>
      <widget class="QComboBox" name="comboBoxChooseStadium">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>350</y>
-        <width>211</width>
-        <height>22</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="comboBoxChooseSouvenir">
-      <property name="geometry">
-       <rect>
-        <x>510</x>
-        <y>40</y>
-        <width>211</width>
-        <height>22</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEditPrice">
-      <property name="geometry">
-       <rect>
-        <x>520</x>
-        <y>170</y>
-        <width>113</width>
+        <x>20</x>
+        <y>20</y>
+        <width>361</width>
         <height>22</height>
        </rect>
       </property>
@@ -637,14 +617,62 @@ font: 8pt &quot;Courier&quot;;</string>
      <widget class="QPushButton" name="pushButtonEditPrice">
       <property name="geometry">
        <rect>
-        <x>530</x>
-        <y>220</y>
+        <x>500</x>
+        <y>160</y>
         <width>93</width>
         <height>28</height>
        </rect>
       </property>
       <property name="text">
        <string>Edit Price</string>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="doubleSpinBoxEditPrice">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>130</y>
+        <width>151</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <double>99999.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelShowStadium">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>70</y>
+        <width>161</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string>Stadium</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelShowItem">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>100</y>
+        <width>161</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="text">
+       <string>Souvenir Name</string>
       </property>
      </widget>
     </widget>
@@ -656,7 +684,7 @@ font: 8pt &quot;Courier&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

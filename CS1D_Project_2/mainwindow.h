@@ -50,14 +50,15 @@ private slots:
 
     void fillStadiumsComboBoxes();
 
-
     void on_pushButtonUserLogout_clicked();
 
     void on_pushButtonResetAllSouvenirs_clicked();
 
     void on_comboBoxChooseStadium_activated(const QString &arg1);
 
-    void fillChooseSouvenirsComboBox(const QString &arg1);
+    void resetSouvenirScreenLabels();
+
+    void on_tableviewAllSouvenirs_activated(const QModelIndex &index);
 
 private:
     Ui::MainWindow *ui;
