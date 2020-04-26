@@ -135,6 +135,7 @@ QSqlQueryModel *Controller::getStadiumsQueryModel(QString query) {
     return model;
 }
 
+/*
 void Controller::loadGraph(Graph<QString> &g)
 {
     g.adjList.clear();
@@ -171,5 +172,5 @@ void Controller::loadGraph(Graph<QString> &g)
         }
     }
 }
-
+*/
 
