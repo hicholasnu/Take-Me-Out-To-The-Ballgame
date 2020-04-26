@@ -1,0 +1,10 @@
+debug/Graph.o
+debug/controller.o
+debug/login.o
+debug/main.o
+debug/mainwindow.o
+debug/team.o
+debug/trip.o
+debug/moc_controller.o
+debug/moc_login.o
+debug/moc_mainwindow.o

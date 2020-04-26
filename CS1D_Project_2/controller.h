@@ -15,7 +15,7 @@
 #include <QSpinBox>
 #include <QSize>
 #include <QTableWidgetItem>
-#include "trip.h"
+#include "Graph.h"
 
 class Controller : public QObject
 {
@@ -33,6 +33,7 @@ public:
     QSqlQueryModel *getStadiumQueryOnStartModel();
     QSqlQueryModel *getStadiumsQueryModel(QString query);
 
+    void loadGraph(Graph<QString> &g);
 
 private:
     QSqlDatabase m_database;

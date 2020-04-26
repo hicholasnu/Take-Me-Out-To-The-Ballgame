@@ -135,4 +135,41 @@ QSqlQueryModel *Controller::getStadiumsQueryModel(QString query) {
     return model;
 }
 
+void Controller::loadGraph(Graph<QString> &g)
+{
+    g.adjList.clear();
+
+    // Adding vertices
+    QSqlQuery* vertex = new QSqlQuery(m_database);
+
+    vertex->prepare("SELECT DISTINCT Originated Stadium FROM Stadium Distance");
+
+    if(vertex->exec())
+    {
+        while(vertex->next())
+        {
+            g.addVertex(vertex->value(0).toString());
+
+            qDebug() << "Adding " << vertex->value(0).toString();
+        }
+    }
+
+    // Adding edges
+    QSqlQuery *edges = new QSqlQuery(m_database);
+
+    edges->prepare("SELECT * FROM Stadium Distance");
+
+    if(edges->exec())
+    {
+        while(edges->next())
+        {
+            g.addEdge(edges->value(0).toString(), edges->value(1).toString(), edges->value(2).toInt());
+
+            qDebug() << "Start: " << edges->value(0).toString();
+            qDebug() << "End: " << edges->value(1).toString();
+            qDebug() << "Distance: " << edges->value(2).toInt();
+        }
+    }
+}
+
 

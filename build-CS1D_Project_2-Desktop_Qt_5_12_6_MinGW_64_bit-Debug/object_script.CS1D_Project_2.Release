@@ -1,0 +1,10 @@
+release/Graph.o
+release/controller.o
+release/login.o
+release/main.o
+release/mainwindow.o
+release/team.o
+release/trip.o
+release/moc_controller.o
+release/moc_login.o
+release/moc_mainwindow.o
