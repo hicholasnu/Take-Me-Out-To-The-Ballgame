@@ -60,6 +60,8 @@ private slots:
 
     void on_tableviewAllSouvenirs_activated(const QModelIndex &index);
 
+    void on_pushButtonDeleteSouvenir_clicked();
+
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;

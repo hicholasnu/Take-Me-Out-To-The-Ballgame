@@ -279,3 +279,16 @@ void MainWindow::on_tableviewAllSouvenirs_activated(const QModelIndex &index) {
         }
     }
 }
+
+void MainWindow::on_pushButtonDeleteSouvenir_clicked()
+{
+    if (ui->labelShowItem->text() == "Souvenir Name" || ui->labelShowStadium->text() == "Stadium Name") {
+
+        QMessageBox::warning(this, "Invalid", "No item selected.");
+    }
+    else {
+
+
+    }
+}
+

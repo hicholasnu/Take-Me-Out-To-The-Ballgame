@@ -653,7 +653,7 @@ font: 8pt &quot;Courier&quot;;</string>
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>Stadium</string>
+       <string>Stadium Name</string>
       </property>
      </widget>
      <widget class="QLabel" name="labelShowItem">
@@ -673,6 +673,19 @@ font: 8pt &quot;Courier&quot;;</string>
       </property>
       <property name="text">
        <string>Souvenir Name</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonDeleteSouvenir">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>160</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Delete</string>
       </property>
      </widget>
     </widget>
