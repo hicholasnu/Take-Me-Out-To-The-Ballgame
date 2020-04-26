@@ -2,8 +2,26 @@
 #define TRIP_H
 
 #include<QMap>
-#include<QVector>
+#include<QList>
 #include "team.h"
+
+struct vertex;
+
+struct edge
+{
+    vertex* end1;
+    vertex* end2;
+    float distance;
+    bool visited;
+};
+
+struct vertex
+{
+    QList<edge*> adjancent;
+    QString name;
+    bool visited = false;
+    vertex(QString name) : name(name) {}
+};
 
 class Trip : public QObject
 {
@@ -26,6 +44,7 @@ public:
     QString startTeam;
     QString endTeam;
     float totalDistance;
+    QList<Team*> listofTeam;
 };
 
 #endif // TRIP_H

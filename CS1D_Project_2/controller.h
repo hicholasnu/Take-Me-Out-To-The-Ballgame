@@ -15,7 +15,7 @@
 #include <QSpinBox>
 #include <QSize>
 #include <QTableWidgetItem>
-
+#include "trip.h"
 
 class Controller : public QObject
 {
@@ -33,8 +33,10 @@ public:
     QSqlQueryModel *getStadiumQueryOnStartModel();
     QSqlQueryModel *getStadiumsQueryModel(QString query);
 
+
 private:
     QSqlDatabase m_database;
+
 };
 
 #endif // CONTROLLER_H
