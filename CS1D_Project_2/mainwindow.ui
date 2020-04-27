@@ -817,8 +817,8 @@ font: 8pt &quot;Courier&quot;;</string>
        <rect>
         <x>30</x>
         <y>60</y>
-        <width>641</width>
-        <height>81</height>
+        <width>701</width>
+        <height>101</height>
        </rect>
       </property>
      </widget>
@@ -845,6 +845,71 @@ font: 8pt &quot;Courier&quot;;</string>
        </rect>
       </property>
      </widget>
+     <widget class="QLineEdit" name="lineEditEditData">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>250</y>
+        <width>281</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelSelectedData">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>220</y>
+        <width>281</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>No Data Selected!</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonEditData">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>290</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Edit</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBoxEditData">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>250</y>
+        <width>141</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>190</y>
+        <width>141</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Data To Change:</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -854,7 +919,7 @@ font: 8pt &quot;Courier&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>803</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

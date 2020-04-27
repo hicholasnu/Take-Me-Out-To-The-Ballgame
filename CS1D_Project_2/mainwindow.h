@@ -76,10 +76,15 @@ private slots:
 
     void on_pushButtonResetAllStadiumsTableADMIN_clicked();
 
-    void on_comboBoxChooseTeamName_2_activated(const QString &arg1);
+    void on_comboBoxChooseTeamNameADMIN_activated(const QString &arg1);
+
+    void on_tableViewAllStadiumsADMIN_activated(const QModelIndex &index);
+
+    void on_pushButtonEditData_clicked();
 
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;
+    static int dataColumn;
 };
 #endif // MAINWINDOW_H

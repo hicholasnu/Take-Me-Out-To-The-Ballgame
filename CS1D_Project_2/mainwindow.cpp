@@ -243,7 +243,7 @@ void MainWindow::on_pushButtonChangeToSouvenirs_clicked()
 void MainWindow::on_pushButtonChangeToStadiums_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->AdminStadiumScreen);
-    ui->comboBoxChooseTeamNameADMIN->setModel(m_controller->getStadiumsQueryModel(""))
+    ui->comboBoxChooseTeamNameADMIN->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums"));
     on_pushButtonResetAllStadiumsTableADMIN_clicked();
 }
 
@@ -405,12 +405,55 @@ void MainWindow::on_pushButtonAddNewSouvenir_clicked()
 
 void MainWindow::on_pushButtonResetAllStadiumsTableADMIN_clicked()
 {
-    QString query = "Select * from Stadiums";
+    QString teamName = ui->comboBoxChooseTeamNameADMIN->currentText();
+    QString query = "Select StadiumName, SeatingCapacity, Location, PlayingSurface, League, DateOpened, DistanceToCenterField, BallparkTypology, RoofType from Stadiums where TeamName = '"+teamName+"'; ";
+    ui->tableViewAllStadiumsADMIN->setModel(m_controller->getStadiumsQueryModel(query));
+    ui->tableViewAllStadiumsADMIN->resizeColumnsToContents();
+    ui->lineEditEditData->hide();
+    ui->spinBoxEditData->hide();
+    ui->labelSelectedData->setText("No Data Selected!");
+}
+
+void MainWindow::on_comboBoxChooseTeamNameADMIN_activated(const QString &arg1)
+{
+    QString query = "Select StadiumName, SeatingCapacity, Location, PlayingSurface, League, DateOpened, DistanceToCenterField, BallparkTypology, RoofType from Stadiums where TeamName = '"+arg1+"';";
     ui->tableViewAllStadiumsADMIN->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableViewAllStadiumsADMIN->resizeColumnsToContents();
 }
 
-void MainWindow::on_comboBoxChooseTeamName_2_activated(const QString &arg1)
+void MainWindow::on_tableViewAllStadiumsADMIN_activated(const QModelIndex &index)
 {
+//    dataColumn = index.column();
+
+    ui->labelSelectedData->setText(index.data().toString());
+
+    if (index.column() == 1 || index.column() == 5 || index.column() == 6) {
+
+        ui->spinBoxEditData->show();
+        ui->lineEditEditData->hide();
+    }
+    else {
+
+        ui->lineEditEditData->show();
+        ui->spinBoxEditData->hide();
+    }
+}
+
+void MainWindow::on_pushButtonEditData_clicked()
+{
+
+
+    if (!ui->lineEditEditData->isVisible() && !ui->spinBoxEditData->isVisible()) {
+
+        QMessageBox::warning(this, "Invalid", "Nothing is selected");
+    }
+    else if (ui->lineEditEditData->isVisible() && !ui->spinBoxEditData->isVisible()) {
+
+
+    }
+    else if (!ui->lineEditEditData->isVisible() && ui->spinBoxEditData->isVisible()) {
+
+
+    }
 
 }
