@@ -8,11 +8,6 @@ MainWindow::MainWindow(Controller *controller, QWidget *parent)
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentWidget(ui->LoginScreen);
-    // ui->stackedWidget->setCurrentWidget(ui->UserScreen);
-
-    on_pushButtonResetStadiumsTable_clicked();
-    fillStadiumsComboBoxes();
-    on_pushButtonResetAllSouvenirs_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -24,12 +19,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::changeToAdmin()
 {
-     ui->stackedWidget->setCurrentWidget(ui->AdminScreen);
+     ui->stackedWidget->setCurrentWidget(ui->AdminMaintenanceScreen);
 }
 
 void MainWindow::changetoUser()
 {
     ui->stackedWidget->setCurrentWidget(ui->UserScreen);
+    on_pushButtonResetStadiumsTable_clicked();
+    fillStadiumsComboBoxes();
 }
 
 void MainWindow::on_pushButtonLogin_clicked()
@@ -214,7 +211,6 @@ void MainWindow::fillStadiumsComboBoxes() {
     ui->comboBoxChooseTeamName->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums ORDER BY TeamName ASC;"));
     ui->comboBoxChooseLeague->setModel(m_controller->getStadiumsQueryModel("select DISTINCT League from Stadiums ORDER BY League ASC;"));
     ui->comboBoxChooseRoofType->setModel(m_controller->getStadiumsQueryModel("select DISTINCT RoofType from Stadiums ORDER BY RoofType ASC;"));
-    ui->comboBoxChooseStadium->setModel(m_controller->getSouvenirsQueryModel("select DISTINCT Stadium from [Stadium Souvenirs] ORDER BY Stadium ASC;"));
 }
 
 void MainWindow::on_pushButtonUserLogout_clicked()
@@ -225,28 +221,58 @@ void MainWindow::on_pushButtonUserLogout_clicked()
 
 // STADIUMS DISPLAY/SORT END ==================================================================================
 
+// ADMIN MAINTENANCE START ====================================================================================
+
+void MainWindow::on_pushButtonReturnToMaintenanceScreen_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->AdminMaintenanceScreen);
+}
+
+void MainWindow::on_pushButtonReturnToMaintenanceScreen_2_clicked()
+{
+    on_pushButtonReturnToMaintenanceScreen_clicked();
+}
+
+void MainWindow::on_pushButtonChangeToSouvenirs_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->AdminSouvenirsScreen);
+    ui->comboBoxChooseStadium->setModel(m_controller->getSouvenirsQueryModel("select DISTINCT Stadium from [Stadium Souvenirs] ORDER BY Stadium ASC;"));
+    on_pushButtonResetAllSouvenirs_clicked();
+}
+
+void MainWindow::on_pushButtonChangeToStadiums_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->AdminStadiumScreen);
+    ui->comboBoxChooseTeamNameADMIN->setModel(m_controller->getStadiumsQueryModel(""))
+    on_pushButtonResetAllStadiumsTableADMIN_clicked();
+}
+
 void MainWindow::on_pushButtonResetAllSouvenirs_clicked() {
 
     const QString ANGEL_STADIUM = "Angel Stadium";
 
-    QString query = "select * from [Stadium Souvenirs] where Stadium = '"+ANGEL_STADIUM+"';";
+    QString query = "select Item, Price from [Stadium Souvenirs] where Stadium = '"+ANGEL_STADIUM+"';";
     ui->tableviewAllSouvenirs->setModel(m_controller->getSouvenirsQueryModel(query));
     ui->tableviewAllSouvenirs->resizeColumnsToContents();
-    ui->doubleSpinBoxEditPrice->setValue(0.00);
+    ui->labelShowStadium->setText(ANGEL_STADIUM);
+    ui->doubleSpinBoxEditPrice->clear();
     resetSouvenirScreenLabels();
 }
 
 void MainWindow::on_comboBoxChooseStadium_activated(const QString &arg1) {
 
-    QString query = "select * from [Stadium Souvenirs] where Stadium = '"+arg1+"';";
+    QString query = "select Item, Price from [Stadium Souvenirs] where Stadium = '"+arg1+"';";
     ui->tableviewAllSouvenirs->setModel(m_controller->getSouvenirsQueryModel(query));
     ui->tableviewAllSouvenirs->resizeColumnsToContents();
 }
 
 void MainWindow::resetSouvenirScreenLabels() {
 
-    ui->labelShowStadium->setText("Stadium Name");
-    ui->labelShowItem->setText("Souvenir Name");
+    ui->labelShowStadium->setText(ui->comboBoxChooseStadium->currentText());
+    ui->labelShowItem->setText("No Souvenir Selected!");
+    ui->doubleSpinBoxEditPrice->clear();
+    ui->lineEditNewItem->clear();
+    ui->doubleSpinBoxNewSouvenirPrice->clear();
 }
 
 void MainWindow::on_tableviewAllSouvenirs_activated(const QModelIndex &index) {
@@ -254,13 +280,17 @@ void MainWindow::on_tableviewAllSouvenirs_activated(const QModelIndex &index) {
     QString selectedSouvenir;
     QString selectedStadium;
 
-    if (index.isValid()) {
+    if (index.column() == 1) {
+
+        resetSouvenirScreenLabels();
+    }
+    else if (index.isValid()) {
 
         QSqlQuery qry;
         double price;
         selectedSouvenir = index.data().toString();
         selectedStadium = ui->comboBoxChooseStadium->currentText();
-        qry.prepare("Select * from [Stadium Souvenirs] where Item = '"+selectedSouvenir+"' and Stadium = '"+selectedStadium+"'");
+        qry.prepare("Select * from [Stadium Souvenirs] where Item = '"+selectedSouvenir+"' and Stadium = '"+selectedStadium+"';");
 
         if (!qry.exec()) {
 
@@ -268,27 +298,119 @@ void MainWindow::on_tableviewAllSouvenirs_activated(const QModelIndex &index) {
         }
         else {
 
-            do {
+            if (qry.first()) {
 
                 price = qry.value(2).toDouble();
                 ui->doubleSpinBoxEditPrice->setValue(price);
                 ui->labelShowStadium->setText(selectedStadium);
                 ui->labelShowItem->setText(selectedSouvenir);
-
-            } while (qry.next());
+            }
         }
     }
 }
 
 void MainWindow::on_pushButtonDeleteSouvenir_clicked()
 {
-    if (ui->labelShowItem->text() == "Souvenir Name" || ui->labelShowStadium->text() == "Stadium Name") {
+    if (ui->labelShowItem->text() == "No Souvenir Selected!" || ui->labelShowItem->text().toDouble() > 0.00) {
 
         QMessageBox::warning(this, "Invalid", "No item selected.");
     }
     else {
 
+        QMessageBox::StandardButton reply =
+                QMessageBox::question(this, "Delete", "Are you sure you want to delete this?",
+                                      QMessageBox::Yes | QMessageBox::No);
 
+
+        if (reply == QMessageBox::Yes) {
+
+            QString souvenirToDelete = ui->labelShowItem->text();
+            QString correspondingStadium = ui->labelShowStadium->text();
+            m_controller->deleteSouvenir(souvenirToDelete, correspondingStadium);
+            resetSouvenirScreenLabels();
+
+            QString currentStadium = ui->comboBoxChooseStadium->currentText();
+            on_comboBoxChooseStadium_activated(currentStadium);
+        }
     }
 }
 
+void MainWindow::on_pushButtonEditPrice_clicked()
+{
+    if (ui->labelShowItem->text() == "No Souvenir Selected!" || ui->labelShowItem->text().toDouble() > 0.00) {
+
+        QMessageBox::warning(this, "Invalid", "No item selected.");
+    }
+    else if (ui->doubleSpinBoxEditPrice->value() < 0.01) {
+
+        QMessageBox::warning(this, "Invalid", "Cannot be less than or equal to $0.00");
+    }
+    else {
+
+        QMessageBox::StandardButton reply =
+                QMessageBox::question(this, "Edit", "Are you sure you want to edit this?",
+                                      QMessageBox::Yes | QMessageBox::No);
+
+        if (reply == QMessageBox::Yes) {
+
+            QString stadium = ui->labelShowStadium->text();
+            QString souvenir = ui->labelShowItem->text();
+            double price = ui->doubleSpinBoxEditPrice->value();
+            m_controller->editSouvenir(stadium, souvenir, price);
+
+            resetSouvenirScreenLabels();
+            on_comboBoxChooseStadium_activated(stadium);
+        }
+    }
+}
+
+void MainWindow::on_pushButtonAddNewSouvenir_clicked()
+{
+    if (ui->lineEditNewItem->text() == "" && ui->doubleSpinBoxNewSouvenirPrice->value() == 0.00) {
+
+        QMessageBox::warning(this, "Invalid", "Item has no name and no value.");
+    }
+    else if (ui->lineEditNewItem->text() == "") {
+
+        QMessageBox::warning(this, "Invalid", "Item has no name.");
+    }
+    else if (ui->doubleSpinBoxNewSouvenirPrice->value() == 0.00) {
+
+        QMessageBox::warning(this, "Invalid", "Item has no value.");
+    }
+    else if (ui->labelShowItem->text() == "Souvenir Name" || ui->labelShowStadium->text() == "Stadium Name") {
+
+        QMessageBox::warning(this, "Invalid", "No stadium selected.");
+    }
+    else {
+
+        QMessageBox::StandardButton reply =
+                QMessageBox::question(this, "Add", "Are you sure you want to add this?",
+                                      QMessageBox::Yes | QMessageBox::No);
+
+        if (reply == QMessageBox::Yes) {
+
+            QString stadium = ui->labelShowStadium->text();
+            QString newSouvenir = ui->lineEditNewItem->text();
+            double newPrice = ui->doubleSpinBoxNewSouvenirPrice->value();
+            m_controller->createSouvenir(stadium, newSouvenir, newPrice);
+
+            resetSouvenirScreenLabels();
+            on_comboBoxChooseStadium_activated(stadium);\
+            ui->lineEditNewItem->clear();
+            ui->doubleSpinBoxNewSouvenirPrice->clear();
+        }
+    }
+}
+
+void MainWindow::on_pushButtonResetAllStadiumsTableADMIN_clicked()
+{
+    QString query = "Select * from Stadiums";
+    ui->tableViewAllStadiumsADMIN->setModel(m_controller->getStadiumsQueryModel(query));
+    ui->tableViewAllStadiumsADMIN->resizeColumnsToContents();
+}
+
+void MainWindow::on_comboBoxChooseTeamName_2_activated(const QString &arg1)
+{
+
+}

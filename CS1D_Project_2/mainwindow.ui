@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>803</width>
+    <height>602</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,7 +28,7 @@
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>781</width>
+      <width>761</width>
       <height>531</height>
      </rect>
     </property>
@@ -39,7 +39,7 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="LoginScreen">
      <property name="styleSheet">
@@ -580,7 +580,48 @@ font: 8pt &quot;Courier&quot;;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="AdminScreen">
+    <widget class="QWidget" name="AdminMaintenanceScreen">
+     <widget class="QLabel" name="labelMaintenanceScreenTitle">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>80</y>
+        <width>128</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Administrator Maintenance</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonChangeToSouvenirs">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>150</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Souvenirs</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonChangeToStadiums">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>150</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Stadiums</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="AdminSouvenirsScreen">
      <widget class="QTableView" name="tableviewAllSouvenirs">
       <property name="geometry">
        <rect>
@@ -618,7 +659,7 @@ font: 8pt &quot;Courier&quot;;</string>
       <property name="geometry">
        <rect>
         <x>500</x>
-        <y>160</y>
+        <y>180</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -631,7 +672,7 @@ font: 8pt &quot;Courier&quot;;</string>
       <property name="geometry">
        <rect>
         <x>500</x>
-        <y>130</y>
+        <y>150</y>
         <width>151</width>
         <height>22</height>
        </rect>
@@ -644,7 +685,7 @@ font: 8pt &quot;Courier&quot;;</string>
       <property name="geometry">
        <rect>
         <x>500</x>
-        <y>70</y>
+        <y>90</y>
         <width>161</width>
         <height>21</height>
        </rect>
@@ -653,14 +694,14 @@ font: 8pt &quot;Courier&quot;;</string>
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>Stadium Name</string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="labelShowItem">
       <property name="geometry">
        <rect>
         <x>500</x>
-        <y>100</y>
+        <y>120</y>
         <width>161</width>
         <height>21</height>
        </rect>
@@ -672,20 +713,136 @@ font: 8pt &quot;Courier&quot;;</string>
        <number>1</number>
       </property>
       <property name="text">
-       <string>Souvenir Name</string>
+       <string>No Souvenir Selected!</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButtonDeleteSouvenir">
       <property name="geometry">
        <rect>
-        <x>600</x>
-        <y>160</y>
-        <width>93</width>
+        <x>610</x>
+        <y>180</y>
+        <width>51</width>
         <height>28</height>
        </rect>
       </property>
       <property name="text">
        <string>Delete</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelPromptNewItem">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>260</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="text">
+       <string>New Souvenir To Add</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEditNewItem">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>300</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonAddNewSouvenir">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>370</y>
+        <width>51</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add</string>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="doubleSpinBoxNewSouvenirPrice">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>330</y>
+        <width>151</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <double>99999.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonReturnToMaintenanceScreen">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>20</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Return</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="AdminStadiumScreen">
+     <widget class="QPushButton" name="pushButtonReturnToMaintenanceScreen_2">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>20</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Return</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tableViewAllStadiumsADMIN">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>60</y>
+        <width>641</width>
+        <height>81</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonResetAllStadiumsTableADMIN">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>380</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Reset</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBoxChooseTeamNameADMIN">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>271</width>
+        <height>22</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -696,7 +853,7 @@ font: 8pt &quot;Courier&quot;;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>803</width>
      <height>21</height>
     </rect>
    </property>

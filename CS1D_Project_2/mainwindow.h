@@ -62,6 +62,22 @@ private slots:
 
     void on_pushButtonDeleteSouvenir_clicked();
 
+    void on_pushButtonEditPrice_clicked();
+
+    void on_pushButtonAddNewSouvenir_clicked();
+
+    void on_pushButtonReturnToMaintenanceScreen_clicked();
+
+    void on_pushButtonReturnToMaintenanceScreen_2_clicked();
+
+    void on_pushButtonChangeToSouvenirs_clicked();
+
+    void on_pushButtonChangeToStadiums_clicked();
+
+    void on_pushButtonResetAllStadiumsTableADMIN_clicked();
+
+    void on_comboBoxChooseTeamName_2_activated(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;
