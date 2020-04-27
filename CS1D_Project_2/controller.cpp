@@ -3,7 +3,8 @@
 Controller::Controller(QObject *parent) : QObject(parent) {
 
     m_database = QSqlDatabase::addDatabase("QSQLITE");
-    QString databasePath = "C://Users//krist//Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
+    QString databasePath = "C://Users//Nicholas//Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
+//    QString databasePath = "E://Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
     m_database.setDatabaseName(databasePath);
 
     if (!m_database.open()) {
@@ -86,39 +87,6 @@ void Controller::createTables() {
 
 }
 
-QSqlQueryModel *Controller::getStadiumNamesQueryOnStartModel() {
-
-    QSqlQueryModel* model = new QSqlQueryModel();
-    QSqlQuery qry;
-
-    qry.prepare("select StadiumName from Stadiums;");
-
-    if (!qry.exec()) {
-
-        qDebug() << "ERROR: getStadiumNamesQueryOnStartModel()" << endl;
-    }
-    model->setQuery(qry);
-
-    return model;
-
-}
-
-QSqlQueryModel *Controller::getStadiumQueryOnStartModel() {
-
-    QSqlQueryModel* model = new QSqlQueryModel();
-    QSqlQuery qry;
-
-    qry.prepare("select * from Stadiums;");
-
-    if (!qry.exec()) {
-
-        qDebug() << "ERROR: getStadiumQueryOnStartModel()" << endl;
-    }
-    model->setQuery(qry);
-
-    return model;
-}
-
 QSqlQueryModel *Controller::getStadiumsQueryModel(QString query) {
 
     QSqlQueryModel* model = new QSqlQueryModel();
@@ -135,4 +103,86 @@ QSqlQueryModel *Controller::getStadiumsQueryModel(QString query) {
     return model;
 }
 
+QSqlQueryModel *Controller::getSouvenirsQueryModel(QString query) {
+
+    QSqlQueryModel* model = new QSqlQueryModel();
+    QSqlQuery qry;
+    qry.prepare(query);
+
+    if (!qry.exec()) {
+
+        qDebug() << "ERROR: getQueryModel(" << query << ")";
+    }
+
+    model->setQuery(qry);
+
+    return model;
+}
+
+void Controller::deleteSouvenir(QString souvenir, QString stadium) {
+
+    QSqlQuery qry;
+    qry.prepare("Delete from [Stadium Souvenirs] where Item = '"+souvenir+"' and Stadium = '"+stadium+"';");
+//    qry.addBindValue(souvenir);
+
+    if (!qry.exec()) {
+
+        qDebug() << "Error deleting souvenir.";
+    }
+    else {
+
+        qDebug() << souvenir << " deleted.";
+    }
+}
+
+void Controller::editSouvenir(QString stadium, QString souvenir, double price) {
+
+    QSqlQuery qry;
+    qry.prepare("update [Stadium Souvenirs] set     "
+                "Stadium            = ?,    "
+                "Item               = ?,    "
+                "Price              = ?     "
+                "where Item         = ? and "
+                "Stadium            = ?;    ");
+
+    qry.addBindValue(stadium);
+    qry.addBindValue(souvenir);
+    qry.addBindValue(price);
+    qry.addBindValue(souvenir);
+    qry.addBindValue(stadium);
+
+    if (!qry.exec()) {
+
+        qDebug() << "Error editing " << souvenir << " from " << stadium;
+    }
+    else {
+
+        qDebug() << souvenir << " from " << stadium << " updated!";
+        qry.clear();
+    }
+}
+
+void Controller::createSouvenir(QString stadium, QString souvenir, double price) {
+
+    QSqlQuery qry;
+    qry.prepare("insert into [Stadium Souvenirs]("
+                "Stadium,                        "
+                "Item,                           "
+                "Price)                          "
+                "values(?,?,?);                 ");
+
+    qry.addBindValue(stadium);
+    qry.addBindValue(souvenir);
+    qry.addBindValue(price);
+
+    if (!qry.exec()) {
+
+        qDebug() << "Somethings wrong with create souvenir!";
+    }
+    else {
+
+        qDebug() << "Souvenir created, dawg.";
+        qry.clear();
+    }
+}
 

@@ -51,8 +51,37 @@ private slots:
 
     void fillStadiumsComboBoxes();
 
-
     void on_pushButtonUserLogout_clicked();
+
+    void on_pushButtonResetAllSouvenirs_clicked();
+
+    void on_comboBoxChooseStadium_activated(const QString &arg1);
+
+    void resetSouvenirScreenLabels();
+
+    void on_tableviewAllSouvenirs_activated(const QModelIndex &index);
+
+    void on_pushButtonDeleteSouvenir_clicked();
+
+    void on_pushButtonEditPrice_clicked();
+
+    void on_pushButtonAddNewSouvenir_clicked();
+
+    void on_pushButtonReturnToMaintenanceScreen_clicked();
+
+    void on_pushButtonReturnToMaintenanceScreen_2_clicked();
+
+    void on_pushButtonChangeToSouvenirs_clicked();
+
+    void on_pushButtonChangeToStadiums_clicked();
+
+    void on_pushButtonResetAllStadiumsTableADMIN_clicked();
+
+    void on_comboBoxChooseTeamNameADMIN_activated(const QString &arg1);
+
+    void on_tableViewAllStadiumsADMIN_activated(const QModelIndex &index);
+
+    void on_pushButtonEditData_clicked();
 
     void on_pushButtonPlanTrip_clicked();
 
@@ -62,9 +91,13 @@ private slots:
 
     void on_pushButtonDFS_clicked();
 
+
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;
+
+    static int dataColumn;
     Graph graph;
+
 };
 #endif // MAINWINDOW_H

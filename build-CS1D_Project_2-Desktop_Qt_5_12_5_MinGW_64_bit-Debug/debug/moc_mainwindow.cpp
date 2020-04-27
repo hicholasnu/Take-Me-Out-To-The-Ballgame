@@ -1,19 +1,18 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.13.0)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "../../CS1D_Project_2/mainwindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'mainwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.13.0. It"
+#error "This file was generated using the moc from 5.12.5. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -22,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[37];
-    char stringdata0[1176];
+    QByteArrayData data[35];
+    char stringdata0[1104];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -66,9 +65,7 @@ QT_MOC_LITERAL(30, 892, 48), // "on_pushButtonReturnToMaintena..."
 QT_MOC_LITERAL(31, 941, 38), // "on_pushButtonChangeToSouvenir..."
 QT_MOC_LITERAL(32, 980, 37), // "on_pushButtonChangeToStadiums..."
 QT_MOC_LITERAL(33, 1018, 47), // "on_pushButtonResetAllStadiums..."
-QT_MOC_LITERAL(34, 1066, 40), // "on_comboBoxChooseTeamNameADMI..."
-QT_MOC_LITERAL(35, 1107, 38), // "on_tableViewAllStadiumsADMIN_..."
-QT_MOC_LITERAL(36, 1146, 29) // "on_pushButtonEditData_clicked"
+QT_MOC_LITERAL(34, 1066, 37) // "on_comboBoxChooseTeamName_2_a..."
 
     },
     "MainWindow\0on_pushButtonLogin_clicked\0"
@@ -98,9 +95,7 @@ QT_MOC_LITERAL(36, 1146, 29) // "on_pushButtonEditData_clicked"
     "on_pushButtonChangeToSouvenirs_clicked\0"
     "on_pushButtonChangeToStadiums_clicked\0"
     "on_pushButtonResetAllStadiumsTableADMIN_clicked\0"
-    "on_comboBoxChooseTeamNameADMIN_activated\0"
-    "on_tableViewAllStadiumsADMIN_activated\0"
-    "on_pushButtonEditData_clicked"
+    "on_comboBoxChooseTeamName_2_activated"
 };
 #undef QT_MOC_LITERAL
 
@@ -110,7 +105,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      31,   14, // methods
+      29,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -118,37 +113,35 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  169,    2, 0x08 /* Private */,
-       3,    0,  170,    2, 0x08 /* Private */,
-       4,    1,  171,    2, 0x08 /* Private */,
-       6,    0,  174,    2, 0x08 /* Private */,
-       7,    0,  175,    2, 0x08 /* Private */,
-       8,    1,  176,    2, 0x08 /* Private */,
-       9,    0,  179,    2, 0x08 /* Private */,
-      10,    1,  180,    2, 0x08 /* Private */,
-      11,    0,  183,    2, 0x08 /* Private */,
-      12,    0,  184,    2, 0x08 /* Private */,
-      13,    0,  185,    2, 0x08 /* Private */,
-      14,    0,  186,    2, 0x08 /* Private */,
-      15,    0,  187,    2, 0x08 /* Private */,
-      16,    1,  188,    2, 0x08 /* Private */,
-      18,    0,  191,    2, 0x08 /* Private */,
-      19,    0,  192,    2, 0x08 /* Private */,
-      20,    0,  193,    2, 0x08 /* Private */,
-      21,    1,  194,    2, 0x08 /* Private */,
-      22,    0,  197,    2, 0x08 /* Private */,
-      23,    1,  198,    2, 0x08 /* Private */,
-      26,    0,  201,    2, 0x08 /* Private */,
-      27,    0,  202,    2, 0x08 /* Private */,
-      28,    0,  203,    2, 0x08 /* Private */,
-      29,    0,  204,    2, 0x08 /* Private */,
-      30,    0,  205,    2, 0x08 /* Private */,
-      31,    0,  206,    2, 0x08 /* Private */,
-      32,    0,  207,    2, 0x08 /* Private */,
-      33,    0,  208,    2, 0x08 /* Private */,
-      34,    1,  209,    2, 0x08 /* Private */,
-      35,    1,  212,    2, 0x08 /* Private */,
-      36,    0,  215,    2, 0x08 /* Private */,
+       1,    0,  159,    2, 0x08 /* Private */,
+       3,    0,  160,    2, 0x08 /* Private */,
+       4,    1,  161,    2, 0x08 /* Private */,
+       6,    0,  164,    2, 0x08 /* Private */,
+       7,    0,  165,    2, 0x08 /* Private */,
+       8,    1,  166,    2, 0x08 /* Private */,
+       9,    0,  169,    2, 0x08 /* Private */,
+      10,    1,  170,    2, 0x08 /* Private */,
+      11,    0,  173,    2, 0x08 /* Private */,
+      12,    0,  174,    2, 0x08 /* Private */,
+      13,    0,  175,    2, 0x08 /* Private */,
+      14,    0,  176,    2, 0x08 /* Private */,
+      15,    0,  177,    2, 0x08 /* Private */,
+      16,    1,  178,    2, 0x08 /* Private */,
+      18,    0,  181,    2, 0x08 /* Private */,
+      19,    0,  182,    2, 0x08 /* Private */,
+      20,    0,  183,    2, 0x08 /* Private */,
+      21,    1,  184,    2, 0x08 /* Private */,
+      22,    0,  187,    2, 0x08 /* Private */,
+      23,    1,  188,    2, 0x08 /* Private */,
+      26,    0,  191,    2, 0x08 /* Private */,
+      27,    0,  192,    2, 0x08 /* Private */,
+      28,    0,  193,    2, 0x08 /* Private */,
+      29,    0,  194,    2, 0x08 /* Private */,
+      30,    0,  195,    2, 0x08 /* Private */,
+      31,    0,  196,    2, 0x08 /* Private */,
+      32,    0,  197,    2, 0x08 /* Private */,
+      33,    0,  198,    2, 0x08 /* Private */,
+      34,    1,  199,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -180,8 +173,6 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    5,
-    QMetaType::Void, 0x80000000 | 24,   25,
-    QMetaType::Void,
 
        0        // eod
 };
@@ -220,9 +211,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 25: _t->on_pushButtonChangeToSouvenirs_clicked(); break;
         case 26: _t->on_pushButtonChangeToStadiums_clicked(); break;
         case 27: _t->on_pushButtonResetAllStadiumsTableADMIN_clicked(); break;
-        case 28: _t->on_comboBoxChooseTeamNameADMIN_activated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 29: _t->on_tableViewAllStadiumsADMIN_activated((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 30: _t->on_pushButtonEditData_clicked(); break;
+        case 28: _t->on_comboBoxChooseTeamName_2_activated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -257,13 +246,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 31)
+        if (_id < 29)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 31;
+        _id -= 29;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 31)
+        if (_id < 29)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 31;
+        _id -= 29;
     }
     return _id;
 }

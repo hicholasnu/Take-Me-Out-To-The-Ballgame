@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.12.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -21,7 +21,6 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
@@ -96,11 +95,6 @@ public:
     QTableView *tableViewAllStadiumsADMIN;
     QPushButton *pushButtonResetAllStadiumsTableADMIN;
     QComboBox *comboBoxChooseTeamNameADMIN;
-    QLineEdit *lineEditEditData;
-    QLabel *labelSelectedData;
-    QPushButton *pushButtonEditData;
-    QSpinBox *spinBoxEditData;
-    QLabel *label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -427,35 +421,18 @@ public:
         pushButtonReturnToMaintenanceScreen_2->setGeometry(QRect(660, 20, 75, 23));
         tableViewAllStadiumsADMIN = new QTableView(AdminStadiumScreen);
         tableViewAllStadiumsADMIN->setObjectName(QString::fromUtf8("tableViewAllStadiumsADMIN"));
-        tableViewAllStadiumsADMIN->setGeometry(QRect(30, 60, 701, 101));
+        tableViewAllStadiumsADMIN->setGeometry(QRect(30, 60, 641, 81));
         pushButtonResetAllStadiumsTableADMIN = new QPushButton(AdminStadiumScreen);
         pushButtonResetAllStadiumsTableADMIN->setObjectName(QString::fromUtf8("pushButtonResetAllStadiumsTableADMIN"));
         pushButtonResetAllStadiumsTableADMIN->setGeometry(QRect(30, 380, 75, 23));
         comboBoxChooseTeamNameADMIN = new QComboBox(AdminStadiumScreen);
         comboBoxChooseTeamNameADMIN->setObjectName(QString::fromUtf8("comboBoxChooseTeamNameADMIN"));
         comboBoxChooseTeamNameADMIN->setGeometry(QRect(30, 20, 271, 22));
-        lineEditEditData = new QLineEdit(AdminStadiumScreen);
-        lineEditEditData->setObjectName(QString::fromUtf8("lineEditEditData"));
-        lineEditEditData->setGeometry(QRect(40, 250, 281, 21));
-        lineEditEditData->setClearButtonEnabled(false);
-        labelSelectedData = new QLabel(AdminStadiumScreen);
-        labelSelectedData->setObjectName(QString::fromUtf8("labelSelectedData"));
-        labelSelectedData->setGeometry(QRect(40, 220, 281, 16));
-        pushButtonEditData = new QPushButton(AdminStadiumScreen);
-        pushButtonEditData->setObjectName(QString::fromUtf8("pushButtonEditData"));
-        pushButtonEditData->setGeometry(QRect(40, 290, 93, 28));
-        spinBoxEditData = new QSpinBox(AdminStadiumScreen);
-        spinBoxEditData->setObjectName(QString::fromUtf8("spinBoxEditData"));
-        spinBoxEditData->setEnabled(true);
-        spinBoxEditData->setGeometry(QRect(40, 250, 141, 22));
-        label = new QLabel(AdminStadiumScreen);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(40, 190, 141, 16));
         stackedWidget->addWidget(AdminStadiumScreen);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 803, 26));
+        menubar->setGeometry(QRect(0, 0, 803, 21));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -472,51 +449,48 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        labelUsername->setText(QCoreApplication::translate("MainWindow", "Username", nullptr));
-        labelPassword->setText(QCoreApplication::translate("MainWindow", "Password", nullptr));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        labelUsername->setText(QApplication::translate("MainWindow", "Username", nullptr));
+        labelPassword->setText(QApplication::translate("MainWindow", "Password", nullptr));
         lineEditUsername->setText(QString());
-        pushButtonLogin->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
-        pushButtonResetLogin->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
-        labelShowCurrentSort->setText(QCoreApplication::translate("MainWindow", "Currently Sorted By: All", nullptr));
-        labelSortByTeam->setText(QCoreApplication::translate("MainWindow", "Sort by Team Name", nullptr));
-        labelSortByLeague->setText(QCoreApplication::translate("MainWindow", "Sort by League", nullptr));
-        labelSortByRoofType->setText(QCoreApplication::translate("MainWindow", "Sort by Roof Type", nullptr));
-        labelGridLayout->setText(QCoreApplication::translate("MainWindow", "Sorting Menu", nullptr));
-        labelSortByTeamName->setText(QCoreApplication::translate("MainWindow", "All Teams", nullptr));
+        pushButtonLogin->setText(QApplication::translate("MainWindow", "Login", nullptr));
+        pushButtonResetLogin->setText(QApplication::translate("MainWindow", "Reset", nullptr));
+        labelShowCurrentSort->setText(QApplication::translate("MainWindow", "Currently Sorted By: All", nullptr));
+        labelSortByTeam->setText(QApplication::translate("MainWindow", "Sort by Team Name", nullptr));
+        labelSortByLeague->setText(QApplication::translate("MainWindow", "Sort by League", nullptr));
+        labelSortByRoofType->setText(QApplication::translate("MainWindow", "Sort by Roof Type", nullptr));
+        labelGridLayout->setText(QApplication::translate("MainWindow", "Sorting Menu", nullptr));
+        labelSortByTeamName->setText(QApplication::translate("MainWindow", "All Teams", nullptr));
         pushButtonSortByTeamNames->setText(QString());
-        labelSortByStadiumName->setText(QCoreApplication::translate("MainWindow", "All Stadiums", nullptr));
+        labelSortByStadiumName->setText(QApplication::translate("MainWindow", "All Stadiums", nullptr));
         pushButtonSortByStadiumNames->setText(QString());
-        labelSortByBallparkType->setText(QCoreApplication::translate("MainWindow", "Ballpark Type", nullptr));
+        labelSortByBallparkType->setText(QApplication::translate("MainWindow", "Ballpark Type", nullptr));
         pushButtonSortByBallparkTypology->setText(QString());
-        labelSortByDateOpened->setText(QCoreApplication::translate("MainWindow", "Date Opened", nullptr));
+        labelSortByDateOpened->setText(QApplication::translate("MainWindow", "Date Opened", nullptr));
         pushButtonSortByDateOpened->setText(QString());
-        labelSortBySeatingCapacity->setText(QCoreApplication::translate("MainWindow", "Seating Capa.", nullptr));
+        labelSortBySeatingCapacity->setText(QApplication::translate("MainWindow", "Seating Capa.", nullptr));
         pushButtonSortBySeatingCapacity->setText(QString());
-        labelSortByGreatestDistance->setText(QCoreApplication::translate("MainWindow", "Max Dist Cent.", nullptr));
+        labelSortByGreatestDistance->setText(QApplication::translate("MainWindow", "Max Dist Cent.", nullptr));
         pushButtonSortByGreatestFromCenter->setText(QString());
-        labelSortByLeastDistance->setText(QCoreApplication::translate("MainWindow", "Min Dist Cent.", nullptr));
+        labelSortByLeastDistance->setText(QApplication::translate("MainWindow", "Min Dist Cent.", nullptr));
         pushButtonSortByLeastFromCenter->setText(QString());
-        labelResetStadiumsTable->setText(QCoreApplication::translate("MainWindow", "RESET", nullptr));
+        labelResetStadiumsTable->setText(QApplication::translate("MainWindow", "RESET", nullptr));
         pushButtonResetStadiumsTable->setText(QString());
         labelAdditionalInfo->setText(QString());
-        pushButtonUserLogout->setText(QCoreApplication::translate("MainWindow", "Logout", nullptr));
-        labelMaintenanceScreenTitle->setText(QCoreApplication::translate("MainWindow", "Administrator Maintenance", nullptr));
-        pushButtonChangeToSouvenirs->setText(QCoreApplication::translate("MainWindow", "Souvenirs", nullptr));
-        pushButtonChangeToStadiums->setText(QCoreApplication::translate("MainWindow", "Stadiums", nullptr));
-        pushButtonResetAllSouvenirs->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
-        pushButtonEditPrice->setText(QCoreApplication::translate("MainWindow", "Edit Price", nullptr));
+        pushButtonUserLogout->setText(QApplication::translate("MainWindow", "Logout", nullptr));
+        labelMaintenanceScreenTitle->setText(QApplication::translate("MainWindow", "Administrator Maintenance", nullptr));
+        pushButtonChangeToSouvenirs->setText(QApplication::translate("MainWindow", "Souvenirs", nullptr));
+        pushButtonChangeToStadiums->setText(QApplication::translate("MainWindow", "Stadiums", nullptr));
+        pushButtonResetAllSouvenirs->setText(QApplication::translate("MainWindow", "Reset", nullptr));
+        pushButtonEditPrice->setText(QApplication::translate("MainWindow", "Edit Price", nullptr));
         labelShowStadium->setText(QString());
-        labelShowItem->setText(QCoreApplication::translate("MainWindow", "No Souvenir Selected!", nullptr));
-        pushButtonDeleteSouvenir->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
-        labelPromptNewItem->setText(QCoreApplication::translate("MainWindow", "New Souvenir To Add", nullptr));
-        pushButtonAddNewSouvenir->setText(QCoreApplication::translate("MainWindow", "Add", nullptr));
-        pushButtonReturnToMaintenanceScreen->setText(QCoreApplication::translate("MainWindow", "Return", nullptr));
-        pushButtonReturnToMaintenanceScreen_2->setText(QCoreApplication::translate("MainWindow", "Return", nullptr));
-        pushButtonResetAllStadiumsTableADMIN->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
-        labelSelectedData->setText(QCoreApplication::translate("MainWindow", "No Data Selected!", nullptr));
-        pushButtonEditData->setText(QCoreApplication::translate("MainWindow", "Edit", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Data To Change:", nullptr));
+        labelShowItem->setText(QApplication::translate("MainWindow", "No Souvenir Selected!", nullptr));
+        pushButtonDeleteSouvenir->setText(QApplication::translate("MainWindow", "Delete", nullptr));
+        labelPromptNewItem->setText(QApplication::translate("MainWindow", "New Souvenir To Add", nullptr));
+        pushButtonAddNewSouvenir->setText(QApplication::translate("MainWindow", "Add", nullptr));
+        pushButtonReturnToMaintenanceScreen->setText(QApplication::translate("MainWindow", "Return", nullptr));
+        pushButtonReturnToMaintenanceScreen_2->setText(QApplication::translate("MainWindow", "Return", nullptr));
+        pushButtonResetAllStadiumsTableADMIN->setText(QApplication::translate("MainWindow", "Reset", nullptr));
     } // retranslateUi
 
 };

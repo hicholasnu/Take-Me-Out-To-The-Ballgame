@@ -29,9 +29,12 @@ public:
     void createTables();
     void loadStadiums();
 
-    QSqlQueryModel *getStadiumNamesQueryOnStartModel();
-    QSqlQueryModel *getStadiumQueryOnStartModel();
+    void deleteSouvenir(QString souvenir, QString stadium);
+    void editSouvenir(QString stadium, QString souvenir, double price);
+    void createSouvenir(QString college, QString souvenir, double price);
+
     QSqlQueryModel *getStadiumsQueryModel(QString query);
+    QSqlQueryModel *getSouvenirsQueryModel(QString query);
 
 private:
     QSqlDatabase m_database;
