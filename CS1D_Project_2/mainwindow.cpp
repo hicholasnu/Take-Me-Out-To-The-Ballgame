@@ -275,6 +275,7 @@ void MainWindow::resetSouvenirScreenLabels() {
     ui->doubleSpinBoxNewSouvenirPrice->clear();
 }
 
+
 void MainWindow::on_tableviewAllSouvenirs_activated(const QModelIndex &index) {
 
     QString selectedSouvenir;
@@ -456,4 +457,62 @@ void MainWindow::on_pushButtonEditData_clicked()
 
     }
 
+=======
+void MainWindow::on_pushButtonPlanTrip_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->TripScreen);
+    ui->comboBox->setModel(m_controller->getStadiumsQueryModel("select DISTINCT [Originated Stadium] from [Stadium Distances];"));
+}
+
+void MainWindow::on_pushButtonBFS_clicked()
+{
+    ui->textBrowser->clear();
+
+    graph.loadGraph(graph);
+    graph.BFS(ui->comboBox->currentText());
+
+    QVector<QString> list = graph.getOrder();
+
+    ui->textBrowser->append("PERFORMING BFS");
+    for(int i = 0; i < list.size(); ++i)
+    {
+        ui->textBrowser->append(list[i]);
+    }
+
+    ui->labelTotalDistance->setNum(graph.getTotalDistance());
+}
+
+void MainWindow::on_comboBox_activated(const QString &arg1)
+{
+//    ui->textBrowser->clear();
+
+//    graph.loadGraph(graph);
+//    graph.BFS(arg1);
+
+//    QVector<QString> list = graph.getOrder();
+
+//    for(int i = 0; i < list.size(); ++i)
+//    {
+//        ui->textBrowser->append(list[i]);
+//    }
+
+//    ui->labelTotalDistance->setNum(graph.getTotalDistance());
+}
+
+void MainWindow::on_pushButtonDFS_clicked()
+{
+    ui->textBrowser->clear();
+
+    graph.loadGraph(graph);
+    graph.DFS(ui->comboBox->currentText());
+
+    QVector<QString> list = graph.getOrder();
+
+    ui->textBrowser->append("PERFORMING DFS");
+    for(int i = 0; i < list.size(); ++i)
+    {
+        ui->textBrowser->append(list[i]);
+    }
+
+    ui->labelTotalDistance->setNum(graph.getTotalDistance());
 }

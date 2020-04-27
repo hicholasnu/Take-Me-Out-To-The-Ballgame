@@ -17,12 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     controller.cpp \
+    graph.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     controller.h \
+    graph.h \
     login.h \
     mainwindow.h
 

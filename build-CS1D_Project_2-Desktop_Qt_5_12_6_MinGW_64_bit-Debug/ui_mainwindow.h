@@ -23,6 +23,8 @@
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -71,6 +73,16 @@ public:
     QPushButton *pushButtonResetStadiumsTable;
     QLabel *labelAdditionalInfo;
     QPushButton *pushButtonUserLogout;
+    QPushButton *pushButtonPlanTrip;
+    QWidget *TripScreen;
+    QLabel *label;
+    QLabel *labelTotalDistance;
+    QTextBrowser *textBrowser;
+    QComboBox *comboBox;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QPushButton *pushButtonDFS;
+    QPushButton *pushButtonBFS;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -328,7 +340,42 @@ public:
         font4.setFamily(QString::fromUtf8("Courier"));
         font4.setPointSize(6);
         pushButtonUserLogout->setFont(font4);
+        pushButtonPlanTrip = new QPushButton(UserScreen);
+        pushButtonPlanTrip->setObjectName(QString::fromUtf8("pushButtonPlanTrip"));
+        pushButtonPlanTrip->setGeometry(QRect(360, 480, 131, 28));
         stackedWidget->addWidget(UserScreen);
+        TripScreen = new QWidget();
+        TripScreen->setObjectName(QString::fromUtf8("TripScreen"));
+        label = new QLabel(TripScreen);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(480, 440, 91, 16));
+        labelTotalDistance = new QLabel(TripScreen);
+        labelTotalDistance->setObjectName(QString::fromUtf8("labelTotalDistance"));
+        labelTotalDistance->setGeometry(QRect(580, 430, 121, 31));
+        labelTotalDistance->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        textBrowser = new QTextBrowser(TripScreen);
+        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
+        textBrowser->setGeometry(QRect(20, 20, 421, 491));
+        comboBox = new QComboBox(TripScreen);
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox->setGeometry(QRect(460, 20, 291, 22));
+        verticalLayoutWidget = new QWidget(TripScreen);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(470, 130, 160, 80));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        pushButtonDFS = new QPushButton(verticalLayoutWidget);
+        pushButtonDFS->setObjectName(QString::fromUtf8("pushButtonDFS"));
+
+        verticalLayout->addWidget(pushButtonDFS);
+
+        pushButtonBFS = new QPushButton(verticalLayoutWidget);
+        pushButtonBFS->setObjectName(QString::fromUtf8("pushButtonBFS"));
+
+        verticalLayout->addWidget(pushButtonBFS);
+
+        stackedWidget->addWidget(TripScreen);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -340,7 +387,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(2);
         pushButtonResetLogin->setDefault(false);
 
 
@@ -378,6 +425,11 @@ public:
         pushButtonResetStadiumsTable->setText(QString());
         labelAdditionalInfo->setText(QString());
         pushButtonUserLogout->setText(QApplication::translate("MainWindow", "Logout", nullptr));
+        pushButtonPlanTrip->setText(QApplication::translate("MainWindow", "Plan Trip", nullptr));
+        label->setText(QApplication::translate("MainWindow", "Total Distance", nullptr));
+        labelTotalDistance->setText(QString());
+        pushButtonDFS->setText(QApplication::translate("MainWindow", "DFS", nullptr));
+        pushButtonBFS->setText(QApplication::translate("MainWindow", "BFS", nullptr));
     } // retranslateUi
 
 };

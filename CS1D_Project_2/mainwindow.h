@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "controller.h"
+#include "graph.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -82,9 +83,21 @@ private slots:
 
     void on_pushButtonEditData_clicked();
 
+    void on_pushButtonPlanTrip_clicked();
+
+    void on_pushButtonBFS_clicked();
+
+    void on_comboBox_activated(const QString &arg1);
+
+    void on_pushButtonDFS_clicked();
+
+
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;
+
     static int dataColumn;
+    Graph graph;
+
 };
 #endif // MAINWINDOW_H
