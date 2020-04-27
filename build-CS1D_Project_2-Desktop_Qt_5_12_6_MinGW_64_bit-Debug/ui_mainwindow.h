@@ -23,6 +23,7 @@
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -71,6 +72,11 @@ public:
     QPushButton *pushButtonResetStadiumsTable;
     QLabel *labelAdditionalInfo;
     QPushButton *pushButtonUserLogout;
+    QPushButton *pushButtonDFS;
+    QWidget *TripScreen;
+    QLabel *label;
+    QTextBrowser *textBrowser;
+    QLabel *labelTotalDistance;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -328,7 +334,26 @@ public:
         font4.setFamily(QString::fromUtf8("Courier"));
         font4.setPointSize(6);
         pushButtonUserLogout->setFont(font4);
+        pushButtonDFS = new QPushButton(UserScreen);
+        pushButtonDFS->setObjectName(QString::fromUtf8("pushButtonDFS"));
+        pushButtonDFS->setGeometry(QRect(370, 480, 93, 28));
         stackedWidget->addWidget(UserScreen);
+        TripScreen = new QWidget();
+        TripScreen->setObjectName(QString::fromUtf8("TripScreen"));
+        label = new QLabel(TripScreen);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(474, 439, 111, 31));
+        QFont font5;
+        font5.setPointSize(9);
+        label->setFont(font5);
+        textBrowser = new QTextBrowser(TripScreen);
+        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
+        textBrowser->setGeometry(QRect(20, 20, 431, 481));
+        labelTotalDistance = new QLabel(TripScreen);
+        labelTotalDistance->setObjectName(QString::fromUtf8("labelTotalDistance"));
+        labelTotalDistance->setGeometry(QRect(590, 425, 141, 61));
+        labelTotalDistance->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        stackedWidget->addWidget(TripScreen);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -340,7 +365,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(2);
         pushButtonResetLogin->setDefault(false);
 
 
@@ -378,6 +403,9 @@ public:
         pushButtonResetStadiumsTable->setText(QString());
         labelAdditionalInfo->setText(QString());
         pushButtonUserLogout->setText(QApplication::translate("MainWindow", "Logout", nullptr));
+        pushButtonDFS->setText(QApplication::translate("MainWindow", "DFS", nullptr));
+        label->setText(QApplication::translate("MainWindow", "Total Distance", nullptr));
+        labelTotalDistance->setText(QString());
     } // retranslateUi
 
 };

@@ -1,7 +1,7 @@
 #include "controller.h"
 
-Controller::Controller(QObject *parent) : QObject(parent) {
-
+Controller::Controller(QObject *parent) : QObject(parent)
+{
     m_database = QSqlDatabase::addDatabase("QSQLITE");
     QString databasePath = "C://Users//krist//Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
     m_database.setDatabaseName(databasePath);

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "controller.h"
+#include "graph.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -52,6 +53,8 @@ private slots:
 
 
     void on_pushButtonUserLogout_clicked();
+
+    void on_pushButtonDFS_clicked();
 
 private:
     Ui::MainWindow *ui;

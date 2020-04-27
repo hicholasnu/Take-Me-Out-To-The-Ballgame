@@ -227,4 +227,47 @@ void MainWindow::on_pushButtonUserLogout_clicked()
 // STADIUMS DISPLAY/SORT END ==================================================================================
 
 
+void MainWindow::on_pushButtonDFS_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->TripScreen);
 
+    Graph stadium;
+    vector<string> dfsSearch;
+    QSqlQuery stadiums;
+
+    stadiums.prepare("select * from [Stadium Distances];");
+
+    if (!stadiums.exec())
+    {
+        qDebug() << "ERROR: Can't get vertices information";
+    }
+    else
+    {
+       while (stadiums.next())
+       {
+           stadium.insertEdge(stadiums.value(0).toString().toStdString(),
+                              stadiums.value(1).toString().toStdString(),
+                              stadiums.value(2).toInt()  );
+
+           stadium.insertEdge(stadiums.value(1).toString().toStdString(),
+                              stadiums.value(0).toString().toStdString(),
+                              stadiums.value(2).toInt()  );
+       }
+    }
+
+    stadiums.first();
+    stadiums.prepare("select [Originated Stadium] from [Stadium Distance] where [Originated Stadium] = 'AT&T Park'");
+    stadiums.exec();
+    stadiums.next();
+
+    cout << "DFS START AT " << stadiums.value(0).toString().toStdString() << endl;
+
+    int totalDistance = stadium.DFS(stadiums.value(0).toString().toStdString(), dfsSearch);
+
+    for(unsigned int i = 0; i < dfsSearch.size(); i++)
+    {
+        cout << dfsSearch.at(i) << endl;
+    }
+
+    ui->labelTotalDistance->setText(QString::number(totalDistance));
+}

@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Graph.cpp \
     controller.cpp \
+    graph.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 HEADERS += \
     Graph.h \
     controller.h \
+    graph.h \
     login.h \
     mainwindow.h \
     team.h \

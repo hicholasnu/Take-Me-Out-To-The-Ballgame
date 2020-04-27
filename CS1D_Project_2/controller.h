@@ -15,7 +15,10 @@
 #include <QSpinBox>
 #include <QSize>
 #include <QTableWidgetItem>
+<<<<<<< Updated upstream
 // #include "Graph.h"
+=======
+>>>>>>> Stashed changes
 
 class Controller : public QObject
 {
