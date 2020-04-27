@@ -440,10 +440,8 @@ void MainWindow::on_tableViewAllStadiumsADMIN_activated(const QModelIndex &index
     }
 }
 
-void MainWindow::on_pushButtonEditData_clicked()
+void MainWindow::on_pushButtonEditData_clicked() // NOT DONE
 {
-
-
     if (!ui->lineEditEditData->isVisible() && !ui->spinBoxEditData->isVisible()) {
 
         QMessageBox::warning(this, "Invalid", "Nothing is selected");
@@ -456,13 +454,9 @@ void MainWindow::on_pushButtonEditData_clicked()
 
 
     }
-
-=======
-void MainWindow::on_pushButtonPlanTrip_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->TripScreen);
-    ui->comboBox->setModel(m_controller->getStadiumsQueryModel("select DISTINCT [Originated Stadium] from [Stadium Distances];"));
 }
+
+
 
 void MainWindow::on_pushButtonBFS_clicked()
 {
@@ -515,4 +509,13 @@ void MainWindow::on_pushButtonDFS_clicked()
     }
 
     ui->labelTotalDistance->setNum(graph.getTotalDistance());
+}
+
+
+
+void MainWindow::on_pushButtonDFSBFS_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->TripScreen);
+    ui->comboBox->setModel(m_controller->getStadiumsQueryModel("select DISTINCT [Originated Stadium] from [Stadium Distances];"));
+
 }

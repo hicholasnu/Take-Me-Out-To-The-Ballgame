@@ -39,11 +39,7 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="currentIndex">
-
-     <number>4</number>
-
-     <number>2</number>
-
+     <number>1</number>
     </property>
     <widget class="QWidget" name="LoginScreen">
      <property name="styleSheet">
@@ -583,17 +579,17 @@ font: 8pt &quot;Courier&quot;;</string>
        <string>Logout</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonPlanTrip">
+     <widget class="QPushButton" name="pushButtonDFSBFS">
       <property name="geometry">
        <rect>
-        <x>360</x>
-        <y>480</y>
-        <width>131</width>
+        <x>270</x>
+        <y>490</y>
+        <width>93</width>
         <height>28</height>
        </rect>
       </property>
       <property name="text">
-       <string>Plan Trip</string>
+       <string>dfs/bfs</string>
       </property>
      </widget>
     </widget>

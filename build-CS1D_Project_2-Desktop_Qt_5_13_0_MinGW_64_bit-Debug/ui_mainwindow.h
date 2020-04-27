@@ -25,6 +25,8 @@
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -73,6 +75,16 @@ public:
     QPushButton *pushButtonResetStadiumsTable;
     QLabel *labelAdditionalInfo;
     QPushButton *pushButtonUserLogout;
+    QPushButton *pushButtonDFSBFS;
+    QWidget *TripScreen;
+    QLabel *label;
+    QLabel *labelTotalDistance;
+    QTextBrowser *textBrowser;
+    QComboBox *comboBox;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QPushButton *pushButtonDFS;
+    QPushButton *pushButtonBFS;
     QWidget *AdminMaintenanceScreen;
     QLabel *labelMaintenanceScreenTitle;
     QPushButton *pushButtonChangeToSouvenirs;
@@ -100,7 +112,7 @@ public:
     QLabel *labelSelectedData;
     QPushButton *pushButtonEditData;
     QSpinBox *spinBoxEditData;
-    QLabel *label;
+    QLabel *label1;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -358,7 +370,42 @@ public:
         font4.setFamily(QString::fromUtf8("Courier"));
         font4.setPointSize(6);
         pushButtonUserLogout->setFont(font4);
+        pushButtonDFSBFS = new QPushButton(UserScreen);
+        pushButtonDFSBFS->setObjectName(QString::fromUtf8("pushButtonDFSBFS"));
+        pushButtonDFSBFS->setGeometry(QRect(270, 490, 93, 28));
         stackedWidget->addWidget(UserScreen);
+        TripScreen = new QWidget();
+        TripScreen->setObjectName(QString::fromUtf8("TripScreen"));
+        label = new QLabel(TripScreen);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(480, 440, 91, 16));
+        labelTotalDistance = new QLabel(TripScreen);
+        labelTotalDistance->setObjectName(QString::fromUtf8("labelTotalDistance"));
+        labelTotalDistance->setGeometry(QRect(580, 430, 121, 31));
+        labelTotalDistance->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        textBrowser = new QTextBrowser(TripScreen);
+        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
+        textBrowser->setGeometry(QRect(20, 20, 421, 491));
+        comboBox = new QComboBox(TripScreen);
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox->setGeometry(QRect(460, 20, 291, 22));
+        verticalLayoutWidget = new QWidget(TripScreen);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(470, 130, 160, 80));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        pushButtonDFS = new QPushButton(verticalLayoutWidget);
+        pushButtonDFS->setObjectName(QString::fromUtf8("pushButtonDFS"));
+
+        verticalLayout->addWidget(pushButtonDFS);
+
+        pushButtonBFS = new QPushButton(verticalLayoutWidget);
+        pushButtonBFS->setObjectName(QString::fromUtf8("pushButtonBFS"));
+
+        verticalLayout->addWidget(pushButtonBFS);
+
+        stackedWidget->addWidget(TripScreen);
         AdminMaintenanceScreen = new QWidget();
         AdminMaintenanceScreen->setObjectName(QString::fromUtf8("AdminMaintenanceScreen"));
         labelMaintenanceScreenTitle = new QLabel(AdminMaintenanceScreen);
@@ -448,9 +495,9 @@ public:
         spinBoxEditData->setObjectName(QString::fromUtf8("spinBoxEditData"));
         spinBoxEditData->setEnabled(true);
         spinBoxEditData->setGeometry(QRect(40, 250, 141, 22));
-        label = new QLabel(AdminStadiumScreen);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(40, 190, 141, 16));
+        label1 = new QLabel(AdminStadiumScreen);
+        label1->setObjectName(QString::fromUtf8("label1"));
+        label1->setGeometry(QRect(40, 190, 141, 16));
         stackedWidget->addWidget(AdminStadiumScreen);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -463,7 +510,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(1);
         pushButtonResetLogin->setDefault(false);
 
 
@@ -501,6 +548,11 @@ public:
         pushButtonResetStadiumsTable->setText(QString());
         labelAdditionalInfo->setText(QString());
         pushButtonUserLogout->setText(QCoreApplication::translate("MainWindow", "Logout", nullptr));
+        pushButtonDFSBFS->setText(QCoreApplication::translate("MainWindow", "dfs/bfs", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Total Distance", nullptr));
+        labelTotalDistance->setText(QString());
+        pushButtonDFS->setText(QCoreApplication::translate("MainWindow", "DFS", nullptr));
+        pushButtonBFS->setText(QCoreApplication::translate("MainWindow", "BFS", nullptr));
         labelMaintenanceScreenTitle->setText(QCoreApplication::translate("MainWindow", "Administrator Maintenance", nullptr));
         pushButtonChangeToSouvenirs->setText(QCoreApplication::translate("MainWindow", "Souvenirs", nullptr));
         pushButtonChangeToStadiums->setText(QCoreApplication::translate("MainWindow", "Stadiums", nullptr));
@@ -516,7 +568,7 @@ public:
         pushButtonResetAllStadiumsTableADMIN->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
         labelSelectedData->setText(QCoreApplication::translate("MainWindow", "No Data Selected!", nullptr));
         pushButtonEditData->setText(QCoreApplication::translate("MainWindow", "Edit", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Data To Change:", nullptr));
+        label1->setText(QCoreApplication::translate("MainWindow", "Data To Change:", nullptr));
     } // retranslateUi
 
 };
@@ -528,3 +580,4 @@ namespace Ui {
 QT_END_NAMESPACE
 
 #endif // UI_MAINWINDOW_H
+UI_MAINWINDOW_H
