@@ -210,6 +210,7 @@ Makefile: ../CS1D_Project_2/CS1D_Project_2.pro ../../../../Desktop/QT/5.12.6/min
 		../../../../Desktop/QT/5.12.6/mingw73_64/mkspecs/features/qt_config.prf \
 		../../../../Desktop/QT/5.12.6/mingw73_64/mkspecs/win32-g++/qmake.conf \
 		../../../../Desktop/QT/5.12.6/mingw73_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Desktop/QT/5.12.6/mingw73_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Desktop/QT/5.12.6/mingw73_64/mkspecs/features/toolchain.prf \
 		../../../../Desktop/QT/5.12.6/mingw73_64/mkspecs/features/default_pre.prf \
@@ -386,6 +387,7 @@ Makefile: ../CS1D_Project_2/CS1D_Project_2.pro ../../../../Desktop/QT/5.12.6/min
 ../../../../Desktop/QT/5.12.6/mingw73_64/mkspecs/features/qt_config.prf:
 ../../../../Desktop/QT/5.12.6/mingw73_64/mkspecs/win32-g++/qmake.conf:
 ../../../../Desktop/QT/5.12.6/mingw73_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Desktop/QT/5.12.6/mingw73_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Desktop/QT/5.12.6/mingw73_64/mkspecs/features/toolchain.prf:
 ../../../../Desktop/QT/5.12.6/mingw73_64/mkspecs/features/default_pre.prf:
