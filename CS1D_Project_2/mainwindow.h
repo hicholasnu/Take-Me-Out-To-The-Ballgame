@@ -1,8 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "graph.h"
+#include "dijkstra.h"
 #include "controller.h"
+#include <QInputDialog>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,6 +20,7 @@ public:
 
     void changeToAdmin();
     void changetoUser();
+    void intializeM();
 
 private slots:
 
@@ -61,9 +64,19 @@ private slots:
 
     void on_pushButtonDodger_clicked();
 
+    void on_pushButtonMarlin_clicked();
+
+    void on_pushButton_Custom_clicked();
+
+    void on_pushButtonStart_clicked();
+
+    void pathPlanner(QString str[], int c);
+
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;
-    Graph g_graph;
+    Dijkstra d_dij;
+    QVector<Edge> customPath;
+    int mat[30][30];
 };
 #endif // MAINWINDOW_H

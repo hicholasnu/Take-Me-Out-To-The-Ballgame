@@ -3,7 +3,7 @@
 Controller::Controller(QObject *parent) : QObject(parent) {
 
     m_database = QSqlDatabase::addDatabase("QSQLITE");
-    QString databasePath = "/Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-master/Stadiums.db";
+    QString databasePath = "/Users/alvarohernandez/Desktop/CS1D project 2/Take-Me-Out-To-The-Ballgame-alvaro/Stadiums.db";
     m_database.setDatabaseName(databasePath);
 
     if (!m_database.open()) {
@@ -78,28 +78,53 @@ void Controller::createTables() {
         qDebug() << "LOGIN TABLE IS CREATED.";
     }
 
+    qry.clear();
+
     //========================================
-    // Creating graph table
-//    QString graphTable =
-//            "create table IF NOT EXISTS Stadium("
-//            "'Start'     text, "
-//            "'End'    text, "
-//            "'Distance'               integer"
-//            ");";
+    // Creating Dodger table for dijkstra
+    QString dodgerTable =
+            "create table IF NOT EXISTS Dodger("
+            "'Start'     text, "
+            "'End'    text, "
+            "'Distance'               integer"
+            ");";
 
 
-//    qry.prepare(graphTable);
+    qry.prepare(dodgerTable);
 
-//    if (!qry.exec()) {
+    if (!qry.exec()) {
 
-//        qDebug() << "ERROR: createTable(): Graph" << endl;
-//    }
-//    else {
+        qDebug() << "ERROR: createTable(): dodgerTable" << endl;
+    }
+    else {
 
-//        qDebug() << "Graph TABLE IS CREATED.";
-//    }
+        qDebug() << "dodgerTable IS CREATED.";
+    }
 
-//    qry.clear();
+    qry.clear();
+
+    //========================================
+    // Creating custromTrip table
+    QString customTrip =
+            "create table IF NOT EXISTS Custom("
+            "'Start'     text, "
+            "'End'    text, "
+            "'Distance'               integer"
+            ");";
+
+
+    qry.prepare(customTrip);
+
+    if (!qry.exec()) {
+
+        qDebug() << "ERROR: createTable(): customTrip" << endl;
+    }
+    else {
+
+        qDebug() << "customTrip IS CREATED.";
+    }
+
+    qry.clear();
 
 //    qry.exec("insert into Login (Username, Password) values ('admin', 'd82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892')");
 //    qry.exec("insert into Login (Username, Password) values ('user', 'e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf')");
