@@ -673,6 +673,13 @@ void MainWindow::on_pushButtonStart_clicked()
     int count = ui->spinBoxNum->value();
     QString choosen[count];
 
+    // reset Dodger DB
+    qry.prepare("DELETE FROM Custom");
+    qry.exec();
+
+    ui->tableViewCustom->reset();
+    customPath.clear();
+
     //qry.exec("select DISTINCT OriginatedStadium from StadiumDistances");
     qry.exec("select * from Stadiums");
     while(qry.next())
@@ -687,6 +694,16 @@ void MainWindow::on_pushButtonStart_clicked()
     {
         choosen[i] = QInputDialog::getItem(this, tr("Select your destination."),
                                                  tr("Stadium Name:"), items);
+
+        for (int j = 0; j < i; j++)
+        {
+            if (choosen[i] == choosen[j])
+            {
+                QMessageBox::critical(this,"","Already selected!");
+                choosen[j] = QInputDialog::getItem(this, tr("Select your destination."),
+                                                          tr("Stadium Name:"), items);
+            }
+        }
     }
     pathPlanner(choosen,count);
 
