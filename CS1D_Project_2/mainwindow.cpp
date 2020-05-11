@@ -24,7 +24,7 @@ void MainWindow::changeToAdmin()
 
 void MainWindow::changetoUser()
 {
-    ui->stackedWidget->setCurrentWidget(ui->UserScreen);
+    ui->stackedWidget->setCurrentWidget(ui->UserSelectionScreen);
     on_pushButtonResetStadiumsTable_clicked();
     fillStadiumsComboBoxes();
 }
@@ -495,23 +495,6 @@ void MainWindow::on_pushButtonBFS_clicked()
     ui->labelTotalDistance->setNum(graph.getTotalDistance());
 }
 
-void MainWindow::on_comboBox_activated(const QString &arg1)
-{
-//    ui->textBrowser->clear();
-
-//    graph.loadGraph(graph);
-//    graph.BFS(arg1);
-
-//    QVector<QString> list = graph.getOrder();
-
-//    for(int i = 0; i < list.size(); ++i)
-//    {
-//        ui->textBrowser->append(list[i]);
-//    }
-
-//    ui->labelTotalDistance->setNum(graph.getTotalDistance());
-}
-
 void MainWindow::on_pushButtonDFS_clicked()
 {
     ui->textBrowser->clear();
@@ -534,7 +517,7 @@ void MainWindow::on_pushButtonDFS_clicked()
 
 void MainWindow::on_pushButtonDFSBFS_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->TripScreen);
+    ui->stackedWidget->setCurrentWidget(ui->DFSBFSMSTScreen);
     ui->comboBox->setModel(m_controller->getStadiumsQueryModel("select DISTINCT [Originated Stadium] from [Stadium Distances];"));
 
 }
@@ -579,4 +562,9 @@ void MainWindow::on_pushButtonUploadNewStadiumDistances_clicked()
 void MainWindow::on_pushButtonLogoutFromAdminMaintenance_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->LoginScreen);
+}
+
+void MainWindow::on_pushButtonToUserScreen_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->UserScreen);
 }

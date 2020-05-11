@@ -39,7 +39,7 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="LoginScreen">
      <property name="styleSheet">
@@ -178,6 +178,34 @@
       </property>
       <property name="flat">
        <bool>false</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="UserSelectionScreen">
+     <widget class="QPushButton" name="pushButtonToUserScreen">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>80</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Sort Stadiums</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonToDFSBFSMSTScreen">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>80</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>DFS/BFS/MST</string>
       </property>
      </widget>
     </widget>
@@ -593,7 +621,7 @@ font: 8pt &quot;Courier&quot;;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="TripScreen">
+    <widget class="QWidget" name="DFSBFSMSTScreen">
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
@@ -974,7 +1002,7 @@ font: 8pt &quot;Courier&quot;;</string>
         <x>20</x>
         <y>290</y>
         <width>381</width>
-        <height>131</height>
+        <height>140</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout">
@@ -1040,7 +1068,7 @@ font: 8pt &quot;Courier&quot;;</string>
         <x>410</x>
         <y>290</y>
         <width>331</width>
-        <height>131</height>
+        <height>146</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_2">
@@ -1106,8 +1134,8 @@ font: 8pt &quot;Courier&quot;;</string>
        <rect>
         <x>30</x>
         <y>170</y>
-        <width>163</width>
-        <height>61</height>
+        <width>195</width>
+        <height>65</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_4">
@@ -1136,7 +1164,7 @@ font: 8pt &quot;Courier&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>803</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

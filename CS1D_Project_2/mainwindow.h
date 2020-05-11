@@ -83,8 +83,6 @@ private slots:
 
     void on_pushButtonBFS_clicked();
 
-    void on_comboBox_activated(const QString &arg1);
-
     void on_pushButtonDFS_clicked();
 
     void on_pushButtonDFSBFS_clicked();
@@ -100,6 +98,8 @@ private slots:
     void on_pushButtonUploadNewStadiumDistances_clicked();
 
     void on_pushButtonLogoutFromAdminMaintenance_clicked();
+
+    void on_pushButtonToUserScreen_clicked();
 
 private:
     Ui::MainWindow *ui;
