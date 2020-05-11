@@ -95,6 +95,18 @@ private slots:
 
     void hideInputFieldsADMIN();
 
+    void on_pushButtonShortest_clicked();
+
+    void on_pushButtonCustom_clicked();
+
+    void on_pushButtonDodgerStadium_clicked();
+
+    void on_pushButtonMarlinsPark_clicked();
+
+    void on_pushButtonShowTeamNamesAndStadiums_clicked();
+
+    void on_pushButtonReturnToShortestTripScreen_clicked();
+
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;

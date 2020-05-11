@@ -90,6 +90,19 @@ void Graph::printAdjList()
     }
 }
 
+int Graph::findVertexIndex(QString vertex)
+{
+    for(int i = 0; i < adjList.size(); ++i)
+    {
+        if(adjList[i].name == vertex)
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
 void Graph::DFS(QString vertex)
 {
     order.clear();
@@ -178,10 +191,16 @@ void Graph::Dijkstra(QString vertex)
         }
     }
 
+    totalDistance = 0;
+
 
     for(int i = 0; i < adjList.size(); i++)
     {
-        qDebug() << "Distance from " << adjList[start].name << " to " << adjList[i].name << " is " << adjList[i].distance << endl;
+        // qDebug() << "Distance from " << adjList[start].name << " to " << adjList[i].name << " is " << adjList[i].distance << endl;
+        order.append(adjList[start].name);
+        order1.append(adjList[i].name);
+        distanceList.append(adjList[i].distance);
+        totalDistance = totalDistance + adjList[i].distance;
     }
 }
 
@@ -249,11 +268,12 @@ int Graph::MST(QString vertex)
 
 void Graph::recursiveDijkstra(QString vertex, int timesToRecurse)
 {
-    order.clear();
+    // order.clear();
     this->clearEdgeType();
     this->clearVisitedVertex();
-    order.append(vertex);
-    totalDistance = 0;
+
+    order2.append(vertex);
+    shortestDistance = 0;
     recursiveDijkstra(vertex, 1, timesToRecurse);
 
     this->clearEdgeType();
@@ -283,6 +303,16 @@ QVector<QString> Graph::getOrder1()
     return order1;
 }
 
+QVector<QString> Graph::getOrder2()
+{
+    return order2;
+}
+
+QVector<int> Graph::getDistanceList()
+{
+    return distanceList;
+}
+
 int Graph::getTotalDistance()
 {
     for (int i = 0; i < adjList.size(); ++i)
@@ -297,6 +327,11 @@ int Graph::getTotalDistance()
     }
 
     return totalDistance;
+}
+
+int Graph::getShortestDistance()
+{
+    return shortestDistance;
 }
 
 int Graph::getDistance(QString vertex)

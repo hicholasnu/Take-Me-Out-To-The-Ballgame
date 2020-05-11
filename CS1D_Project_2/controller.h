@@ -35,6 +35,7 @@ public:
 
     QSqlQueryModel *getStadiumsQueryModel(QString query);
     QSqlQueryModel *getSouvenirsQueryModel(QString query);
+    QSqlQueryModel *getTeamNamesAndStadiumsQueryModel();
 
 private:
     QSqlDatabase m_database;

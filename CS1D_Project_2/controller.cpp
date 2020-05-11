@@ -3,8 +3,8 @@
 Controller::Controller(QObject *parent) : QObject(parent) {
 
     m_database = QSqlDatabase::addDatabase("QSQLITE");
-//    QString databasePath = "C://Users//krist//Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
-    QString databasePath = "E://Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
+    QString databasePath = "C://Users//krist//Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
+    //QString databasePath = "E://Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
     m_database.setDatabaseName(databasePath);
 
     if (!m_database.open()) {
@@ -185,4 +185,24 @@ void Controller::createSouvenir(QString stadium, QString souvenir, double price)
         qry.clear();
     }
 }
+
+QSqlQueryModel *Controller::getTeamNamesAndStadiumsQueryModel() {
+
+    QSqlQueryModel* model = new QSqlQueryModel();
+    QSqlQuery qry;
+    QString query;
+
+    query = "select StadiumName, TeamName from Stadiums";
+    qry.prepare(query);
+
+    if (!qry.exec()) {
+
+        qDebug() << "not working yo";
+    }
+
+    model->setQuery(qry);
+
+    return model;
+}
+
 
