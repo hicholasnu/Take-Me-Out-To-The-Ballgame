@@ -89,8 +89,10 @@ private slots:
 
     void on_pushButtonDFS_clicked();
 
-
     void on_pushButtonDFSBFS_clicked();
+
+
+    void on_pushButtonMST_clicked();
 
 private:
     Ui::MainWindow *ui;

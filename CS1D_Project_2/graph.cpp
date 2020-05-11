@@ -185,7 +185,7 @@ void Graph::Dijkstra(QString vertex)
     }
 }
 
-
+// Using Kruskal's minimum spanning tree
 int Graph::MST(QString vertex)
 {
     Vertex u;
@@ -194,7 +194,7 @@ int Graph::MST(QString vertex)
     QVector<QString> parent(numberOfVertex);
     QVector<bool> isInMST(numberOfVertex);
 
-    //Code to set the distance array
+    // Code to set the distance array
     for(int i = 0; i < adjList.size(); i++)
     {
         adjList[i].distance = std::numeric_limits<int>::max();
@@ -232,9 +232,13 @@ int Graph::MST(QString vertex)
     for(int i = 0; i < adjList.size(); i++)
     {
         qDebug() << "Distance from " << parent[i] << " to " << adjList[i].name << " is " << adjList[i].distance << endl;
+        order.append(parent[i]);
+        order1.append(adjList[i].name);
 
         distance += adjList[i].distance;
+        // distance = getTotalDistance();
     }
+
 
     this->clearEdgeType();
     this->clearVisitedVertex();
@@ -272,6 +276,11 @@ void Graph::startSpecificRoute(QString vertex, int timesToRecurse)
 QVector<QString> Graph::getOrder()
 {
     return order;
+}
+
+QVector<QString> Graph::getOrder1()
+{
+    return order1;
 }
 
 int Graph::getTotalDistance()

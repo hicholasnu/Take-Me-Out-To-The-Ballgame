@@ -519,3 +519,25 @@ void MainWindow::on_pushButtonDFSBFS_clicked()
     ui->comboBox->setModel(m_controller->getStadiumsQueryModel("select DISTINCT [Originated Stadium] from [Stadium Distances];"));
 
 }
+
+
+void MainWindow::on_pushButtonMST_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->TripScreen);
+    ui->textBrowser->clear();
+
+    graph.loadGraph(graph);
+    int distance = graph.MST("Angel Stadium");
+
+    QVector<QString> start = graph.getOrder();
+    QVector<QString> destination = graph.getOrder1();
+
+    ui->textBrowser->append("PERFORMING MST");
+    for(int i = 1; i < start.size(); ++i)
+    {
+        ui->textBrowser->append(start[i] + " to " + destination[i]);
+
+    }
+
+    ui->labelTotalDistance->setNum(distance);
+}

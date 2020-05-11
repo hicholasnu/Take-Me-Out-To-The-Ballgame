@@ -67,6 +67,8 @@ public:
 
     QVector<QString> getOrder();
 
+    QVector<QString> getOrder1();
+
     int getTotalDistance();
 
     int getDistance(QString vertex);
@@ -81,6 +83,7 @@ public:
     int totalDistance;
     int location;
     QVector<QString> order;
+    QVector<QString> order1;
 
 protected:
 
