@@ -677,6 +677,45 @@ font: 8pt &quot;Courier&quot;;</string>
        <string>Logout</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="pushButtonDFSBFS">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>490</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>dfs/bfs/mst</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonShortest">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>490</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Shortest Trip</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonCustom">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>490</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Custom Trip</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="DFSBFSMSTScreen">
      <widget class="QLabel" name="label">
@@ -796,6 +835,163 @@ font: 8pt &quot;Courier&quot;;</string>
        </item>
       </layout>
      </widget>
+    </widget>
+    <widget class="QWidget" name="ShortestTripScreen">
+     <widget class="QTextBrowser" name="textBrowser_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>381</width>
+        <height>491</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonDodgerStadium">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>80</y>
+        <width>191</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Dodger Stadium</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_2">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>140</y>
+        <width>191</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>90</y>
+        <width>55</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Start:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>140</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Destination:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonMarlinsPark">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>260</y>
+        <width>171</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Marlins Park</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>450</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Total Distance:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelTotalDistance_2">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>440</y>
+        <width>161</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonShowTeamNamesAndStadiums">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>30</y>
+        <width>181</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Team Names / Stadiums List</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="TeamNamesAndStadiumsInfoScreen">
+     <widget class="QTableView" name="tableViewTeamNamesAndStadiums">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>30</y>
+        <width>511</width>
+        <height>471</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonReturnToShortestTripScreen">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>40</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Return</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="AdminMaintenanceScreen">
+     <widget class="QLabel" name="labelMaintenanceScreenTitle">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>80</y>
+        <width>128</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Administrator Maintenance</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonChangeToSouvenirs">
      <widget class="QPushButton" name="pushButtonReturnFromDFSBFSMST">
       <property name="geometry">
        <rect>

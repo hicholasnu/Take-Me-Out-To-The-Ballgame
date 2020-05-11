@@ -42,9 +42,11 @@ public:
 
     QSqlQueryModel *getStadiumsQueryModel(QString query);
     QSqlQueryModel *getSouvenirsQueryModel(QString query);
+    QSqlQueryModel *getTeamNamesAndStadiumsQueryModel();
     QSqlQueryModel *getStadiumDistancesQueryModel();
 
     QVector<QString> customTripList;
+
 
 private:
     QSqlDatabase m_database;

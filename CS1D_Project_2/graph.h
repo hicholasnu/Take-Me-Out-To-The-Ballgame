@@ -53,6 +53,8 @@ public:
 
     void printAdjList();
 
+    int findVertexIndex(QString vertex);
+
     void DFS(QString vertex);
 
     void BFS(QString vertex);
@@ -69,7 +71,13 @@ public:
 
     QVector<QString> getOrder1();
 
+    QVector<QString> getOrder2();
+
+    QVector<int> getDistanceList();
+
     int getTotalDistance();
+
+    int getShortestDistance();
 
     int getDistance(QString vertex);
 
@@ -81,9 +89,12 @@ public:
     int numberOfVertex;
     QVector<Vertex> adjList;
     int totalDistance;
+    int shortestDistance;
     int location;
     QVector<QString> order;
     QVector<QString> order1;
+    QVector<QString> order2;
+    QVector<int> distanceList;
 
 protected:
 
@@ -116,18 +127,6 @@ protected:
          return index;
     }
 
-    int findVertexIndex(QString vertex)
-    {
-        for(int i = 0; i < adjList.size(); ++i)
-        {
-            if(adjList[i].name == vertex)
-            {
-                return i;
-            }
-        }
-
-        return -1;
-    }
 
     bool checkAvailableVertices(QString vertex)
     {
@@ -289,12 +288,12 @@ protected:
         {
             Dijkstra(vertex);
             location = findSmallest();
-            totalDistance += adjList[location].distance;
+            shortestDistance += adjList[location].distance;
             qDebug() << "Closest Stadium: " << adjList[location].name;
-            order.append(adjList[location].name);
-            recursiveDijkstra(adjList[location].name, position+1, length);
+            order2.append(adjList[location].name);
+            recursiveDijkstra(adjList[location].name, position + 1, length);
         }
-        qDebug() << totalDistance;
+        qDebug() << shortestDistance;
     }
 
 

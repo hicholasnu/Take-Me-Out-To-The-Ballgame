@@ -3,9 +3,13 @@
 Controller::Controller(QObject *parent) : QObject(parent) {
 
     m_database = QSqlDatabase::addDatabase("QSQLITE");
+
+    QString databasePath = "C://Users//krist//Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
+//    QString databasePath = "E://Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db
 //    QString databasePath = "C://Users//krist//Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
-    QString databasePath = "C://Users//Nicholas//Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
+//    QString databasePath = "C://Users//Nicholas//Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
 //    QString databasePath = "E://Documents//GitHub//Take-Me-Out-To-The-Ballgame//Stadiums.db";
+
     m_database.setDatabaseName(databasePath);
 
     if (!m_database.open()) {
@@ -187,6 +191,26 @@ void Controller::createSouvenir(QString stadium, QString souvenir, double price)
     }
 }
 
+
+QSqlQueryModel *Controller::getTeamNamesAndStadiumsQueryModel() {
+
+    QSqlQueryModel* model = new QSqlQueryModel();
+    QSqlQuery qry;
+    QString query;
+
+    query = "select StadiumName, TeamName from Stadiums";
+    
+    qry.prepare(query);
+    
+    if (!qry.exec()) {
+     
+      qDebug() << "Something's wrong!";
+    }
+    
+    model->setQuery(qry);
+    return model;
+}
+
 void Controller::editStadium(QString stadiumName, QString seatingCapacity, QString location, QString playingSurface, QString teamName, QString league, QString dateOpened, QString distanceToCenterField, QString ballparkTypology, QString roofType)
 {
     QSqlQuery qry;
@@ -365,9 +389,15 @@ QSqlQueryModel *Controller::getStadiumDistancesQueryModel() {
 
 }
 
+
+
+
+}
+
 void Controller::customTrip() {
 
     QVector<StadiumToVisit>* stadiums = new QVector<StadiumToVisit>;
 
 
 }
+

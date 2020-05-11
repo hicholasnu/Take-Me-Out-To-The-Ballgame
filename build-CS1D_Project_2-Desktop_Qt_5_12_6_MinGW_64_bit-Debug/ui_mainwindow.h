@@ -76,7 +76,8 @@ public:
     QLabel *labelAdditionalInfo;
     QPushButton *pushButtonUserLogout;
     QPushButton *pushButtonDFSBFS;
-    QPushButton *pushButtonMST;
+    QPushButton *pushButtonShortest;
+    QPushButton *pushButtonCustom;
     QWidget *TripScreen;
     QLabel *label;
     QLabel *labelTotalDistance;
@@ -86,6 +87,20 @@ public:
     QVBoxLayout *verticalLayout;
     QPushButton *pushButtonDFS;
     QPushButton *pushButtonBFS;
+    QPushButton *pushButtonMST_2;
+    QWidget *ShortestTripScreen;
+    QTextBrowser *textBrowser_2;
+    QPushButton *pushButtonDodgerStadium;
+    QComboBox *comboBox_2;
+    QLabel *label_2;
+    QLabel *label_3;
+    QPushButton *pushButtonMarlinsPark;
+    QLabel *label_4;
+    QLabel *labelTotalDistance_2;
+    QPushButton *pushButtonShowTeamNamesAndStadiums;
+    QWidget *TeamNamesAndStadiumsInfoScreen;
+    QTableView *tableViewTeamNamesAndStadiums;
+    QPushButton *pushButtonReturnToShortestTripScreen;
     QWidget *AdminMaintenanceScreen;
     QLabel *labelMaintenanceScreenTitle;
     QPushButton *pushButtonChangeToSouvenirs;
@@ -109,11 +124,13 @@ public:
     QTableView *tableViewAllStadiumsADMIN;
     QPushButton *pushButtonResetAllStadiumsTableADMIN;
     QComboBox *comboBoxChooseTeamNameADMIN;
-    QLineEdit *lineEditEditData;
-    QLabel *labelSelectedData;
     QPushButton *pushButtonEditData;
-    QSpinBox *spinBoxEditData;
-    QLabel *label1;
+    QComboBox *comboBoxChooseFieldToEdit;
+    QLabel *labelChooseFieldToEdit;
+    QLabel *labelCurrentData;
+    QLabel *labelShowCurrentData;
+    QLineEdit *lineEditInputStringData;
+    QSpinBox *spinBoxInputIntData;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -373,10 +390,13 @@ public:
         pushButtonUserLogout->setFont(font4);
         pushButtonDFSBFS = new QPushButton(UserScreen);
         pushButtonDFSBFS->setObjectName(QString::fromUtf8("pushButtonDFSBFS"));
-        pushButtonDFSBFS->setGeometry(QRect(270, 490, 93, 28));
-        pushButtonMST = new QPushButton(UserScreen);
-        pushButtonMST->setObjectName(QString::fromUtf8("pushButtonMST"));
-        pushButtonMST->setGeometry(QRect(390, 490, 93, 28));
+        pushButtonDFSBFS->setGeometry(QRect(70, 490, 93, 28));
+        pushButtonShortest = new QPushButton(UserScreen);
+        pushButtonShortest->setObjectName(QString::fromUtf8("pushButtonShortest"));
+        pushButtonShortest->setGeometry(QRect(190, 490, 93, 28));
+        pushButtonCustom = new QPushButton(UserScreen);
+        pushButtonCustom->setObjectName(QString::fromUtf8("pushButtonCustom"));
+        pushButtonCustom->setGeometry(QRect(320, 490, 93, 28));
         stackedWidget->addWidget(UserScreen);
         TripScreen = new QWidget();
         TripScreen->setObjectName(QString::fromUtf8("TripScreen"));
@@ -409,7 +429,52 @@ public:
 
         verticalLayout->addWidget(pushButtonBFS);
 
+        pushButtonMST_2 = new QPushButton(verticalLayoutWidget);
+        pushButtonMST_2->setObjectName(QString::fromUtf8("pushButtonMST_2"));
+
+        verticalLayout->addWidget(pushButtonMST_2);
+
         stackedWidget->addWidget(TripScreen);
+        ShortestTripScreen = new QWidget();
+        ShortestTripScreen->setObjectName(QString::fromUtf8("ShortestTripScreen"));
+        textBrowser_2 = new QTextBrowser(ShortestTripScreen);
+        textBrowser_2->setObjectName(QString::fromUtf8("textBrowser_2"));
+        textBrowser_2->setGeometry(QRect(20, 20, 381, 491));
+        pushButtonDodgerStadium = new QPushButton(ShortestTripScreen);
+        pushButtonDodgerStadium->setObjectName(QString::fromUtf8("pushButtonDodgerStadium"));
+        pushButtonDodgerStadium->setGeometry(QRect(520, 80, 191, 28));
+        comboBox_2 = new QComboBox(ShortestTripScreen);
+        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+        comboBox_2->setGeometry(QRect(520, 140, 191, 22));
+        label_2 = new QLabel(ShortestTripScreen);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(430, 90, 55, 16));
+        label_3 = new QLabel(ShortestTripScreen);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setGeometry(QRect(430, 140, 71, 20));
+        pushButtonMarlinsPark = new QPushButton(ShortestTripScreen);
+        pushButtonMarlinsPark->setObjectName(QString::fromUtf8("pushButtonMarlinsPark"));
+        pushButtonMarlinsPark->setGeometry(QRect(520, 260, 171, 28));
+        label_4 = new QLabel(ShortestTripScreen);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setGeometry(QRect(440, 450, 91, 16));
+        labelTotalDistance_2 = new QLabel(ShortestTripScreen);
+        labelTotalDistance_2->setObjectName(QString::fromUtf8("labelTotalDistance_2"));
+        labelTotalDistance_2->setGeometry(QRect(540, 440, 161, 31));
+        labelTotalDistance_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        pushButtonShowTeamNamesAndStadiums = new QPushButton(ShortestTripScreen);
+        pushButtonShowTeamNamesAndStadiums->setObjectName(QString::fromUtf8("pushButtonShowTeamNamesAndStadiums"));
+        pushButtonShowTeamNamesAndStadiums->setGeometry(QRect(520, 30, 181, 28));
+        stackedWidget->addWidget(ShortestTripScreen);
+        TeamNamesAndStadiumsInfoScreen = new QWidget();
+        TeamNamesAndStadiumsInfoScreen->setObjectName(QString::fromUtf8("TeamNamesAndStadiumsInfoScreen"));
+        tableViewTeamNamesAndStadiums = new QTableView(TeamNamesAndStadiumsInfoScreen);
+        tableViewTeamNamesAndStadiums->setObjectName(QString::fromUtf8("tableViewTeamNamesAndStadiums"));
+        tableViewTeamNamesAndStadiums->setGeometry(QRect(30, 30, 511, 471));
+        pushButtonReturnToShortestTripScreen = new QPushButton(TeamNamesAndStadiumsInfoScreen);
+        pushButtonReturnToShortestTripScreen->setObjectName(QString::fromUtf8("pushButtonReturnToShortestTripScreen"));
+        pushButtonReturnToShortestTripScreen->setGeometry(QRect(610, 40, 93, 28));
+        stackedWidget->addWidget(TeamNamesAndStadiumsInfoScreen);
         AdminMaintenanceScreen = new QWidget();
         AdminMaintenanceScreen->setObjectName(QString::fromUtf8("AdminMaintenanceScreen"));
         labelMaintenanceScreenTitle = new QLabel(AdminMaintenanceScreen);
@@ -481,27 +546,41 @@ public:
         tableViewAllStadiumsADMIN->setGeometry(QRect(30, 60, 701, 101));
         pushButtonResetAllStadiumsTableADMIN = new QPushButton(AdminStadiumScreen);
         pushButtonResetAllStadiumsTableADMIN->setObjectName(QString::fromUtf8("pushButtonResetAllStadiumsTableADMIN"));
-        pushButtonResetAllStadiumsTableADMIN->setGeometry(QRect(30, 380, 75, 23));
+        pushButtonResetAllStadiumsTableADMIN->setGeometry(QRect(650, 170, 75, 23));
         comboBoxChooseTeamNameADMIN = new QComboBox(AdminStadiumScreen);
         comboBoxChooseTeamNameADMIN->setObjectName(QString::fromUtf8("comboBoxChooseTeamNameADMIN"));
         comboBoxChooseTeamNameADMIN->setGeometry(QRect(30, 20, 271, 22));
-        lineEditEditData = new QLineEdit(AdminStadiumScreen);
-        lineEditEditData->setObjectName(QString::fromUtf8("lineEditEditData"));
-        lineEditEditData->setGeometry(QRect(40, 250, 281, 21));
-        lineEditEditData->setClearButtonEnabled(false);
-        labelSelectedData = new QLabel(AdminStadiumScreen);
-        labelSelectedData->setObjectName(QString::fromUtf8("labelSelectedData"));
-        labelSelectedData->setGeometry(QRect(40, 220, 281, 16));
         pushButtonEditData = new QPushButton(AdminStadiumScreen);
         pushButtonEditData->setObjectName(QString::fromUtf8("pushButtonEditData"));
-        pushButtonEditData->setGeometry(QRect(40, 290, 93, 28));
-        spinBoxEditData = new QSpinBox(AdminStadiumScreen);
-        spinBoxEditData->setObjectName(QString::fromUtf8("spinBoxEditData"));
-        spinBoxEditData->setEnabled(true);
-        spinBoxEditData->setGeometry(QRect(40, 250, 141, 22));
-        label1 = new QLabel(AdminStadiumScreen);
-        label1->setObjectName(QString::fromUtf8("label1"));
-        label1->setGeometry(QRect(40, 190, 141, 16));
+        pushButtonEditData->setGeometry(QRect(490, 440, 93, 28));
+        comboBoxChooseFieldToEdit = new QComboBox(AdminStadiumScreen);
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->setObjectName(QString::fromUtf8("comboBoxChooseFieldToEdit"));
+        comboBoxChooseFieldToEdit->setGeometry(QRect(40, 220, 131, 22));
+        labelChooseFieldToEdit = new QLabel(AdminStadiumScreen);
+        labelChooseFieldToEdit->setObjectName(QString::fromUtf8("labelChooseFieldToEdit"));
+        labelChooseFieldToEdit->setGeometry(QRect(40, 200, 121, 16));
+        labelCurrentData = new QLabel(AdminStadiumScreen);
+        labelCurrentData->setObjectName(QString::fromUtf8("labelCurrentData"));
+        labelCurrentData->setGeometry(QRect(290, 220, 71, 16));
+        labelShowCurrentData = new QLabel(AdminStadiumScreen);
+        labelShowCurrentData->setObjectName(QString::fromUtf8("labelShowCurrentData"));
+        labelShowCurrentData->setGeometry(QRect(370, 220, 241, 21));
+        labelShowCurrentData->setFrameShape(QFrame::Box);
+        lineEditInputStringData = new QLineEdit(AdminStadiumScreen);
+        lineEditInputStringData->setObjectName(QString::fromUtf8("lineEditInputStringData"));
+        lineEditInputStringData->setGeometry(QRect(370, 250, 241, 20));
+        spinBoxInputIntData = new QSpinBox(AdminStadiumScreen);
+        spinBoxInputIntData->setObjectName(QString::fromUtf8("spinBoxInputIntData"));
+        spinBoxInputIntData->setGeometry(QRect(370, 250, 42, 22));
         stackedWidget->addWidget(AdminStadiumScreen);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -514,7 +593,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(3);
         pushButtonResetLogin->setDefault(false);
 
 
@@ -552,12 +631,22 @@ public:
         pushButtonResetStadiumsTable->setText(QString());
         labelAdditionalInfo->setText(QString());
         pushButtonUserLogout->setText(QApplication::translate("MainWindow", "Logout", nullptr));
-        pushButtonDFSBFS->setText(QApplication::translate("MainWindow", "dfs/bfs", nullptr));
-        pushButtonMST->setText(QApplication::translate("MainWindow", "MST", nullptr));
+        pushButtonDFSBFS->setText(QApplication::translate("MainWindow", "dfs/bfs/mst", nullptr));
+        pushButtonShortest->setText(QApplication::translate("MainWindow", "Shortest Trip", nullptr));
+        pushButtonCustom->setText(QApplication::translate("MainWindow", "Custom Trip", nullptr));
         label->setText(QApplication::translate("MainWindow", "Total Distance", nullptr));
         labelTotalDistance->setText(QString());
         pushButtonDFS->setText(QApplication::translate("MainWindow", "DFS", nullptr));
         pushButtonBFS->setText(QApplication::translate("MainWindow", "BFS", nullptr));
+        pushButtonMST_2->setText(QApplication::translate("MainWindow", "MST", nullptr));
+        pushButtonDodgerStadium->setText(QApplication::translate("MainWindow", "Dodger Stadium", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "Start:", nullptr));
+        label_3->setText(QApplication::translate("MainWindow", "Destination:", nullptr));
+        pushButtonMarlinsPark->setText(QApplication::translate("MainWindow", "Marlins Park", nullptr));
+        label_4->setText(QApplication::translate("MainWindow", "Total Distance:", nullptr));
+        labelTotalDistance_2->setText(QString());
+        pushButtonShowTeamNamesAndStadiums->setText(QApplication::translate("MainWindow", "Team Names / Stadiums List", nullptr));
+        pushButtonReturnToShortestTripScreen->setText(QApplication::translate("MainWindow", "Return", nullptr));
         labelMaintenanceScreenTitle->setText(QApplication::translate("MainWindow", "Administrator Maintenance", nullptr));
         pushButtonChangeToSouvenirs->setText(QApplication::translate("MainWindow", "Souvenirs", nullptr));
         pushButtonChangeToStadiums->setText(QApplication::translate("MainWindow", "Stadiums", nullptr));
@@ -571,9 +660,20 @@ public:
         pushButtonReturnToMaintenanceScreen->setText(QApplication::translate("MainWindow", "Return", nullptr));
         pushButtonReturnToMaintenanceScreen_2->setText(QApplication::translate("MainWindow", "Return", nullptr));
         pushButtonResetAllStadiumsTableADMIN->setText(QApplication::translate("MainWindow", "Reset", nullptr));
-        labelSelectedData->setText(QApplication::translate("MainWindow", "No Data Selected!", nullptr));
         pushButtonEditData->setText(QApplication::translate("MainWindow", "Edit", nullptr));
-        label1->setText(QApplication::translate("MainWindow", "Data To Change:", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(0, QApplication::translate("MainWindow", "StadiumName", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(1, QApplication::translate("MainWindow", "SeatingCapacity", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(2, QApplication::translate("MainWindow", "Location", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(3, QApplication::translate("MainWindow", "PlayingSurface", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(4, QApplication::translate("MainWindow", "League", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(5, QApplication::translate("MainWindow", "DateOpened", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(6, QApplication::translate("MainWindow", "DistanceToCenter", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(7, QApplication::translate("MainWindow", "BallParkTypology", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(8, QApplication::translate("MainWindow", "RoofType", nullptr));
+
+        labelChooseFieldToEdit->setText(QApplication::translate("MainWindow", "Choose field to edit", nullptr));
+        labelCurrentData->setText(QApplication::translate("MainWindow", "Current Data:", nullptr));
+        labelShowCurrentData->setText(QApplication::translate("MainWindow", "No Data Selected!", nullptr));
     } // retranslateUi
 
 };
@@ -585,4 +685,3 @@ namespace Ui {
 QT_END_NAMESPACE
 
 #endif // UI_MAINWINDOW_H
-

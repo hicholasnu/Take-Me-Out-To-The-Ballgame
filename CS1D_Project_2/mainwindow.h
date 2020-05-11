@@ -89,6 +89,18 @@ private slots:
 
     void hideInputFieldsADMIN();
 
+    void on_pushButtonShortest_clicked();
+
+    void on_pushButtonCustom_clicked();
+
+    void on_pushButtonDodgerStadium_clicked();
+
+    void on_pushButtonMarlinsPark_clicked();
+
+    void on_pushButtonShowTeamNamesAndStadiums_clicked();
+
+    void on_pushButtonReturnToShortestTripScreen_clicked();
+
     void on_pushButtonUploadNewStadium_clicked();
 
     void on_pushButtonReturnFromDFSBFSMST_clicked();
@@ -117,6 +129,7 @@ private slots:
     void on_pushButtonResetDisplaySelectedTrip_clicked();
 
     void on_pushButtonCreateCustomDirectTrip_clicked();
+
 
 private:
     Ui::MainWindow *ui;

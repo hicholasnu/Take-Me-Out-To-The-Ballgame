@@ -578,6 +578,84 @@ void MainWindow::on_pushButtonMST_2_clicked()
     ui->labelTotalDistance->setNum(distance);
 }
 
+
+
+void MainWindow::on_pushButtonShortest_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->ShortestTripScreen);
+    ui->comboBox_2->setModel(m_controller->getStadiumsQueryModel("select DISTINCT [Originated Stadium] from [Stadium Distances];"));
+}
+
+void MainWindow::on_pushButtonCustom_clicked()
+{
+
+}
+
+void MainWindow::on_pushButtonDodgerStadium_clicked()
+{
+    ui->textBrowser_2->clear();
+    ui->labelTotalDistance_2->clear();
+
+    graph.loadGraph(graph);
+
+    graph.Dijkstra("Dodger Stadium");
+
+    QVector<QString> parent = graph.getOrder();
+    QVector<QString> destination = graph.getOrder1();
+    QVector<int> distance = graph.getDistanceList();
+
+    int idx = graph.findVertexIndex(ui->comboBox_2->currentText());
+
+    ui->textBrowser_2->append(parent[idx] + " to " + destination[idx]);
+
+    ui->labelTotalDistance_2->setNum(distance[idx]);
+}
+
+void MainWindow::on_pushButtonMarlinsPark_clicked()
+{
+    ui->textBrowser_2->clear();
+    ui->labelTotalDistance_2->clear();
+
+    graph.nameVector.clear();
+    graph.resetDistance();
+
+    graph.loadGraph(graph);
+
+    graph.nameVector.push_back("Marlins Park");
+    for(int i = 0; i < ui->comboBox_2->count(); i++)
+    {
+        if (ui->comboBox_2->itemText(i) != "Marlins Park")
+        {
+            graph.nameVector.push_back(ui->comboBox_2->itemText(i));
+        }
+    }
+
+    graph.recursiveDijkstra("Marlins Park", ui->comboBox_2->count());
+
+    QVector<QString> list = graph.getOrder2();
+
+    for (int j = 0; j < list.size(); j++)
+    {
+        ui->textBrowser_2->append(list[j]);
+    }
+
+    ui->labelTotalDistance_2->setNum(graph.getShortestDistance());
+
+    list.clear();
+}
+
+void MainWindow::on_pushButtonShowTeamNamesAndStadiums_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->TeamNamesAndStadiumsInfoScreen);
+    ui->tableViewTeamNamesAndStadiums->setModel(m_controller->getTeamNamesAndStadiumsQueryModel());
+    ui->tableViewTeamNamesAndStadiums->resizeColumnsToContents();
+}
+
+void MainWindow::on_pushButtonReturnToShortestTripScreen_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->ShortestTripScreen);
+}
+
 void MainWindow::on_pushButtonUploadNewStadium_clicked()
 {
     m_controller->uploadStadiumFile();
@@ -640,5 +718,5 @@ void MainWindow::on_pushButtonCreateCustomDirectTrip_clicked()
      }
 
     ui->labelShowTotalDistanceFromDirectTrip->setText(QString::number(totalDistance));
-    ui->textBrowser->
+    // ui->textBrowser->
 }

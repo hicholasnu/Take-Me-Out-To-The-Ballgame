@@ -742,6 +742,10 @@ debug/moc_mainwindow.cpp: ../CS1D_Project_2/mainwindow.h \
 		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QTableWidgetItem \
 		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qtablewidget.h \
 		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qtableview.h \
+		../CS1D_Project_2/graph.h \
+		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtCore/QString \
+		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtCore/QVector \
+		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtCore/QDebug \
 		debug/moc_predefs.h \
 		../../../../Desktop/QT/5.12.6/mingw73_64/bin/moc.exe
 	C:\Users\krist\Desktop\QT\5.12.6\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/krist/Documents/GitHub/Take-Me-Out-To-The-Ballgame/build-CS1D_Project_2-Desktop_Qt_5_12_6_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Users/krist/Desktop/QT/5.12.6/mingw73_64/mkspecs/win32-g++ -IC:/Users/krist/Documents/GitHub/Take-Me-Out-To-The-Ballgame/CS1D_Project_2 -IC:/Users/krist/Desktop/QT/5.12.6/mingw73_64/include -IC:/Users/krist/Desktop/QT/5.12.6/mingw73_64/include/QtWidgets -IC:/Users/krist/Desktop/QT/5.12.6/mingw73_64/include/QtGui -IC:/Users/krist/Desktop/QT/5.12.6/mingw73_64/include/QtANGLE -IC:/Users/krist/Desktop/QT/5.12.6/mingw73_64/include/QtSql -IC:/Users/krist/Desktop/QT/5.12.6/mingw73_64/include/QtCore -I. -IC:/Users/krist/Desktop/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Users/krist/Desktop/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Users/krist/Desktop/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Users/krist/Desktop/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Users/krist/Desktop/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Users/krist/Desktop/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\CS1D_Project_2\mainwindow.h -o debug\moc_mainwindow.cpp
@@ -1460,6 +1464,10 @@ debug/main.o: ../CS1D_Project_2/main.cpp ../CS1D_Project_2/mainwindow.h \
 		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QTableWidgetItem \
 		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qtablewidget.h \
 		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qtableview.h \
+		../CS1D_Project_2/graph.h \
+		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtCore/QString \
+		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtCore/QVector \
+		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtCore/QDebug \
 		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QApplication \
 		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qapplication.h \
 		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qdesktopwidget.h \
@@ -1747,47 +1755,11 @@ debug/mainwindow.o: ../CS1D_Project_2/mainwindow.cpp ../CS1D_Project_2/mainwindo
 		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QTableWidgetItem \
 		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qtablewidget.h \
 		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qtableview.h \
-		ui_mainwindow.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtCore/QVariant \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QApplication \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qapplication.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtGui/qguiapplication.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtGui/qinputmethod.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QComboBox \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QFormLayout \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qformlayout.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QLayout \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QGridLayout \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QHeaderView \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qheaderview.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QLabel \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qlabel.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QLineEdit \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qlineedit.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtGui/qtextcursor.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtGui/qtextformat.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtGui/qpen.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtGui/qtextoption.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QMenuBar \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qmenubar.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qmenu.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qaction.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qactiongroup.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QPushButton \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qpushbutton.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QStackedWidget \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qstackedwidget.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QStatusBar \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/qstatusbar.h \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QTableView \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QTableWidget \
-		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtWidgets/QWidget
+		../CS1D_Project_2/graph.h \
+		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtCore/QString \
+		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtCore/QVector \
+		../../../../Desktop/QT/5.12.6/mingw73_64/include/QtCore/QDebug \
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\CS1D_Project_2\mainwindow.cpp
 
 debug/moc_controller.o: debug/moc_controller.cpp 
