@@ -148,6 +148,7 @@ void MainWindow::on_pushButtonToDFSBFSMSTScreen_clicked()
 void MainWindow::on_pushButtonToShortestTripScreen_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->ShortestTripScreen);
+    ui->comboBoxShortestPath->setModel(m_controller->getStadiumsQueryModel("select DISTINCT [Originated Stadium] from [Stadium Distances];"));
 }
 
 void MainWindow::on_pushButtonToCustomTripScreen_clicked()
@@ -640,5 +641,58 @@ void MainWindow::on_pushButtonCreateCustomDirectTrip_clicked()
      }
 
     ui->labelShowTotalDistanceFromDirectTrip->setText(QString::number(totalDistance));
-    ui->textBrowser->
+    // ui->textBrowser->
+}
+
+void MainWindow::on_pushButtonDodgerStadium_clicked()
+{
+    ui->textBrowserShortestPath->clear();
+    ui->labelShorestDistance->clear();
+
+    graph.loadGraph(graph);
+
+    graph.Dijkstra("Dodger Stadium");
+
+    QVector<QString> parent = graph.getOrder();
+    QVector<QString> destination = graph.getOrder1();
+    QVector<int> distance = graph.getDistanceList();
+
+    int idx = graph.findVertexIndex(ui->comboBoxShortestPath->currentText());
+
+    ui->textBrowserShortestPath->append(parent[idx] + " to " + destination[idx]);
+
+    ui->labelShorestDistance->setNum(distance[idx]);
+}
+
+void MainWindow::on_pushButtonMarlinsPark_clicked()
+{
+    ui->textBrowserShortestPath->clear();
+       ui->labelShorestDistance->clear();
+
+       graph.nameVector.clear();
+       graph.resetDistance();
+
+       graph.loadGraph(graph);
+
+       graph.nameVector.push_back("Marlins Park");
+       for(int i = 0; i < ui->comboBoxShortestPath->count(); i++)
+       {
+           if (ui->comboBoxShortestPath->itemText(i) != "Marlins Park")
+           {
+               graph.nameVector.push_back(ui->comboBoxShortestPath->itemText(i));
+           }
+       }
+
+       graph.recursiveDijkstra("Marlins Park", ui->comboBoxShortestPath->count());
+
+       QVector<QString> list = graph.getOrder2();
+
+       for (int j = 0; j < list.size(); j++)
+       {
+           ui->textBrowserShortestPath->append(list[j]);
+       }
+
+       ui->labelShorestDistance->setNum(graph.getShortestDistance());
+
+       list.clear();
 }

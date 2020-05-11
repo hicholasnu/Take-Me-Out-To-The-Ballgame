@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[42];
-    char stringdata0[1301];
+    QByteArrayData data[56];
+    char stringdata0[1898];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -66,13 +66,27 @@ QT_MOC_LITERAL(31, 941, 38), // "on_pushButtonChangeToSouvenir..."
 QT_MOC_LITERAL(32, 980, 37), // "on_pushButtonChangeToStadiums..."
 QT_MOC_LITERAL(33, 1018, 47), // "on_pushButtonResetAllStadiums..."
 QT_MOC_LITERAL(34, 1066, 40), // "on_comboBoxChooseTeamNameADMI..."
-QT_MOC_LITERAL(35, 1107, 38), // "on_tableViewAllStadiumsADMIN_..."
-QT_MOC_LITERAL(36, 1146, 29), // "on_pushButtonEditData_clicked"
-QT_MOC_LITERAL(37, 1176, 24), // "on_pushButtonBFS_clicked"
-QT_MOC_LITERAL(38, 1201, 21), // "on_comboBox_activated"
-QT_MOC_LITERAL(39, 1223, 24), // "on_pushButtonDFS_clicked"
-QT_MOC_LITERAL(40, 1248, 27), // "on_pushButtonDFSBFS_clicked"
-QT_MOC_LITERAL(41, 1276, 24) // "on_pushButtonMST_clicked"
+QT_MOC_LITERAL(35, 1107, 29), // "on_pushButtonEditData_clicked"
+QT_MOC_LITERAL(36, 1137, 24), // "on_pushButtonBFS_clicked"
+QT_MOC_LITERAL(37, 1162, 24), // "on_pushButtonDFS_clicked"
+QT_MOC_LITERAL(38, 1187, 26), // "on_pushButtonMST_2_clicked"
+QT_MOC_LITERAL(39, 1214, 20), // "hideInputFieldsADMIN"
+QT_MOC_LITERAL(40, 1235, 37), // "on_pushButtonUploadNewStadium..."
+QT_MOC_LITERAL(41, 1273, 40), // "on_pushButtonReturnFromDFSBFS..."
+QT_MOC_LITERAL(42, 1314, 46), // "on_pushButtonUploadNewStadium..."
+QT_MOC_LITERAL(43, 1361, 47), // "on_pushButtonLogoutFromAdminM..."
+QT_MOC_LITERAL(44, 1409, 33), // "on_pushButtonToUserScreen_cli..."
+QT_MOC_LITERAL(45, 1443, 49), // "on_pushButtonReturnFromShorte..."
+QT_MOC_LITERAL(46, 1493, 47), // "on_pushButtonReturnFromCustom..."
+QT_MOC_LITERAL(47, 1541, 44), // "on_pushButtonLogoutFromUserSe..."
+QT_MOC_LITERAL(48, 1586, 38), // "on_pushButtonToDFSBFSMSTScree..."
+QT_MOC_LITERAL(49, 1625, 41), // "on_pushButtonToShortestTripSc..."
+QT_MOC_LITERAL(50, 1667, 39), // "on_pushButtonToCustomTripScre..."
+QT_MOC_LITERAL(51, 1707, 32), // "on_tableViewCustomTrip_activated"
+QT_MOC_LITERAL(52, 1740, 45), // "on_pushButtonResetDisplaySele..."
+QT_MOC_LITERAL(53, 1786, 43), // "on_pushButtonCreateCustomDire..."
+QT_MOC_LITERAL(54, 1830, 34), // "on_pushButtonDodgerStadium_cl..."
+QT_MOC_LITERAL(55, 1865, 32) // "on_pushButtonMarlinsPark_clicked"
 
     },
     "MainWindow\0on_pushButtonLogin_clicked\0"
@@ -103,12 +117,27 @@ QT_MOC_LITERAL(41, 1276, 24) // "on_pushButtonMST_clicked"
     "on_pushButtonChangeToStadiums_clicked\0"
     "on_pushButtonResetAllStadiumsTableADMIN_clicked\0"
     "on_comboBoxChooseTeamNameADMIN_activated\0"
-    "on_tableViewAllStadiumsADMIN_activated\0"
     "on_pushButtonEditData_clicked\0"
-    "on_pushButtonBFS_clicked\0on_comboBox_activated\0"
+    "on_pushButtonBFS_clicked\0"
     "on_pushButtonDFS_clicked\0"
-    "on_pushButtonDFSBFS_clicked\0"
-    "on_pushButtonMST_clicked"
+    "on_pushButtonMST_2_clicked\0"
+    "hideInputFieldsADMIN\0"
+    "on_pushButtonUploadNewStadium_clicked\0"
+    "on_pushButtonReturnFromDFSBFSMST_clicked\0"
+    "on_pushButtonUploadNewStadiumDistances_clicked\0"
+    "on_pushButtonLogoutFromAdminMaintenance_clicked\0"
+    "on_pushButtonToUserScreen_clicked\0"
+    "on_pushButtonReturnFromShortestTripScreen_clicked\0"
+    "on_pushButtonReturnFromCustomTripScreen_clicked\0"
+    "on_pushButtonLogoutFromUserSelection_clicked\0"
+    "on_pushButtonToDFSBFSMSTScreen_clicked\0"
+    "on_pushButtonToShortestTripScreen_clicked\0"
+    "on_pushButtonToCustomTripScreen_clicked\0"
+    "on_tableViewCustomTrip_activated\0"
+    "on_pushButtonResetDisplaySelectedTrip_clicked\0"
+    "on_pushButtonCreateCustomDirectTrip_clicked\0"
+    "on_pushButtonDodgerStadium_clicked\0"
+    "on_pushButtonMarlinsPark_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -118,7 +147,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      36,   14, // methods
+      50,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -126,42 +155,56 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  194,    2, 0x08 /* Private */,
-       3,    0,  195,    2, 0x08 /* Private */,
-       4,    1,  196,    2, 0x08 /* Private */,
-       6,    0,  199,    2, 0x08 /* Private */,
-       7,    0,  200,    2, 0x08 /* Private */,
-       8,    1,  201,    2, 0x08 /* Private */,
-       9,    0,  204,    2, 0x08 /* Private */,
-      10,    1,  205,    2, 0x08 /* Private */,
-      11,    0,  208,    2, 0x08 /* Private */,
-      12,    0,  209,    2, 0x08 /* Private */,
-      13,    0,  210,    2, 0x08 /* Private */,
-      14,    0,  211,    2, 0x08 /* Private */,
-      15,    0,  212,    2, 0x08 /* Private */,
-      16,    1,  213,    2, 0x08 /* Private */,
-      18,    0,  216,    2, 0x08 /* Private */,
-      19,    0,  217,    2, 0x08 /* Private */,
-      20,    0,  218,    2, 0x08 /* Private */,
-      21,    1,  219,    2, 0x08 /* Private */,
-      22,    0,  222,    2, 0x08 /* Private */,
-      23,    1,  223,    2, 0x08 /* Private */,
-      26,    0,  226,    2, 0x08 /* Private */,
-      27,    0,  227,    2, 0x08 /* Private */,
-      28,    0,  228,    2, 0x08 /* Private */,
-      29,    0,  229,    2, 0x08 /* Private */,
-      30,    0,  230,    2, 0x08 /* Private */,
-      31,    0,  231,    2, 0x08 /* Private */,
-      32,    0,  232,    2, 0x08 /* Private */,
-      33,    0,  233,    2, 0x08 /* Private */,
-      34,    1,  234,    2, 0x08 /* Private */,
-      35,    1,  237,    2, 0x08 /* Private */,
-      36,    0,  240,    2, 0x08 /* Private */,
-      37,    0,  241,    2, 0x08 /* Private */,
-      38,    1,  242,    2, 0x08 /* Private */,
-      39,    0,  245,    2, 0x08 /* Private */,
-      40,    0,  246,    2, 0x08 /* Private */,
-      41,    0,  247,    2, 0x08 /* Private */,
+       1,    0,  264,    2, 0x08 /* Private */,
+       3,    0,  265,    2, 0x08 /* Private */,
+       4,    1,  266,    2, 0x08 /* Private */,
+       6,    0,  269,    2, 0x08 /* Private */,
+       7,    0,  270,    2, 0x08 /* Private */,
+       8,    1,  271,    2, 0x08 /* Private */,
+       9,    0,  274,    2, 0x08 /* Private */,
+      10,    1,  275,    2, 0x08 /* Private */,
+      11,    0,  278,    2, 0x08 /* Private */,
+      12,    0,  279,    2, 0x08 /* Private */,
+      13,    0,  280,    2, 0x08 /* Private */,
+      14,    0,  281,    2, 0x08 /* Private */,
+      15,    0,  282,    2, 0x08 /* Private */,
+      16,    1,  283,    2, 0x08 /* Private */,
+      18,    0,  286,    2, 0x08 /* Private */,
+      19,    0,  287,    2, 0x08 /* Private */,
+      20,    0,  288,    2, 0x08 /* Private */,
+      21,    1,  289,    2, 0x08 /* Private */,
+      22,    0,  292,    2, 0x08 /* Private */,
+      23,    1,  293,    2, 0x08 /* Private */,
+      26,    0,  296,    2, 0x08 /* Private */,
+      27,    0,  297,    2, 0x08 /* Private */,
+      28,    0,  298,    2, 0x08 /* Private */,
+      29,    0,  299,    2, 0x08 /* Private */,
+      30,    0,  300,    2, 0x08 /* Private */,
+      31,    0,  301,    2, 0x08 /* Private */,
+      32,    0,  302,    2, 0x08 /* Private */,
+      33,    0,  303,    2, 0x08 /* Private */,
+      34,    1,  304,    2, 0x08 /* Private */,
+      35,    0,  307,    2, 0x08 /* Private */,
+      36,    0,  308,    2, 0x08 /* Private */,
+      37,    0,  309,    2, 0x08 /* Private */,
+      38,    0,  310,    2, 0x08 /* Private */,
+      39,    0,  311,    2, 0x08 /* Private */,
+      40,    0,  312,    2, 0x08 /* Private */,
+      41,    0,  313,    2, 0x08 /* Private */,
+      42,    0,  314,    2, 0x08 /* Private */,
+      43,    0,  315,    2, 0x08 /* Private */,
+      44,    0,  316,    2, 0x08 /* Private */,
+      45,    0,  317,    2, 0x08 /* Private */,
+      46,    0,  318,    2, 0x08 /* Private */,
+      47,    0,  319,    2, 0x08 /* Private */,
+      48,    0,  320,    2, 0x08 /* Private */,
+      49,    0,  321,    2, 0x08 /* Private */,
+      50,    0,  322,    2, 0x08 /* Private */,
+      51,    1,  323,    2, 0x08 /* Private */,
+      52,    0,  326,    2, 0x08 /* Private */,
+      53,    0,  327,    2, 0x08 /* Private */,
+      54,    0,  328,    2, 0x08 /* Private */,
+      55,    0,  329,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -193,10 +236,24 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    5,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void, 0x80000000 | 24,   25,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,    5,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -239,13 +296,27 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 26: _t->on_pushButtonChangeToStadiums_clicked(); break;
         case 27: _t->on_pushButtonResetAllStadiumsTableADMIN_clicked(); break;
         case 28: _t->on_comboBoxChooseTeamNameADMIN_activated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 29: _t->on_tableViewAllStadiumsADMIN_activated((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 30: _t->on_pushButtonEditData_clicked(); break;
-        case 31: _t->on_pushButtonBFS_clicked(); break;
-        case 32: _t->on_comboBox_activated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 33: _t->on_pushButtonDFS_clicked(); break;
-        case 34: _t->on_pushButtonDFSBFS_clicked(); break;
-        case 35: _t->on_pushButtonMST_clicked(); break;
+        case 29: _t->on_pushButtonEditData_clicked(); break;
+        case 30: _t->on_pushButtonBFS_clicked(); break;
+        case 31: _t->on_pushButtonDFS_clicked(); break;
+        case 32: _t->on_pushButtonMST_2_clicked(); break;
+        case 33: _t->hideInputFieldsADMIN(); break;
+        case 34: _t->on_pushButtonUploadNewStadium_clicked(); break;
+        case 35: _t->on_pushButtonReturnFromDFSBFSMST_clicked(); break;
+        case 36: _t->on_pushButtonUploadNewStadiumDistances_clicked(); break;
+        case 37: _t->on_pushButtonLogoutFromAdminMaintenance_clicked(); break;
+        case 38: _t->on_pushButtonToUserScreen_clicked(); break;
+        case 39: _t->on_pushButtonReturnFromShortestTripScreen_clicked(); break;
+        case 40: _t->on_pushButtonReturnFromCustomTripScreen_clicked(); break;
+        case 41: _t->on_pushButtonLogoutFromUserSelection_clicked(); break;
+        case 42: _t->on_pushButtonToDFSBFSMSTScreen_clicked(); break;
+        case 43: _t->on_pushButtonToShortestTripScreen_clicked(); break;
+        case 44: _t->on_pushButtonToCustomTripScreen_clicked(); break;
+        case 45: _t->on_tableViewCustomTrip_activated((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 46: _t->on_pushButtonResetDisplaySelectedTrip_clicked(); break;
+        case 47: _t->on_pushButtonCreateCustomDirectTrip_clicked(); break;
+        case 48: _t->on_pushButtonDodgerStadium_clicked(); break;
+        case 49: _t->on_pushButtonMarlinsPark_clicked(); break;
         default: ;
         }
     }
@@ -280,13 +351,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 36)
+        if (_id < 50)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 36;
+        _id -= 50;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 36)
+        if (_id < 50)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 36;
+        _id -= 50;
     }
     return _id;
 }

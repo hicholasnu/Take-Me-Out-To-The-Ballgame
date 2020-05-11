@@ -118,6 +118,10 @@ private slots:
 
     void on_pushButtonCreateCustomDirectTrip_clicked();
 
+    void on_pushButtonDodgerStadium_clicked();
+
+    void on_pushButtonMarlinsPark_clicked();
+
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;
