@@ -39,7 +39,7 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="LoginScreen">
      <property name="styleSheet">
@@ -589,20 +589,7 @@ font: 8pt &quot;Courier&quot;;</string>
        </rect>
       </property>
       <property name="text">
-       <string>dfs/bfs</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButtonMST">
-      <property name="geometry">
-       <rect>
-        <x>390</x>
-        <y>490</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>MST</string>
+       <string>dfs/bfs/mst</string>
       </property>
      </widget>
     </widget>
@@ -677,6 +664,13 @@ font: 8pt &quot;Courier&quot;;</string>
         <widget class="QPushButton" name="pushButtonBFS">
          <property name="text">
           <string>BFS</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButtonMST_2">
+         <property name="text">
+          <string>MST</string>
          </property>
         </widget>
        </item>
@@ -928,8 +922,8 @@ font: 8pt &quot;Courier&quot;;</string>
      <widget class="QPushButton" name="pushButtonResetAllStadiumsTableADMIN">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>380</y>
+        <x>650</x>
+        <y>170</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -948,37 +942,11 @@ font: 8pt &quot;Courier&quot;;</string>
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditEditData">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>250</y>
-        <width>281</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="clearButtonEnabled">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelSelectedData">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>220</y>
-        <width>281</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>No Data Selected!</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButtonEditData">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>290</y>
+        <x>490</x>
+        <y>440</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -987,30 +955,121 @@ font: 8pt &quot;Courier&quot;;</string>
        <string>Edit</string>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBoxEditData">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
+     <widget class="QComboBox" name="comboBoxChooseFieldToEdit">
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>250</y>
-        <width>141</width>
+        <y>220</y>
+        <width>131</width>
         <height>22</height>
        </rect>
       </property>
+      <item>
+       <property name="text">
+        <string>StadiumName</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>SeatingCapacity</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Location</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>PlayingSurface</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>League</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>DateOpened</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>DistanceToCenter</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>BallParkTypology</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>RoofType</string>
+       </property>
+      </item>
      </widget>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="labelChooseFieldToEdit">
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>190</y>
-        <width>141</width>
+        <y>200</y>
+        <width>121</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>Data To Change:</string>
+       <string>Choose field to edit</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelCurrentData">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>220</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Current Data:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelShowCurrentData">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>220</y>
+        <width>241</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string>No Data Selected!</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEditInputStringData">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>250</y>
+        <width>241</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBoxInputIntData">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>250</y>
+        <width>42</width>
+        <height>22</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -1022,7 +1081,7 @@ font: 8pt &quot;Courier&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>803</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

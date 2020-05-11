@@ -410,9 +410,7 @@ void MainWindow::on_pushButtonResetAllStadiumsTableADMIN_clicked()
     QString query = "Select StadiumName, SeatingCapacity, Location, PlayingSurface, League, DateOpened, DistanceToCenterField, BallparkTypology, RoofType from Stadiums where TeamName = '"+teamName+"'; ";
     ui->tableViewAllStadiumsADMIN->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableViewAllStadiumsADMIN->resizeColumnsToContents();
-    ui->lineEditEditData->hide();
-    ui->spinBoxEditData->hide();
-    ui->labelSelectedData->setText("No Data Selected!");
+    hideInputFieldsADMIN();
 }
 
 void MainWindow::on_comboBoxChooseTeamNameADMIN_activated(const QString &arg1)
@@ -422,38 +420,60 @@ void MainWindow::on_comboBoxChooseTeamNameADMIN_activated(const QString &arg1)
     ui->tableViewAllStadiumsADMIN->resizeColumnsToContents();
 }
 
-void MainWindow::on_tableViewAllStadiumsADMIN_activated(const QModelIndex &index)
+void MainWindow::hideInputFieldsADMIN() {
+
+    ui->lineEditInputStringData->hide();
+    ui->spinBoxInputIntData->hide();
+    ui->labelShowCurrentData->setText("No Data Selected!");
+}
+
+void MainWindow::on_comboBoxChooseFieldToEdit_activated(const QString &arg1)
 {
-//    dataColumn = index.column();
+    QSqlQuery qry;
+    QString currentTeamName = ui->comboBoxChooseTeamNameADMIN->currentText();
+    QString query = "select '"+arg1+"' from Stadiums where TeamName = '"+currentTeamName+"';";
 
-    ui->labelSelectedData->setText(index.data().toString());
+    qry.prepare(query);
 
-    if (index.column() == 1 || index.column() == 5 || index.column() == 6) {
+    if (!qry.exec()) {
 
-        ui->spinBoxEditData->show();
-        ui->lineEditEditData->hide();
+        qDebug() << "Problem with void MainWindow::on_comboBoxChooseFieldToEdit_activated(const QString &arg1) ";
+    }
+
+    if (arg1 == "SeatingCapacity" || arg1 == "DateOpened" || arg1 == "DistanceToCenterField") {
+
+        ui->lineEditInputStringData->hide();
+        ui->spinBoxInputIntData->show();
+
+        qry.first();
+        int data = qry.value(0).toInt();
+//      ui->spinBoxInputIntData->setValue(data);
+        ui->labelShowCurrentData->setText(QString::number(data));
+        qDebug() << data;
+
+
     }
     else {
 
-        ui->lineEditEditData->show();
-        ui->spinBoxEditData->hide();
+        ui->lineEditInputStringData->show();
+        ui->spinBoxInputIntData->hide();
+
+        qry.first();
+        QString data = qry.value(0).toString();
+        ui->labelShowCurrentData->setText(data);
+        qDebug() << data;
+
+
+
     }
+
+
 }
+
 
 void MainWindow::on_pushButtonEditData_clicked() // NOT DONE
 {
-    if (!ui->lineEditEditData->isVisible() && !ui->spinBoxEditData->isVisible()) {
 
-        QMessageBox::warning(this, "Invalid", "Nothing is selected");
-    }
-    else if (ui->lineEditEditData->isVisible() && !ui->spinBoxEditData->isVisible()) {
-
-
-    }
-    else if (!ui->lineEditEditData->isVisible() && ui->spinBoxEditData->isVisible()) {
-
-
-    }
 }
 
 
@@ -521,9 +541,8 @@ void MainWindow::on_pushButtonDFSBFS_clicked()
 }
 
 
-void MainWindow::on_pushButtonMST_clicked()
+void MainWindow::on_pushButtonMST_2_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->TripScreen);
     ui->textBrowser->clear();
 
     graph.loadGraph(graph);
@@ -541,3 +560,4 @@ void MainWindow::on_pushButtonMST_clicked()
 
     ui->labelTotalDistance->setNum(distance);
 }
+

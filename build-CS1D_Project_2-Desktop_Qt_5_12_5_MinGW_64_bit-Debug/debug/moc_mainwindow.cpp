@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[35];
-    char stringdata0[1104];
+    QByteArrayData data[43];
+    char stringdata0[1324];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -65,7 +65,15 @@ QT_MOC_LITERAL(30, 892, 48), // "on_pushButtonReturnToMaintena..."
 QT_MOC_LITERAL(31, 941, 38), // "on_pushButtonChangeToSouvenir..."
 QT_MOC_LITERAL(32, 980, 37), // "on_pushButtonChangeToStadiums..."
 QT_MOC_LITERAL(33, 1018, 47), // "on_pushButtonResetAllStadiums..."
-QT_MOC_LITERAL(34, 1066, 37) // "on_comboBoxChooseTeamName_2_a..."
+QT_MOC_LITERAL(34, 1066, 40), // "on_comboBoxChooseTeamNameADMI..."
+QT_MOC_LITERAL(35, 1107, 29), // "on_pushButtonEditData_clicked"
+QT_MOC_LITERAL(36, 1137, 24), // "on_pushButtonBFS_clicked"
+QT_MOC_LITERAL(37, 1162, 21), // "on_comboBox_activated"
+QT_MOC_LITERAL(38, 1184, 24), // "on_pushButtonDFS_clicked"
+QT_MOC_LITERAL(39, 1209, 27), // "on_pushButtonDFSBFS_clicked"
+QT_MOC_LITERAL(40, 1237, 26), // "on_pushButtonMST_2_clicked"
+QT_MOC_LITERAL(41, 1264, 38), // "on_comboBoxChooseFieldToEdit_..."
+QT_MOC_LITERAL(42, 1303, 20) // "hideInputFieldsADMIN"
 
     },
     "MainWindow\0on_pushButtonLogin_clicked\0"
@@ -95,7 +103,14 @@ QT_MOC_LITERAL(34, 1066, 37) // "on_comboBoxChooseTeamName_2_a..."
     "on_pushButtonChangeToSouvenirs_clicked\0"
     "on_pushButtonChangeToStadiums_clicked\0"
     "on_pushButtonResetAllStadiumsTableADMIN_clicked\0"
-    "on_comboBoxChooseTeamName_2_activated"
+    "on_comboBoxChooseTeamNameADMIN_activated\0"
+    "on_pushButtonEditData_clicked\0"
+    "on_pushButtonBFS_clicked\0on_comboBox_activated\0"
+    "on_pushButtonDFS_clicked\0"
+    "on_pushButtonDFSBFS_clicked\0"
+    "on_pushButtonMST_2_clicked\0"
+    "on_comboBoxChooseFieldToEdit_activated\0"
+    "hideInputFieldsADMIN"
 };
 #undef QT_MOC_LITERAL
 
@@ -105,7 +120,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      29,   14, // methods
+      37,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -113,35 +128,43 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  159,    2, 0x08 /* Private */,
-       3,    0,  160,    2, 0x08 /* Private */,
-       4,    1,  161,    2, 0x08 /* Private */,
-       6,    0,  164,    2, 0x08 /* Private */,
-       7,    0,  165,    2, 0x08 /* Private */,
-       8,    1,  166,    2, 0x08 /* Private */,
-       9,    0,  169,    2, 0x08 /* Private */,
-      10,    1,  170,    2, 0x08 /* Private */,
-      11,    0,  173,    2, 0x08 /* Private */,
-      12,    0,  174,    2, 0x08 /* Private */,
-      13,    0,  175,    2, 0x08 /* Private */,
-      14,    0,  176,    2, 0x08 /* Private */,
-      15,    0,  177,    2, 0x08 /* Private */,
-      16,    1,  178,    2, 0x08 /* Private */,
-      18,    0,  181,    2, 0x08 /* Private */,
-      19,    0,  182,    2, 0x08 /* Private */,
-      20,    0,  183,    2, 0x08 /* Private */,
-      21,    1,  184,    2, 0x08 /* Private */,
-      22,    0,  187,    2, 0x08 /* Private */,
-      23,    1,  188,    2, 0x08 /* Private */,
-      26,    0,  191,    2, 0x08 /* Private */,
-      27,    0,  192,    2, 0x08 /* Private */,
-      28,    0,  193,    2, 0x08 /* Private */,
-      29,    0,  194,    2, 0x08 /* Private */,
-      30,    0,  195,    2, 0x08 /* Private */,
-      31,    0,  196,    2, 0x08 /* Private */,
-      32,    0,  197,    2, 0x08 /* Private */,
-      33,    0,  198,    2, 0x08 /* Private */,
-      34,    1,  199,    2, 0x08 /* Private */,
+       1,    0,  199,    2, 0x08 /* Private */,
+       3,    0,  200,    2, 0x08 /* Private */,
+       4,    1,  201,    2, 0x08 /* Private */,
+       6,    0,  204,    2, 0x08 /* Private */,
+       7,    0,  205,    2, 0x08 /* Private */,
+       8,    1,  206,    2, 0x08 /* Private */,
+       9,    0,  209,    2, 0x08 /* Private */,
+      10,    1,  210,    2, 0x08 /* Private */,
+      11,    0,  213,    2, 0x08 /* Private */,
+      12,    0,  214,    2, 0x08 /* Private */,
+      13,    0,  215,    2, 0x08 /* Private */,
+      14,    0,  216,    2, 0x08 /* Private */,
+      15,    0,  217,    2, 0x08 /* Private */,
+      16,    1,  218,    2, 0x08 /* Private */,
+      18,    0,  221,    2, 0x08 /* Private */,
+      19,    0,  222,    2, 0x08 /* Private */,
+      20,    0,  223,    2, 0x08 /* Private */,
+      21,    1,  224,    2, 0x08 /* Private */,
+      22,    0,  227,    2, 0x08 /* Private */,
+      23,    1,  228,    2, 0x08 /* Private */,
+      26,    0,  231,    2, 0x08 /* Private */,
+      27,    0,  232,    2, 0x08 /* Private */,
+      28,    0,  233,    2, 0x08 /* Private */,
+      29,    0,  234,    2, 0x08 /* Private */,
+      30,    0,  235,    2, 0x08 /* Private */,
+      31,    0,  236,    2, 0x08 /* Private */,
+      32,    0,  237,    2, 0x08 /* Private */,
+      33,    0,  238,    2, 0x08 /* Private */,
+      34,    1,  239,    2, 0x08 /* Private */,
+      35,    0,  242,    2, 0x08 /* Private */,
+      36,    0,  243,    2, 0x08 /* Private */,
+      37,    1,  244,    2, 0x08 /* Private */,
+      38,    0,  247,    2, 0x08 /* Private */,
+      39,    0,  248,    2, 0x08 /* Private */,
+      40,    0,  249,    2, 0x08 /* Private */,
+      41,    1,  250,    2, 0x08 /* Private */,
+      42,    0,  253,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -173,6 +196,14 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    5,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    5,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    5,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -211,7 +242,15 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 25: _t->on_pushButtonChangeToSouvenirs_clicked(); break;
         case 26: _t->on_pushButtonChangeToStadiums_clicked(); break;
         case 27: _t->on_pushButtonResetAllStadiumsTableADMIN_clicked(); break;
-        case 28: _t->on_comboBoxChooseTeamName_2_activated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 28: _t->on_comboBoxChooseTeamNameADMIN_activated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 29: _t->on_pushButtonEditData_clicked(); break;
+        case 30: _t->on_pushButtonBFS_clicked(); break;
+        case 31: _t->on_comboBox_activated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 32: _t->on_pushButtonDFS_clicked(); break;
+        case 33: _t->on_pushButtonDFSBFS_clicked(); break;
+        case 34: _t->on_pushButtonMST_2_clicked(); break;
+        case 35: _t->on_comboBoxChooseFieldToEdit_activated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 36: _t->hideInputFieldsADMIN(); break;
         default: ;
         }
     }
@@ -246,13 +285,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 29)
+        if (_id < 37)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 29;
+        _id -= 37;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 29)
+        if (_id < 37)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 29;
+        _id -= 37;
     }
     return _id;
 }

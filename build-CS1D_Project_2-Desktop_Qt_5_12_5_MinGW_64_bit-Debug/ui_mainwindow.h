@@ -21,9 +21,12 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -72,6 +75,17 @@ public:
     QPushButton *pushButtonResetStadiumsTable;
     QLabel *labelAdditionalInfo;
     QPushButton *pushButtonUserLogout;
+    QPushButton *pushButtonDFSBFS;
+    QWidget *TripScreen;
+    QLabel *label;
+    QLabel *labelTotalDistance;
+    QTextBrowser *textBrowser;
+    QComboBox *comboBox;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QPushButton *pushButtonDFS;
+    QPushButton *pushButtonBFS;
+    QPushButton *pushButtonMST_2;
     QWidget *AdminMaintenanceScreen;
     QLabel *labelMaintenanceScreenTitle;
     QPushButton *pushButtonChangeToSouvenirs;
@@ -95,6 +109,13 @@ public:
     QTableView *tableViewAllStadiumsADMIN;
     QPushButton *pushButtonResetAllStadiumsTableADMIN;
     QComboBox *comboBoxChooseTeamNameADMIN;
+    QPushButton *pushButtonEditData;
+    QComboBox *comboBoxChooseFieldToEdit;
+    QLabel *labelChooseFieldToEdit;
+    QLabel *labelCurrentData;
+    QLabel *labelShowCurrentData;
+    QLineEdit *lineEditInputStringData;
+    QSpinBox *spinBoxInputIntData;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -352,7 +373,47 @@ public:
         font4.setFamily(QString::fromUtf8("Courier"));
         font4.setPointSize(6);
         pushButtonUserLogout->setFont(font4);
+        pushButtonDFSBFS = new QPushButton(UserScreen);
+        pushButtonDFSBFS->setObjectName(QString::fromUtf8("pushButtonDFSBFS"));
+        pushButtonDFSBFS->setGeometry(QRect(270, 490, 93, 28));
         stackedWidget->addWidget(UserScreen);
+        TripScreen = new QWidget();
+        TripScreen->setObjectName(QString::fromUtf8("TripScreen"));
+        label = new QLabel(TripScreen);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(480, 440, 91, 16));
+        labelTotalDistance = new QLabel(TripScreen);
+        labelTotalDistance->setObjectName(QString::fromUtf8("labelTotalDistance"));
+        labelTotalDistance->setGeometry(QRect(580, 430, 121, 31));
+        labelTotalDistance->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        textBrowser = new QTextBrowser(TripScreen);
+        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
+        textBrowser->setGeometry(QRect(20, 20, 421, 491));
+        comboBox = new QComboBox(TripScreen);
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox->setGeometry(QRect(460, 20, 291, 22));
+        verticalLayoutWidget = new QWidget(TripScreen);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(470, 130, 160, 101));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        pushButtonDFS = new QPushButton(verticalLayoutWidget);
+        pushButtonDFS->setObjectName(QString::fromUtf8("pushButtonDFS"));
+
+        verticalLayout->addWidget(pushButtonDFS);
+
+        pushButtonBFS = new QPushButton(verticalLayoutWidget);
+        pushButtonBFS->setObjectName(QString::fromUtf8("pushButtonBFS"));
+
+        verticalLayout->addWidget(pushButtonBFS);
+
+        pushButtonMST_2 = new QPushButton(verticalLayoutWidget);
+        pushButtonMST_2->setObjectName(QString::fromUtf8("pushButtonMST_2"));
+
+        verticalLayout->addWidget(pushButtonMST_2);
+
+        stackedWidget->addWidget(TripScreen);
         AdminMaintenanceScreen = new QWidget();
         AdminMaintenanceScreen->setObjectName(QString::fromUtf8("AdminMaintenanceScreen"));
         labelMaintenanceScreenTitle = new QLabel(AdminMaintenanceScreen);
@@ -421,13 +482,44 @@ public:
         pushButtonReturnToMaintenanceScreen_2->setGeometry(QRect(660, 20, 75, 23));
         tableViewAllStadiumsADMIN = new QTableView(AdminStadiumScreen);
         tableViewAllStadiumsADMIN->setObjectName(QString::fromUtf8("tableViewAllStadiumsADMIN"));
-        tableViewAllStadiumsADMIN->setGeometry(QRect(30, 60, 641, 81));
+        tableViewAllStadiumsADMIN->setGeometry(QRect(30, 60, 701, 101));
         pushButtonResetAllStadiumsTableADMIN = new QPushButton(AdminStadiumScreen);
         pushButtonResetAllStadiumsTableADMIN->setObjectName(QString::fromUtf8("pushButtonResetAllStadiumsTableADMIN"));
-        pushButtonResetAllStadiumsTableADMIN->setGeometry(QRect(30, 380, 75, 23));
+        pushButtonResetAllStadiumsTableADMIN->setGeometry(QRect(650, 170, 75, 23));
         comboBoxChooseTeamNameADMIN = new QComboBox(AdminStadiumScreen);
         comboBoxChooseTeamNameADMIN->setObjectName(QString::fromUtf8("comboBoxChooseTeamNameADMIN"));
         comboBoxChooseTeamNameADMIN->setGeometry(QRect(30, 20, 271, 22));
+        pushButtonEditData = new QPushButton(AdminStadiumScreen);
+        pushButtonEditData->setObjectName(QString::fromUtf8("pushButtonEditData"));
+        pushButtonEditData->setGeometry(QRect(490, 440, 93, 28));
+        comboBoxChooseFieldToEdit = new QComboBox(AdminStadiumScreen);
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->addItem(QString());
+        comboBoxChooseFieldToEdit->setObjectName(QString::fromUtf8("comboBoxChooseFieldToEdit"));
+        comboBoxChooseFieldToEdit->setGeometry(QRect(40, 220, 131, 22));
+        labelChooseFieldToEdit = new QLabel(AdminStadiumScreen);
+        labelChooseFieldToEdit->setObjectName(QString::fromUtf8("labelChooseFieldToEdit"));
+        labelChooseFieldToEdit->setGeometry(QRect(40, 200, 121, 16));
+        labelCurrentData = new QLabel(AdminStadiumScreen);
+        labelCurrentData->setObjectName(QString::fromUtf8("labelCurrentData"));
+        labelCurrentData->setGeometry(QRect(290, 220, 71, 16));
+        labelShowCurrentData = new QLabel(AdminStadiumScreen);
+        labelShowCurrentData->setObjectName(QString::fromUtf8("labelShowCurrentData"));
+        labelShowCurrentData->setGeometry(QRect(370, 220, 241, 21));
+        labelShowCurrentData->setFrameShape(QFrame::Box);
+        lineEditInputStringData = new QLineEdit(AdminStadiumScreen);
+        lineEditInputStringData->setObjectName(QString::fromUtf8("lineEditInputStringData"));
+        lineEditInputStringData->setGeometry(QRect(370, 250, 241, 20));
+        spinBoxInputIntData = new QSpinBox(AdminStadiumScreen);
+        spinBoxInputIntData->setObjectName(QString::fromUtf8("spinBoxInputIntData"));
+        spinBoxInputIntData->setGeometry(QRect(370, 250, 42, 22));
         stackedWidget->addWidget(AdminStadiumScreen);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -440,7 +532,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(5);
         pushButtonResetLogin->setDefault(false);
 
 
@@ -478,6 +570,12 @@ public:
         pushButtonResetStadiumsTable->setText(QString());
         labelAdditionalInfo->setText(QString());
         pushButtonUserLogout->setText(QApplication::translate("MainWindow", "Logout", nullptr));
+        pushButtonDFSBFS->setText(QApplication::translate("MainWindow", "dfs/bfs/mst", nullptr));
+        label->setText(QApplication::translate("MainWindow", "Total Distance", nullptr));
+        labelTotalDistance->setText(QString());
+        pushButtonDFS->setText(QApplication::translate("MainWindow", "DFS", nullptr));
+        pushButtonBFS->setText(QApplication::translate("MainWindow", "BFS", nullptr));
+        pushButtonMST_2->setText(QApplication::translate("MainWindow", "MST", nullptr));
         labelMaintenanceScreenTitle->setText(QApplication::translate("MainWindow", "Administrator Maintenance", nullptr));
         pushButtonChangeToSouvenirs->setText(QApplication::translate("MainWindow", "Souvenirs", nullptr));
         pushButtonChangeToStadiums->setText(QApplication::translate("MainWindow", "Stadiums", nullptr));
@@ -491,6 +589,20 @@ public:
         pushButtonReturnToMaintenanceScreen->setText(QApplication::translate("MainWindow", "Return", nullptr));
         pushButtonReturnToMaintenanceScreen_2->setText(QApplication::translate("MainWindow", "Return", nullptr));
         pushButtonResetAllStadiumsTableADMIN->setText(QApplication::translate("MainWindow", "Reset", nullptr));
+        pushButtonEditData->setText(QApplication::translate("MainWindow", "Edit", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(0, QApplication::translate("MainWindow", "StadiumName", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(1, QApplication::translate("MainWindow", "SeatingCapacity", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(2, QApplication::translate("MainWindow", "Location", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(3, QApplication::translate("MainWindow", "PlayingSurface", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(4, QApplication::translate("MainWindow", "League", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(5, QApplication::translate("MainWindow", "DateOpened", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(6, QApplication::translate("MainWindow", "DistanceToCenter", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(7, QApplication::translate("MainWindow", "BallParkTypology", nullptr));
+        comboBoxChooseFieldToEdit->setItemText(8, QApplication::translate("MainWindow", "RoofType", nullptr));
+
+        labelChooseFieldToEdit->setText(QApplication::translate("MainWindow", "Choose field to edit", nullptr));
+        labelCurrentData->setText(QApplication::translate("MainWindow", "Current Data:", nullptr));
+        labelShowCurrentData->setText(QApplication::translate("MainWindow", "No Data Selected!", nullptr));
     } // retranslateUi
 
 };

@@ -79,8 +79,6 @@ private slots:
 
     void on_comboBoxChooseTeamNameADMIN_activated(const QString &arg1);
 
-    void on_tableViewAllStadiumsADMIN_activated(const QModelIndex &index);
-
     void on_pushButtonEditData_clicked();
 
     void on_pushButtonBFS_clicked();
@@ -91,8 +89,11 @@ private slots:
 
     void on_pushButtonDFSBFS_clicked();
 
+    void on_pushButtonMST_2_clicked();
 
-    void on_pushButtonMST_clicked();
+    void on_comboBoxChooseFieldToEdit_activated(const QString &arg1);
+
+    void hideInputFieldsADMIN();
 
 private:
     Ui::MainWindow *ui;
