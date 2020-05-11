@@ -85,8 +85,6 @@ private slots:
 
     void on_pushButtonDFS_clicked();
 
-    void on_pushButtonDFSBFS_clicked();
-
     void on_pushButtonMST_2_clicked();
 
     void hideInputFieldsADMIN();
@@ -100,6 +98,18 @@ private slots:
     void on_pushButtonLogoutFromAdminMaintenance_clicked();
 
     void on_pushButtonToUserScreen_clicked();
+
+    void on_pushButtonReturnFromShortestTripScreen_clicked();
+
+    void on_pushButtonReturnFromCustomTripScreen_clicked();
+
+    void on_pushButtonLogoutFromUserSelection_clicked();
+
+    void on_pushButtonToDFSBFSMSTScreen_clicked();
+
+    void on_pushButtonToShortestTripScreen_clicked();
+
+    void on_pushButtonToCustomTripScreen_clicked();
 
 private:
     Ui::MainWindow *ui;

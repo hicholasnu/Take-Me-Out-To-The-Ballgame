@@ -16,19 +16,6 @@ MainWindow::~MainWindow()
 }
 
 // LOGIN SCREEN START ===========================================================================================
-
-void MainWindow::changeToAdmin()
-{
-     ui->stackedWidget->setCurrentWidget(ui->AdminMaintenanceScreen);
-}
-
-void MainWindow::changetoUser()
-{
-    ui->stackedWidget->setCurrentWidget(ui->UserSelectionScreen);
-    on_pushButtonResetStadiumsTable_clicked();
-    fillStadiumsComboBoxes();
-}
-
 void MainWindow::on_pushButtonLogin_clicked()
 {
     QString username = ui->lineEditUsername->text();
@@ -77,10 +64,95 @@ void MainWindow::on_pushButtonLogin_clicked()
     }
 }
 
+void MainWindow::changeToAdmin()
+{
+     ui->stackedWidget->setCurrentWidget(ui->AdminMaintenanceScreen);
+}
+
+void MainWindow::changetoUser()
+{
+    ui->stackedWidget->setCurrentWidget(ui->UserSelectionScreen);
+    on_pushButtonResetStadiumsTable_clicked();
+    fillStadiumsComboBoxes();
+}
+
 void MainWindow::on_pushButtonResetLogin_clicked()
 {
     ui->lineEditUsername->clear();
     ui->lineEditPassword->clear();
+}
+void MainWindow::on_pushButtonUserLogout_clicked()
+{
+    on_pushButtonResetStadiumsTable_clicked();
+    ui->stackedWidget->setCurrentWidget(ui->LoginScreen);
+}
+void MainWindow::on_pushButtonReturnToMaintenanceScreen_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->AdminMaintenanceScreen);
+}
+
+void MainWindow::on_pushButtonReturnToMaintenanceScreen_2_clicked()
+{
+    on_pushButtonReturnToMaintenanceScreen_clicked();
+}
+
+void MainWindow::on_pushButtonChangeToSouvenirs_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->AdminSouvenirsScreen);
+    ui->comboBoxChooseStadium->setModel(m_controller->getSouvenirsQueryModel("select DISTINCT Stadium from [Stadium Souvenirs] ORDER BY Stadium ASC;"));
+    on_pushButtonResetAllSouvenirs_clicked();
+}
+
+void MainWindow::on_pushButtonChangeToStadiums_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->AdminStadiumScreen);
+    ui->comboBoxChooseTeamNameADMIN->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums ORDER BY TeamName ASC"));
+    on_pushButtonResetAllStadiumsTableADMIN_clicked();
+}
+
+void MainWindow::on_pushButtonReturnFromDFSBFSMST_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->UserSelectionScreen);
+}
+void MainWindow::on_pushButtonLogoutFromAdminMaintenance_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->LoginScreen);
+}
+
+void MainWindow::on_pushButtonToUserScreen_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->UserScreen);
+}
+
+void MainWindow::on_pushButtonReturnFromShortestTripScreen_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->UserSelectionScreen);
+}
+
+void MainWindow::on_pushButtonReturnFromCustomTripScreen_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->UserSelectionScreen);
+}
+
+void MainWindow::on_pushButtonLogoutFromUserSelection_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->LoginScreen);
+}
+
+void MainWindow::on_pushButtonToDFSBFSMSTScreen_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->DFSBFSMSTScreen);
+    ui->comboBox->setModel(m_controller->getStadiumsQueryModel("select DISTINCT [Originated Stadium] from [Stadium Distances];"));
+}
+
+void MainWindow::on_pushButtonToShortestTripScreen_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->ShortestTripScreen);
+}
+
+void MainWindow::on_pushButtonToCustomTripScreen_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->CustomTripScreen);
 }
 
 // LOGIN SCREEN END ===========================================================================================
@@ -213,39 +285,11 @@ void MainWindow::fillStadiumsComboBoxes() {
     ui->comboBoxChooseRoofType->setModel(m_controller->getStadiumsQueryModel("select DISTINCT RoofType from Stadiums ORDER BY RoofType ASC;"));
 }
 
-void MainWindow::on_pushButtonUserLogout_clicked()
-{
-    on_pushButtonResetStadiumsTable_clicked();
-    ui->stackedWidget->setCurrentWidget(ui->LoginScreen);
-}
 
 // STADIUMS DISPLAY/SORT END ==================================================================================
 
 // ADMIN MAINTENANCE START ====================================================================================
 
-void MainWindow::on_pushButtonReturnToMaintenanceScreen_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->AdminMaintenanceScreen);
-}
-
-void MainWindow::on_pushButtonReturnToMaintenanceScreen_2_clicked()
-{
-    on_pushButtonReturnToMaintenanceScreen_clicked();
-}
-
-void MainWindow::on_pushButtonChangeToSouvenirs_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->AdminSouvenirsScreen);
-    ui->comboBoxChooseStadium->setModel(m_controller->getSouvenirsQueryModel("select DISTINCT Stadium from [Stadium Souvenirs] ORDER BY Stadium ASC;"));
-    on_pushButtonResetAllSouvenirs_clicked();
-}
-
-void MainWindow::on_pushButtonChangeToStadiums_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->AdminStadiumScreen);
-    ui->comboBoxChooseTeamNameADMIN->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums ORDER BY TeamName ASC"));
-    on_pushButtonResetAllStadiumsTableADMIN_clicked();
-}
 
 void MainWindow::on_pushButtonResetAllSouvenirs_clicked() {
 
@@ -476,7 +520,6 @@ void MainWindow::on_pushButtonEditData_clicked() // NOT DONE
     ui->tableViewAllStadiumsADMIN->resizeColumnsToContents();
 }
 
-
 void MainWindow::on_pushButtonBFS_clicked()
 {
     ui->textBrowser->clear();
@@ -513,16 +556,6 @@ void MainWindow::on_pushButtonDFS_clicked()
     ui->labelTotalDistance->setNum(graph.getTotalDistance());
 }
 
-
-
-void MainWindow::on_pushButtonDFSBFS_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->DFSBFSMSTScreen);
-    ui->comboBox->setModel(m_controller->getStadiumsQueryModel("select DISTINCT [Originated Stadium] from [Stadium Distances];"));
-
-}
-
-
 void MainWindow::on_pushButtonMST_2_clicked()
 {
     ui->textBrowser->clear();
@@ -549,22 +582,11 @@ void MainWindow::on_pushButtonUploadNewStadium_clicked()
     ui->comboBoxChooseTeamNameADMIN->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums ORDER BY TeamName ASC"));
 }
 
-void MainWindow::on_pushButtonReturnFromDFSBFSMST_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->UserScreen);
-}
-
 void MainWindow::on_pushButtonUploadNewStadiumDistances_clicked()
 {
     m_controller->uploadStadiumDistancesFile();
 }
 
-void MainWindow::on_pushButtonLogoutFromAdminMaintenance_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->LoginScreen);
-}
 
-void MainWindow::on_pushButtonToUserScreen_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->UserScreen);
-}
+
+

@@ -15,6 +15,7 @@
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -44,8 +45,14 @@ public:
     QPushButton *pushButtonLogin;
     QPushButton *pushButtonResetLogin;
     QWidget *UserSelectionScreen;
+    QPushButton *pushButtonLogoutFromUserSelection;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
     QPushButton *pushButtonToUserScreen;
     QPushButton *pushButtonToDFSBFSMSTScreen;
+    QPushButton *pushButtonToShortestTripScreen;
+    QPushButton *pushButtonToCustomTripScreen;
+    QLabel *label_2;
     QWidget *UserScreen;
     QTableView *tableviewAllStadiums;
     QLabel *labelShowCurrentSort;
@@ -78,7 +85,6 @@ public:
     QPushButton *pushButtonResetStadiumsTable;
     QLabel *labelAdditionalInfo;
     QPushButton *pushButtonUserLogout;
-    QPushButton *pushButtonDFSBFS;
     QWidget *DFSBFSMSTScreen;
     QLabel *label;
     QLabel *labelTotalDistance;
@@ -90,25 +96,37 @@ public:
     QPushButton *pushButtonBFS;
     QPushButton *pushButtonMST_2;
     QPushButton *pushButtonReturnFromDFSBFSMST;
+    QWidget *ShortestTripScreen;
+    QPushButton *pushButtonReturnFromShortestTripScreen;
+    QWidget *CustomTripScreen;
+    QPushButton *pushButtonReturnFromCustomTripScreen;
     QWidget *AdminMaintenanceScreen;
     QLabel *labelMaintenanceScreenTitle;
+    QPushButton *pushButtonLogoutFromAdminMaintenance;
+    QWidget *formLayoutWidget_5;
+    QFormLayout *formLayout_5;
     QPushButton *pushButtonChangeToSouvenirs;
     QPushButton *pushButtonChangeToStadiums;
-    QPushButton *pushButtonLogoutFromAdminMaintenance;
     QWidget *AdminSouvenirsScreen;
     QTableView *tableviewAllSouvenirs;
     QPushButton *pushButtonResetAllSouvenirs;
     QComboBox *comboBoxChooseStadium;
-    QPushButton *pushButtonEditPrice;
-    QDoubleSpinBox *doubleSpinBoxEditPrice;
+    QPushButton *pushButtonReturnToMaintenanceScreen;
+    QWidget *verticalLayoutWidget_2;
+    QVBoxLayout *verticalLayout_2;
     QLabel *labelShowStadium;
     QLabel *labelShowItem;
+    QDoubleSpinBox *doubleSpinBoxEditPrice;
+    QWidget *formLayoutWidget_6;
+    QFormLayout *formLayout_6;
+    QPushButton *pushButtonEditPrice;
     QPushButton *pushButtonDeleteSouvenir;
+    QWidget *verticalLayoutWidget_3;
+    QVBoxLayout *verticalLayout_3;
     QLabel *labelPromptNewItem;
     QLineEdit *lineEditNewItem;
-    QPushButton *pushButtonAddNewSouvenir;
     QDoubleSpinBox *doubleSpinBoxNewSouvenirPrice;
-    QPushButton *pushButtonReturnToMaintenanceScreen;
+    QPushButton *pushButtonAddNewSouvenir;
     QWidget *AdminStadiumScreen;
     QPushButton *pushButtonReturnToMaintenanceScreen_2;
     QTableView *tableViewAllStadiumsADMIN;
@@ -156,7 +174,7 @@ public:
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
         stackedWidget->setEnabled(true);
-        stackedWidget->setGeometry(QRect(20, 10, 761, 531));
+        stackedWidget->setGeometry(QRect(20, 20, 761, 531));
         stackedWidget->setStyleSheet(QString::fromUtf8(""));
         stackedWidget->setFrameShape(QFrame::Box);
         LoginScreen = new QWidget();
@@ -200,12 +218,44 @@ public:
         stackedWidget->addWidget(LoginScreen);
         UserSelectionScreen = new QWidget();
         UserSelectionScreen->setObjectName(QString::fromUtf8("UserSelectionScreen"));
-        pushButtonToUserScreen = new QPushButton(UserSelectionScreen);
+        pushButtonLogoutFromUserSelection = new QPushButton(UserSelectionScreen);
+        pushButtonLogoutFromUserSelection->setObjectName(QString::fromUtf8("pushButtonLogoutFromUserSelection"));
+        pushButtonLogoutFromUserSelection->setGeometry(QRect(670, 20, 71, 31));
+        pushButtonLogoutFromUserSelection->setFont(font);
+        horizontalLayoutWidget = new QWidget(UserSelectionScreen);
+        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(170, 180, 443, 30));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        pushButtonToUserScreen = new QPushButton(horizontalLayoutWidget);
         pushButtonToUserScreen->setObjectName(QString::fromUtf8("pushButtonToUserScreen"));
-        pushButtonToUserScreen->setGeometry(QRect(100, 80, 93, 28));
-        pushButtonToDFSBFSMSTScreen = new QPushButton(UserSelectionScreen);
+        pushButtonToUserScreen->setFont(font);
+
+        horizontalLayout->addWidget(pushButtonToUserScreen);
+
+        pushButtonToDFSBFSMSTScreen = new QPushButton(horizontalLayoutWidget);
         pushButtonToDFSBFSMSTScreen->setObjectName(QString::fromUtf8("pushButtonToDFSBFSMSTScreen"));
-        pushButtonToDFSBFSMSTScreen->setGeometry(QRect(240, 80, 93, 28));
+        pushButtonToDFSBFSMSTScreen->setFont(font);
+
+        horizontalLayout->addWidget(pushButtonToDFSBFSMSTScreen);
+
+        pushButtonToShortestTripScreen = new QPushButton(horizontalLayoutWidget);
+        pushButtonToShortestTripScreen->setObjectName(QString::fromUtf8("pushButtonToShortestTripScreen"));
+        pushButtonToShortestTripScreen->setFont(font);
+
+        horizontalLayout->addWidget(pushButtonToShortestTripScreen);
+
+        pushButtonToCustomTripScreen = new QPushButton(horizontalLayoutWidget);
+        pushButtonToCustomTripScreen->setObjectName(QString::fromUtf8("pushButtonToCustomTripScreen"));
+        pushButtonToCustomTripScreen->setFont(font);
+
+        horizontalLayout->addWidget(pushButtonToCustomTripScreen);
+
+        label_2 = new QLabel(UserSelectionScreen);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(330, 110, 111, 16));
+        label_2->setFont(font);
         stackedWidget->addWidget(UserSelectionScreen);
         UserScreen = new QWidget();
         UserScreen->setObjectName(QString::fromUtf8("UserScreen"));
@@ -407,25 +457,26 @@ public:
         font4.setFamily(QString::fromUtf8("Courier"));
         font4.setPointSize(6);
         pushButtonUserLogout->setFont(font4);
-        pushButtonDFSBFS = new QPushButton(UserScreen);
-        pushButtonDFSBFS->setObjectName(QString::fromUtf8("pushButtonDFSBFS"));
-        pushButtonDFSBFS->setGeometry(QRect(270, 490, 93, 28));
         stackedWidget->addWidget(UserScreen);
         DFSBFSMSTScreen = new QWidget();
         DFSBFSMSTScreen->setObjectName(QString::fromUtf8("DFSBFSMSTScreen"));
         label = new QLabel(DFSBFSMSTScreen);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(480, 440, 91, 16));
+        label->setGeometry(QRect(460, 440, 121, 16));
+        label->setFont(font);
         labelTotalDistance = new QLabel(DFSBFSMSTScreen);
         labelTotalDistance->setObjectName(QString::fromUtf8("labelTotalDistance"));
         labelTotalDistance->setGeometry(QRect(580, 430, 121, 31));
+        labelTotalDistance->setFont(font);
         labelTotalDistance->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         textBrowser = new QTextBrowser(DFSBFSMSTScreen);
         textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
         textBrowser->setGeometry(QRect(20, 20, 421, 491));
+        textBrowser->setFont(font);
         comboBox = new QComboBox(DFSBFSMSTScreen);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
         comboBox->setGeometry(QRect(460, 60, 291, 22));
+        comboBox->setFont(font);
         verticalLayoutWidget = new QWidget(DFSBFSMSTScreen);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(470, 130, 160, 101));
@@ -434,101 +485,189 @@ public:
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         pushButtonDFS = new QPushButton(verticalLayoutWidget);
         pushButtonDFS->setObjectName(QString::fromUtf8("pushButtonDFS"));
+        pushButtonDFS->setFont(font);
 
         verticalLayout->addWidget(pushButtonDFS);
 
         pushButtonBFS = new QPushButton(verticalLayoutWidget);
         pushButtonBFS->setObjectName(QString::fromUtf8("pushButtonBFS"));
+        pushButtonBFS->setFont(font);
 
         verticalLayout->addWidget(pushButtonBFS);
 
         pushButtonMST_2 = new QPushButton(verticalLayoutWidget);
         pushButtonMST_2->setObjectName(QString::fromUtf8("pushButtonMST_2"));
+        pushButtonMST_2->setFont(font);
 
         verticalLayout->addWidget(pushButtonMST_2);
 
         pushButtonReturnFromDFSBFSMST = new QPushButton(DFSBFSMSTScreen);
         pushButtonReturnFromDFSBFSMST->setObjectName(QString::fromUtf8("pushButtonReturnFromDFSBFSMST"));
         pushButtonReturnFromDFSBFSMST->setGeometry(QRect(670, 20, 75, 23));
+        pushButtonReturnFromDFSBFSMST->setFont(font);
         stackedWidget->addWidget(DFSBFSMSTScreen);
+        ShortestTripScreen = new QWidget();
+        ShortestTripScreen->setObjectName(QString::fromUtf8("ShortestTripScreen"));
+        pushButtonReturnFromShortestTripScreen = new QPushButton(ShortestTripScreen);
+        pushButtonReturnFromShortestTripScreen->setObjectName(QString::fromUtf8("pushButtonReturnFromShortestTripScreen"));
+        pushButtonReturnFromShortestTripScreen->setGeometry(QRect(670, 20, 75, 23));
+        pushButtonReturnFromShortestTripScreen->setFont(font);
+        stackedWidget->addWidget(ShortestTripScreen);
+        CustomTripScreen = new QWidget();
+        CustomTripScreen->setObjectName(QString::fromUtf8("CustomTripScreen"));
+        pushButtonReturnFromCustomTripScreen = new QPushButton(CustomTripScreen);
+        pushButtonReturnFromCustomTripScreen->setObjectName(QString::fromUtf8("pushButtonReturnFromCustomTripScreen"));
+        pushButtonReturnFromCustomTripScreen->setGeometry(QRect(670, 20, 75, 23));
+        pushButtonReturnFromCustomTripScreen->setFont(font);
+        stackedWidget->addWidget(CustomTripScreen);
         AdminMaintenanceScreen = new QWidget();
         AdminMaintenanceScreen->setObjectName(QString::fromUtf8("AdminMaintenanceScreen"));
         labelMaintenanceScreenTitle = new QLabel(AdminMaintenanceScreen);
         labelMaintenanceScreenTitle->setObjectName(QString::fromUtf8("labelMaintenanceScreenTitle"));
-        labelMaintenanceScreenTitle->setGeometry(QRect(310, 80, 128, 13));
-        pushButtonChangeToSouvenirs = new QPushButton(AdminMaintenanceScreen);
-        pushButtonChangeToSouvenirs->setObjectName(QString::fromUtf8("pushButtonChangeToSouvenirs"));
-        pushButtonChangeToSouvenirs->setGeometry(QRect(180, 150, 75, 23));
-        pushButtonChangeToStadiums = new QPushButton(AdminMaintenanceScreen);
-        pushButtonChangeToStadiums->setObjectName(QString::fromUtf8("pushButtonChangeToStadiums"));
-        pushButtonChangeToStadiums->setGeometry(QRect(490, 150, 75, 23));
+        labelMaintenanceScreenTitle->setGeometry(QRect(290, 100, 201, 20));
+        labelMaintenanceScreenTitle->setFont(font);
         pushButtonLogoutFromAdminMaintenance = new QPushButton(AdminMaintenanceScreen);
         pushButtonLogoutFromAdminMaintenance->setObjectName(QString::fromUtf8("pushButtonLogoutFromAdminMaintenance"));
-        pushButtonLogoutFromAdminMaintenance->setGeometry(QRect(660, 20, 75, 23));
+        pushButtonLogoutFromAdminMaintenance->setGeometry(QRect(670, 20, 75, 23));
+        pushButtonLogoutFromAdminMaintenance->setFont(font);
+        formLayoutWidget_5 = new QWidget(AdminMaintenanceScreen);
+        formLayoutWidget_5->setObjectName(QString::fromUtf8("formLayoutWidget_5"));
+        formLayoutWidget_5->setGeometry(QRect(280, 140, 195, 41));
+        formLayout_5 = new QFormLayout(formLayoutWidget_5);
+        formLayout_5->setObjectName(QString::fromUtf8("formLayout_5"));
+        formLayout_5->setContentsMargins(0, 0, 0, 0);
+        pushButtonChangeToSouvenirs = new QPushButton(formLayoutWidget_5);
+        pushButtonChangeToSouvenirs->setObjectName(QString::fromUtf8("pushButtonChangeToSouvenirs"));
+        pushButtonChangeToSouvenirs->setFont(font);
+
+        formLayout_5->setWidget(0, QFormLayout::LabelRole, pushButtonChangeToSouvenirs);
+
+        pushButtonChangeToStadiums = new QPushButton(formLayoutWidget_5);
+        pushButtonChangeToStadiums->setObjectName(QString::fromUtf8("pushButtonChangeToStadiums"));
+        pushButtonChangeToStadiums->setFont(font);
+
+        formLayout_5->setWidget(0, QFormLayout::FieldRole, pushButtonChangeToStadiums);
+
         stackedWidget->addWidget(AdminMaintenanceScreen);
         AdminSouvenirsScreen = new QWidget();
         AdminSouvenirsScreen->setObjectName(QString::fromUtf8("AdminSouvenirsScreen"));
         tableviewAllSouvenirs = new QTableView(AdminSouvenirsScreen);
         tableviewAllSouvenirs->setObjectName(QString::fromUtf8("tableviewAllSouvenirs"));
-        tableviewAllSouvenirs->setGeometry(QRect(20, 50, 461, 301));
+        tableviewAllSouvenirs->setGeometry(QRect(20, 60, 461, 381));
+        QFont font5;
+        font5.setFamily(QString::fromUtf8("Courier"));
+        font5.setPointSize(8);
+        tableviewAllSouvenirs->setFont(font5);
         pushButtonResetAllSouvenirs = new QPushButton(AdminSouvenirsScreen);
         pushButtonResetAllSouvenirs->setObjectName(QString::fromUtf8("pushButtonResetAllSouvenirs"));
-        pushButtonResetAllSouvenirs->setGeometry(QRect(20, 370, 93, 28));
+        pushButtonResetAllSouvenirs->setGeometry(QRect(20, 460, 93, 28));
+        pushButtonResetAllSouvenirs->setFont(font);
         comboBoxChooseStadium = new QComboBox(AdminSouvenirsScreen);
         comboBoxChooseStadium->setObjectName(QString::fromUtf8("comboBoxChooseStadium"));
         comboBoxChooseStadium->setGeometry(QRect(20, 20, 361, 22));
-        pushButtonEditPrice = new QPushButton(AdminSouvenirsScreen);
-        pushButtonEditPrice->setObjectName(QString::fromUtf8("pushButtonEditPrice"));
-        pushButtonEditPrice->setGeometry(QRect(500, 180, 93, 28));
-        doubleSpinBoxEditPrice = new QDoubleSpinBox(AdminSouvenirsScreen);
-        doubleSpinBoxEditPrice->setObjectName(QString::fromUtf8("doubleSpinBoxEditPrice"));
-        doubleSpinBoxEditPrice->setGeometry(QRect(500, 150, 151, 22));
-        doubleSpinBoxEditPrice->setMaximum(99999.000000000000000);
-        labelShowStadium = new QLabel(AdminSouvenirsScreen);
-        labelShowStadium->setObjectName(QString::fromUtf8("labelShowStadium"));
-        labelShowStadium->setGeometry(QRect(500, 90, 161, 21));
-        labelShowStadium->setFrameShape(QFrame::Box);
-        labelShowItem = new QLabel(AdminSouvenirsScreen);
-        labelShowItem->setObjectName(QString::fromUtf8("labelShowItem"));
-        labelShowItem->setGeometry(QRect(500, 120, 161, 21));
-        labelShowItem->setFrameShape(QFrame::Box);
-        labelShowItem->setLineWidth(1);
-        pushButtonDeleteSouvenir = new QPushButton(AdminSouvenirsScreen);
-        pushButtonDeleteSouvenir->setObjectName(QString::fromUtf8("pushButtonDeleteSouvenir"));
-        pushButtonDeleteSouvenir->setGeometry(QRect(610, 180, 51, 28));
-        labelPromptNewItem = new QLabel(AdminSouvenirsScreen);
-        labelPromptNewItem->setObjectName(QString::fromUtf8("labelPromptNewItem"));
-        labelPromptNewItem->setGeometry(QRect(500, 260, 111, 21));
-        labelPromptNewItem->setFrameShape(QFrame::Box);
-        labelPromptNewItem->setLineWidth(1);
-        lineEditNewItem = new QLineEdit(AdminSouvenirsScreen);
-        lineEditNewItem->setObjectName(QString::fromUtf8("lineEditNewItem"));
-        lineEditNewItem->setGeometry(QRect(500, 300, 201, 20));
-        pushButtonAddNewSouvenir = new QPushButton(AdminSouvenirsScreen);
-        pushButtonAddNewSouvenir->setObjectName(QString::fromUtf8("pushButtonAddNewSouvenir"));
-        pushButtonAddNewSouvenir->setGeometry(QRect(500, 370, 51, 28));
-        doubleSpinBoxNewSouvenirPrice = new QDoubleSpinBox(AdminSouvenirsScreen);
-        doubleSpinBoxNewSouvenirPrice->setObjectName(QString::fromUtf8("doubleSpinBoxNewSouvenirPrice"));
-        doubleSpinBoxNewSouvenirPrice->setGeometry(QRect(500, 330, 151, 22));
-        doubleSpinBoxNewSouvenirPrice->setMaximum(99999.000000000000000);
+        comboBoxChooseStadium->setFont(font);
         pushButtonReturnToMaintenanceScreen = new QPushButton(AdminSouvenirsScreen);
         pushButtonReturnToMaintenanceScreen->setObjectName(QString::fromUtf8("pushButtonReturnToMaintenanceScreen"));
-        pushButtonReturnToMaintenanceScreen->setGeometry(QRect(660, 20, 75, 23));
+        pushButtonReturnToMaintenanceScreen->setGeometry(QRect(670, 20, 75, 23));
+        pushButtonReturnToMaintenanceScreen->setFont(font);
+        verticalLayoutWidget_2 = new QWidget(AdminSouvenirsScreen);
+        verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
+        verticalLayoutWidget_2->setGeometry(QRect(500, 80, 231, 111));
+        verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        labelShowStadium = new QLabel(verticalLayoutWidget_2);
+        labelShowStadium->setObjectName(QString::fromUtf8("labelShowStadium"));
+        labelShowStadium->setFont(font);
+        labelShowStadium->setFrameShape(QFrame::Box);
+
+        verticalLayout_2->addWidget(labelShowStadium);
+
+        labelShowItem = new QLabel(verticalLayoutWidget_2);
+        labelShowItem->setObjectName(QString::fromUtf8("labelShowItem"));
+        labelShowItem->setFont(font);
+        labelShowItem->setFrameShape(QFrame::Box);
+        labelShowItem->setLineWidth(1);
+
+        verticalLayout_2->addWidget(labelShowItem);
+
+        doubleSpinBoxEditPrice = new QDoubleSpinBox(verticalLayoutWidget_2);
+        doubleSpinBoxEditPrice->setObjectName(QString::fromUtf8("doubleSpinBoxEditPrice"));
+        doubleSpinBoxEditPrice->setFont(font);
+        doubleSpinBoxEditPrice->setMaximum(99999.000000000000000);
+
+        verticalLayout_2->addWidget(doubleSpinBoxEditPrice);
+
+        formLayoutWidget_6 = new QWidget(AdminSouvenirsScreen);
+        formLayoutWidget_6->setObjectName(QString::fromUtf8("formLayoutWidget_6"));
+        formLayoutWidget_6->setGeometry(QRect(500, 200, 195, 31));
+        formLayout_6 = new QFormLayout(formLayoutWidget_6);
+        formLayout_6->setObjectName(QString::fromUtf8("formLayout_6"));
+        formLayout_6->setContentsMargins(0, 0, 0, 0);
+        pushButtonEditPrice = new QPushButton(formLayoutWidget_6);
+        pushButtonEditPrice->setObjectName(QString::fromUtf8("pushButtonEditPrice"));
+        pushButtonEditPrice->setFont(font);
+
+        formLayout_6->setWidget(0, QFormLayout::LabelRole, pushButtonEditPrice);
+
+        pushButtonDeleteSouvenir = new QPushButton(formLayoutWidget_6);
+        pushButtonDeleteSouvenir->setObjectName(QString::fromUtf8("pushButtonDeleteSouvenir"));
+        pushButtonDeleteSouvenir->setFont(font);
+
+        formLayout_6->setWidget(0, QFormLayout::FieldRole, pushButtonDeleteSouvenir);
+
+        verticalLayoutWidget_3 = new QWidget(AdminSouvenirsScreen);
+        verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
+        verticalLayoutWidget_3->setGeometry(QRect(500, 290, 231, 131));
+        verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget_3);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        labelPromptNewItem = new QLabel(verticalLayoutWidget_3);
+        labelPromptNewItem->setObjectName(QString::fromUtf8("labelPromptNewItem"));
+        labelPromptNewItem->setFont(font);
+        labelPromptNewItem->setFrameShape(QFrame::Box);
+        labelPromptNewItem->setLineWidth(1);
+
+        verticalLayout_3->addWidget(labelPromptNewItem);
+
+        lineEditNewItem = new QLineEdit(verticalLayoutWidget_3);
+        lineEditNewItem->setObjectName(QString::fromUtf8("lineEditNewItem"));
+        lineEditNewItem->setFont(font);
+
+        verticalLayout_3->addWidget(lineEditNewItem);
+
+        doubleSpinBoxNewSouvenirPrice = new QDoubleSpinBox(verticalLayoutWidget_3);
+        doubleSpinBoxNewSouvenirPrice->setObjectName(QString::fromUtf8("doubleSpinBoxNewSouvenirPrice"));
+        doubleSpinBoxNewSouvenirPrice->setFont(font);
+        doubleSpinBoxNewSouvenirPrice->setMaximum(99999.000000000000000);
+
+        verticalLayout_3->addWidget(doubleSpinBoxNewSouvenirPrice);
+
+        pushButtonAddNewSouvenir = new QPushButton(verticalLayoutWidget_3);
+        pushButtonAddNewSouvenir->setObjectName(QString::fromUtf8("pushButtonAddNewSouvenir"));
+        pushButtonAddNewSouvenir->setFont(font);
+
+        verticalLayout_3->addWidget(pushButtonAddNewSouvenir);
+
         stackedWidget->addWidget(AdminSouvenirsScreen);
         AdminStadiumScreen = new QWidget();
         AdminStadiumScreen->setObjectName(QString::fromUtf8("AdminStadiumScreen"));
         pushButtonReturnToMaintenanceScreen_2 = new QPushButton(AdminStadiumScreen);
         pushButtonReturnToMaintenanceScreen_2->setObjectName(QString::fromUtf8("pushButtonReturnToMaintenanceScreen_2"));
-        pushButtonReturnToMaintenanceScreen_2->setGeometry(QRect(660, 20, 75, 23));
+        pushButtonReturnToMaintenanceScreen_2->setGeometry(QRect(670, 20, 75, 23));
+        pushButtonReturnToMaintenanceScreen_2->setFont(font);
         tableViewAllStadiumsADMIN = new QTableView(AdminStadiumScreen);
         tableViewAllStadiumsADMIN->setObjectName(QString::fromUtf8("tableViewAllStadiumsADMIN"));
         tableViewAllStadiumsADMIN->setGeometry(QRect(30, 60, 701, 101));
+        tableViewAllStadiumsADMIN->setFont(font5);
         pushButtonResetAllStadiumsTableADMIN = new QPushButton(AdminStadiumScreen);
         pushButtonResetAllStadiumsTableADMIN->setObjectName(QString::fromUtf8("pushButtonResetAllStadiumsTableADMIN"));
-        pushButtonResetAllStadiumsTableADMIN->setGeometry(QRect(650, 170, 75, 23));
+        pushButtonResetAllStadiumsTableADMIN->setGeometry(QRect(650, 180, 75, 23));
+        pushButtonResetAllStadiumsTableADMIN->setFont(font);
         comboBoxChooseTeamNameADMIN = new QComboBox(AdminStadiumScreen);
         comboBoxChooseTeamNameADMIN->setObjectName(QString::fromUtf8("comboBoxChooseTeamNameADMIN"));
         comboBoxChooseTeamNameADMIN->setGeometry(QRect(30, 20, 271, 22));
+        comboBoxChooseTeamNameADMIN->setFont(font);
         formLayoutWidget_2 = new QWidget(AdminStadiumScreen);
         formLayoutWidget_2->setObjectName(QString::fromUtf8("formLayoutWidget_2"));
         formLayoutWidget_2->setGeometry(QRect(20, 290, 381, 140));
@@ -537,52 +676,62 @@ public:
         formLayout->setContentsMargins(0, 0, 0, 0);
         labelSeatingCapacity = new QLabel(formLayoutWidget_2);
         labelSeatingCapacity->setObjectName(QString::fromUtf8("labelSeatingCapacity"));
+        labelSeatingCapacity->setFont(font);
 
         formLayout->setWidget(1, QFormLayout::LabelRole, labelSeatingCapacity);
 
         labelLocation = new QLabel(formLayoutWidget_2);
         labelLocation->setObjectName(QString::fromUtf8("labelLocation"));
+        labelLocation->setFont(font);
 
         formLayout->setWidget(2, QFormLayout::LabelRole, labelLocation);
 
         labelStadiumName = new QLabel(formLayoutWidget_2);
         labelStadiumName->setObjectName(QString::fromUtf8("labelStadiumName"));
+        labelStadiumName->setFont(font);
 
         formLayout->setWidget(0, QFormLayout::LabelRole, labelStadiumName);
 
         labelPlayingSurface = new QLabel(formLayoutWidget_2);
         labelPlayingSurface->setObjectName(QString::fromUtf8("labelPlayingSurface"));
+        labelPlayingSurface->setFont(font);
 
         formLayout->setWidget(3, QFormLayout::LabelRole, labelPlayingSurface);
 
         labelLeague = new QLabel(formLayoutWidget_2);
         labelLeague->setObjectName(QString::fromUtf8("labelLeague"));
+        labelLeague->setFont(font);
 
         formLayout->setWidget(4, QFormLayout::LabelRole, labelLeague);
 
         lineEditStadiumName = new QLineEdit(formLayoutWidget_2);
         lineEditStadiumName->setObjectName(QString::fromUtf8("lineEditStadiumName"));
+        lineEditStadiumName->setFont(font);
 
         formLayout->setWidget(0, QFormLayout::FieldRole, lineEditStadiumName);
 
         spinBoxSeatingCapacity = new QSpinBox(formLayoutWidget_2);
         spinBoxSeatingCapacity->setObjectName(QString::fromUtf8("spinBoxSeatingCapacity"));
+        spinBoxSeatingCapacity->setFont(font);
         spinBoxSeatingCapacity->setMaximum(999999999);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, spinBoxSeatingCapacity);
 
         lineEditLocation = new QLineEdit(formLayoutWidget_2);
         lineEditLocation->setObjectName(QString::fromUtf8("lineEditLocation"));
+        lineEditLocation->setFont(font);
 
         formLayout->setWidget(2, QFormLayout::FieldRole, lineEditLocation);
 
         lineEditPlayingSurface = new QLineEdit(formLayoutWidget_2);
         lineEditPlayingSurface->setObjectName(QString::fromUtf8("lineEditPlayingSurface"));
+        lineEditPlayingSurface->setFont(font);
 
         formLayout->setWidget(3, QFormLayout::FieldRole, lineEditPlayingSurface);
 
         lineEditLeague = new QLineEdit(formLayoutWidget_2);
         lineEditLeague->setObjectName(QString::fromUtf8("lineEditLeague"));
+        lineEditLeague->setFont(font);
 
         formLayout->setWidget(4, QFormLayout::FieldRole, lineEditLeague);
 
@@ -594,64 +743,75 @@ public:
         formLayout_2->setContentsMargins(0, 0, 0, 0);
         labelDateOpened = new QLabel(formLayoutWidget_3);
         labelDateOpened->setObjectName(QString::fromUtf8("labelDateOpened"));
+        labelDateOpened->setFont(font);
 
         formLayout_2->setWidget(0, QFormLayout::LabelRole, labelDateOpened);
 
         spinBoxDateOpened = new QSpinBox(formLayoutWidget_3);
         spinBoxDateOpened->setObjectName(QString::fromUtf8("spinBoxDateOpened"));
+        spinBoxDateOpened->setFont(font);
         spinBoxDateOpened->setMaximum(999999999);
 
         formLayout_2->setWidget(0, QFormLayout::FieldRole, spinBoxDateOpened);
 
         labelDistanceToCenterField = new QLabel(formLayoutWidget_3);
         labelDistanceToCenterField->setObjectName(QString::fromUtf8("labelDistanceToCenterField"));
+        labelDistanceToCenterField->setFont(font);
 
         formLayout_2->setWidget(1, QFormLayout::LabelRole, labelDistanceToCenterField);
 
         spinBoxDistanceToCenterField = new QSpinBox(formLayoutWidget_3);
         spinBoxDistanceToCenterField->setObjectName(QString::fromUtf8("spinBoxDistanceToCenterField"));
+        spinBoxDistanceToCenterField->setFont(font);
         spinBoxDistanceToCenterField->setMaximum(999999999);
 
         formLayout_2->setWidget(1, QFormLayout::FieldRole, spinBoxDistanceToCenterField);
 
         labelBallParkTypology = new QLabel(formLayoutWidget_3);
         labelBallParkTypology->setObjectName(QString::fromUtf8("labelBallParkTypology"));
+        labelBallParkTypology->setFont(font);
 
         formLayout_2->setWidget(2, QFormLayout::LabelRole, labelBallParkTypology);
 
         lineEditBallParkTypology = new QLineEdit(formLayoutWidget_3);
         lineEditBallParkTypology->setObjectName(QString::fromUtf8("lineEditBallParkTypology"));
+        lineEditBallParkTypology->setFont(font);
 
         formLayout_2->setWidget(2, QFormLayout::FieldRole, lineEditBallParkTypology);
 
         labelRoofType = new QLabel(formLayoutWidget_3);
         labelRoofType->setObjectName(QString::fromUtf8("labelRoofType"));
+        labelRoofType->setFont(font);
 
         formLayout_2->setWidget(3, QFormLayout::LabelRole, labelRoofType);
 
         lineEditRoofType = new QLineEdit(formLayoutWidget_3);
         lineEditRoofType->setObjectName(QString::fromUtf8("lineEditRoofType"));
+        lineEditRoofType->setFont(font);
 
         formLayout_2->setWidget(3, QFormLayout::FieldRole, lineEditRoofType);
 
         pushButtonEditData = new QPushButton(formLayoutWidget_3);
         pushButtonEditData->setObjectName(QString::fromUtf8("pushButtonEditData"));
+        pushButtonEditData->setFont(font);
 
         formLayout_2->setWidget(4, QFormLayout::FieldRole, pushButtonEditData);
 
         formLayoutWidget_4 = new QWidget(AdminStadiumScreen);
         formLayoutWidget_4->setObjectName(QString::fromUtf8("formLayoutWidget_4"));
-        formLayoutWidget_4->setGeometry(QRect(30, 170, 195, 65));
+        formLayoutWidget_4->setGeometry(QRect(30, 170, 242, 65));
         formLayout_4 = new QFormLayout(formLayoutWidget_4);
         formLayout_4->setObjectName(QString::fromUtf8("formLayout_4"));
         formLayout_4->setContentsMargins(0, 0, 0, 0);
         pushButtonUploadNewStadium = new QPushButton(formLayoutWidget_4);
         pushButtonUploadNewStadium->setObjectName(QString::fromUtf8("pushButtonUploadNewStadium"));
+        pushButtonUploadNewStadium->setFont(font);
 
         formLayout_4->setWidget(0, QFormLayout::LabelRole, pushButtonUploadNewStadium);
 
         pushButtonUploadNewStadiumDistances = new QPushButton(formLayoutWidget_4);
         pushButtonUploadNewStadiumDistances->setObjectName(QString::fromUtf8("pushButtonUploadNewStadiumDistances"));
+        pushButtonUploadNewStadiumDistances->setFont(font);
 
         formLayout_4->setWidget(1, QFormLayout::LabelRole, pushButtonUploadNewStadiumDistances);
 
@@ -667,7 +827,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(3);
         pushButtonResetLogin->setDefault(false);
 
 
@@ -682,8 +842,12 @@ public:
         lineEditUsername->setText(QString());
         pushButtonLogin->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         pushButtonResetLogin->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
+        pushButtonLogoutFromUserSelection->setText(QCoreApplication::translate("MainWindow", "Logout", nullptr));
         pushButtonToUserScreen->setText(QCoreApplication::translate("MainWindow", "Sort Stadiums", nullptr));
         pushButtonToDFSBFSMSTScreen->setText(QCoreApplication::translate("MainWindow", "DFS/BFS/MST", nullptr));
+        pushButtonToShortestTripScreen->setText(QCoreApplication::translate("MainWindow", "Shortest Trip", nullptr));
+        pushButtonToCustomTripScreen->setText(QCoreApplication::translate("MainWindow", "Custom Trip", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "User Selection", nullptr));
         labelShowCurrentSort->setText(QCoreApplication::translate("MainWindow", "Currently Sorted By: All", nullptr));
         labelSortByTeam->setText(QCoreApplication::translate("MainWindow", "Sort by Team Name", nullptr));
         labelSortByLeague->setText(QCoreApplication::translate("MainWindow", "Sort by League", nullptr));
@@ -707,25 +871,26 @@ public:
         pushButtonResetStadiumsTable->setText(QString());
         labelAdditionalInfo->setText(QString());
         pushButtonUserLogout->setText(QCoreApplication::translate("MainWindow", "Logout", nullptr));
-        pushButtonDFSBFS->setText(QCoreApplication::translate("MainWindow", "dfs/bfs/mst", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Total Distance", nullptr));
         labelTotalDistance->setText(QString());
         pushButtonDFS->setText(QCoreApplication::translate("MainWindow", "DFS", nullptr));
         pushButtonBFS->setText(QCoreApplication::translate("MainWindow", "BFS", nullptr));
         pushButtonMST_2->setText(QCoreApplication::translate("MainWindow", "MST", nullptr));
         pushButtonReturnFromDFSBFSMST->setText(QCoreApplication::translate("MainWindow", "Return", nullptr));
+        pushButtonReturnFromShortestTripScreen->setText(QCoreApplication::translate("MainWindow", "Return", nullptr));
+        pushButtonReturnFromCustomTripScreen->setText(QCoreApplication::translate("MainWindow", "Return", nullptr));
         labelMaintenanceScreenTitle->setText(QCoreApplication::translate("MainWindow", "Administrator Maintenance", nullptr));
+        pushButtonLogoutFromAdminMaintenance->setText(QCoreApplication::translate("MainWindow", "Logout", nullptr));
         pushButtonChangeToSouvenirs->setText(QCoreApplication::translate("MainWindow", "Souvenirs", nullptr));
         pushButtonChangeToStadiums->setText(QCoreApplication::translate("MainWindow", "Stadiums", nullptr));
-        pushButtonLogoutFromAdminMaintenance->setText(QCoreApplication::translate("MainWindow", "Logout", nullptr));
         pushButtonResetAllSouvenirs->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
-        pushButtonEditPrice->setText(QCoreApplication::translate("MainWindow", "Edit Price", nullptr));
+        pushButtonReturnToMaintenanceScreen->setText(QCoreApplication::translate("MainWindow", "Return", nullptr));
         labelShowStadium->setText(QString());
         labelShowItem->setText(QCoreApplication::translate("MainWindow", "No Souvenir Selected!", nullptr));
+        pushButtonEditPrice->setText(QCoreApplication::translate("MainWindow", "Edit Price", nullptr));
         pushButtonDeleteSouvenir->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
         labelPromptNewItem->setText(QCoreApplication::translate("MainWindow", "New Souvenir To Add", nullptr));
         pushButtonAddNewSouvenir->setText(QCoreApplication::translate("MainWindow", "Add", nullptr));
-        pushButtonReturnToMaintenanceScreen->setText(QCoreApplication::translate("MainWindow", "Return", nullptr));
         pushButtonReturnToMaintenanceScreen_2->setText(QCoreApplication::translate("MainWindow", "Return", nullptr));
         pushButtonResetAllStadiumsTableADMIN->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
         labelSeatingCapacity->setText(QCoreApplication::translate("MainWindow", "Seating Capacity:", nullptr));
