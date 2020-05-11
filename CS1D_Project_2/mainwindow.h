@@ -79,20 +79,27 @@ private slots:
 
     void on_comboBoxChooseTeamNameADMIN_activated(const QString &arg1);
 
-    void on_tableViewAllStadiumsADMIN_activated(const QModelIndex &index);
-
     void on_pushButtonEditData_clicked();
 
     void on_pushButtonBFS_clicked();
-
-    void on_comboBox_activated(const QString &arg1);
 
     void on_pushButtonDFS_clicked();
 
     void on_pushButtonDFSBFS_clicked();
 
+    void on_pushButtonMST_2_clicked();
 
-    void on_pushButtonMST_clicked();
+    void hideInputFieldsADMIN();
+
+    void on_pushButtonUploadNewStadium_clicked();
+
+    void on_pushButtonReturnFromDFSBFSMST_clicked();
+
+    void on_pushButtonUploadNewStadiumDistances_clicked();
+
+    void on_pushButtonLogoutFromAdminMaintenance_clicked();
+
+    void on_pushButtonToUserScreen_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -24,7 +24,7 @@ void MainWindow::changeToAdmin()
 
 void MainWindow::changetoUser()
 {
-    ui->stackedWidget->setCurrentWidget(ui->UserScreen);
+    ui->stackedWidget->setCurrentWidget(ui->UserSelectionScreen);
     on_pushButtonResetStadiumsTable_clicked();
     fillStadiumsComboBoxes();
 }
@@ -243,7 +243,7 @@ void MainWindow::on_pushButtonChangeToSouvenirs_clicked()
 void MainWindow::on_pushButtonChangeToStadiums_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->AdminStadiumScreen);
-    ui->comboBoxChooseTeamNameADMIN->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums"));
+    ui->comboBoxChooseTeamNameADMIN->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums ORDER BY TeamName ASC"));
     on_pushButtonResetAllStadiumsTableADMIN_clicked();
 }
 
@@ -410,52 +410,71 @@ void MainWindow::on_pushButtonResetAllStadiumsTableADMIN_clicked()
     QString query = "Select StadiumName, SeatingCapacity, Location, PlayingSurface, League, DateOpened, DistanceToCenterField, BallparkTypology, RoofType from Stadiums where TeamName = '"+teamName+"'; ";
     ui->tableViewAllStadiumsADMIN->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableViewAllStadiumsADMIN->resizeColumnsToContents();
-    ui->lineEditEditData->hide();
-    ui->spinBoxEditData->hide();
-    ui->labelSelectedData->setText("No Data Selected!");
+    hideInputFieldsADMIN();
 }
 
 void MainWindow::on_comboBoxChooseTeamNameADMIN_activated(const QString &arg1)
 {
+    QSqlQuery qry;
     QString query = "Select StadiumName, SeatingCapacity, Location, PlayingSurface, League, DateOpened, DistanceToCenterField, BallparkTypology, RoofType from Stadiums where TeamName = '"+arg1+"';";
     ui->tableViewAllStadiumsADMIN->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableViewAllStadiumsADMIN->resizeColumnsToContents();
-}
 
-void MainWindow::on_tableViewAllStadiumsADMIN_activated(const QModelIndex &index)
-{
-//    dataColumn = index.column();
+    qry.prepare(query);
 
-    ui->labelSelectedData->setText(index.data().toString());
+    if (!qry.exec()) {
 
-    if (index.column() == 1 || index.column() == 5 || index.column() == 6) {
-
-        ui->spinBoxEditData->show();
-        ui->lineEditEditData->hide();
+        qDebug() << "Something's wrong";
     }
     else {
 
-        ui->lineEditEditData->show();
-        ui->spinBoxEditData->hide();
+        if (qry.first()) {
+
+            ui->lineEditStadiumName->setText(qry.value(0).toString());
+            ui->spinBoxSeatingCapacity->setValue(qry.value(1).toInt());
+            ui->lineEditLocation->setText(qry.value(2).toString());
+            ui->lineEditPlayingSurface->setText(qry.value(3).toString());
+            ui->lineEditLeague->setText(qry.value(4).toString());
+            ui->spinBoxDateOpened->setValue(qry.value(5).toInt());
+            ui->spinBoxDistanceToCenterField->setValue(qry.value(6).toInt());
+            ui->lineEditBallParkTypology->setText(qry.value(7).toString());
+            ui->lineEditRoofType->setText(qry.value(8).toString());
+        }
     }
+
+}
+
+void MainWindow::hideInputFieldsADMIN() {
+
+    ui->lineEditStadiumName->clear();
+    ui->spinBoxSeatingCapacity->clear();
+    ui->lineEditLocation->clear();
+    ui->lineEditPlayingSurface->clear();
+    ui->lineEditLeague->clear();
+    ui->spinBoxDateOpened->clear();
+    ui->spinBoxDistanceToCenterField->clear();
+    ui->lineEditBallParkTypology->clear();
+    ui->lineEditRoofType->clear();
 }
 
 void MainWindow::on_pushButtonEditData_clicked() // NOT DONE
 {
-    if (!ui->lineEditEditData->isVisible() && !ui->spinBoxEditData->isVisible()) {
+    QString stadiumName = ui->lineEditStadiumName->text();
+    QString seatingCapacity = QString::number(ui->spinBoxSeatingCapacity->value());
+    QString location = ui->lineEditLocation->text();
+    QString playingSurface = ui->lineEditPlayingSurface->text();
+    QString league = ui->lineEditLeague->text();
+    QString teamName = ui->comboBoxChooseTeamNameADMIN->currentText();
+    QString dateOpened = QString::number(ui->spinBoxDateOpened->value());
+    QString distanceToCenterField = QString::number(ui->spinBoxDistanceToCenterField->value());
+    QString ballparkTypology = ui->lineEditBallParkTypology->text();
+    QString roofType = ui->lineEditRoofType->text();
 
-        QMessageBox::warning(this, "Invalid", "Nothing is selected");
-    }
-    else if (ui->lineEditEditData->isVisible() && !ui->spinBoxEditData->isVisible()) {
+    m_controller->editStadium(stadiumName, seatingCapacity, location, playingSurface, teamName, league, dateOpened, distanceToCenterField, ballparkTypology, roofType);
 
-
-    }
-    else if (!ui->lineEditEditData->isVisible() && ui->spinBoxEditData->isVisible()) {
-
-
-    }
+    ui->tableViewAllStadiumsADMIN->setModel(m_controller->getStadiumsQueryModel("select StadiumName, SeatingCapacity, Location, PlayingSurface, League, DateOpened, DistanceToCenterField, BallparkTypology, RoofType from Stadiums where TeamName = '"+teamName+"';"));
+    ui->tableViewAllStadiumsADMIN->resizeColumnsToContents();
 }
-
 
 
 void MainWindow::on_pushButtonBFS_clicked()
@@ -474,23 +493,6 @@ void MainWindow::on_pushButtonBFS_clicked()
     }
 
     ui->labelTotalDistance->setNum(graph.getTotalDistance());
-}
-
-void MainWindow::on_comboBox_activated(const QString &arg1)
-{
-//    ui->textBrowser->clear();
-
-//    graph.loadGraph(graph);
-//    graph.BFS(arg1);
-
-//    QVector<QString> list = graph.getOrder();
-
-//    for(int i = 0; i < list.size(); ++i)
-//    {
-//        ui->textBrowser->append(list[i]);
-//    }
-
-//    ui->labelTotalDistance->setNum(graph.getTotalDistance());
 }
 
 void MainWindow::on_pushButtonDFS_clicked()
@@ -515,15 +517,14 @@ void MainWindow::on_pushButtonDFS_clicked()
 
 void MainWindow::on_pushButtonDFSBFS_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->TripScreen);
+    ui->stackedWidget->setCurrentWidget(ui->DFSBFSMSTScreen);
     ui->comboBox->setModel(m_controller->getStadiumsQueryModel("select DISTINCT [Originated Stadium] from [Stadium Distances];"));
 
 }
 
 
-void MainWindow::on_pushButtonMST_clicked()
+void MainWindow::on_pushButtonMST_2_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->TripScreen);
     ui->textBrowser->clear();
 
     graph.loadGraph(graph);
@@ -540,4 +541,30 @@ void MainWindow::on_pushButtonMST_clicked()
     }
 
     ui->labelTotalDistance->setNum(distance);
+}
+
+void MainWindow::on_pushButtonUploadNewStadium_clicked()
+{
+    m_controller->uploadStadiumFile();
+    ui->comboBoxChooseTeamNameADMIN->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums ORDER BY TeamName ASC"));
+}
+
+void MainWindow::on_pushButtonReturnFromDFSBFSMST_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->UserScreen);
+}
+
+void MainWindow::on_pushButtonUploadNewStadiumDistances_clicked()
+{
+    m_controller->uploadStadiumDistancesFile();
+}
+
+void MainWindow::on_pushButtonLogoutFromAdminMaintenance_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->LoginScreen);
+}
+
+void MainWindow::on_pushButtonToUserScreen_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->UserScreen);
 }
