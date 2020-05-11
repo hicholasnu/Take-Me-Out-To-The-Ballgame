@@ -153,6 +153,8 @@ void MainWindow::on_pushButtonToShortestTripScreen_clicked()
 void MainWindow::on_pushButtonToCustomTripScreen_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->CustomTripScreen);
+    ui->tableViewCustomTrip->setModel(m_controller->getStadiumDistancesQueryModel());
+    ui->tableViewCustomTrip->resizeColumnsToContents();
 }
 
 // LOGIN SCREEN END ===========================================================================================
@@ -587,6 +589,56 @@ void MainWindow::on_pushButtonUploadNewStadiumDistances_clicked()
     m_controller->uploadStadiumDistancesFile();
 }
 
+void MainWindow::on_tableViewCustomTrip_activated(const QModelIndex &index)
+{
+    m_controller->customTripList.append(index.data().toString());
+    ui->textBrowserDisplaySelectedTrip->append(index.data().toString());
+    ui->tableViewCustomTrip->hideRow(index.row());
+}
 
+void MainWindow::on_pushButtonResetDisplaySelectedTrip_clicked()
+{
+    m_controller->customTripList.clear();
+    ui->textBrowserDisplaySelectedTrip->clear();
+    ui->tableViewCustomTrip->setModel(m_controller->getStadiumDistancesQueryModel());
+    ui->tableViewCustomTrip->resizeColumnsToContents();
+}
 
+void MainWindow::on_pushButtonCreateCustomDirectTrip_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->DirectTripScreen);
 
+    QSqlQuery qry;
+    QString query, originatedStadium, destinationStadium, resultLine;
+    int totalDistance = 0;
+
+    for (int i = 1; i < m_controller->customTripList.size(); i++) {
+
+        originatedStadium = m_controller->customTripList[i-1];
+        destinationStadium = m_controller->customTripList[i];
+
+        qDebug() << "loop no: " + QString::number(i);
+
+        query = "select * from [Stadium Distances] where [Originated Stadium] = '"+originatedStadium+"' and [Destination Stadium] = '"+destinationStadium+"';";
+        qry.prepare(query);
+
+        if (!qry.exec()) {
+
+            qDebug() << "error in on_pushButtonCreateCustomDirectTrip_clicked";
+        }
+        else {
+
+            if (qry.first()) {
+
+                totalDistance += qry.value(2).toInt();
+                qDebug() << qry.value(0).toString() + " to " + qry.value(1).toString();
+                resultLine = qry.value(0).toString() + " to " + qry.value(1).toString() + " is " + qry.value(2).toString();
+                ui->textBrowserDisplayDirectTrip->append("jeff" + QString::number(i));
+                qry.clear();
+            }
+        }
+     }
+
+    ui->labelShowTotalDistanceFromDirectTrip->setText(QString::number(totalDistance));
+    ui->textBrowser->
+}

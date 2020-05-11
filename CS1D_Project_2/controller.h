@@ -15,6 +15,7 @@
 #include <QSpinBox>
 #include <QSize>
 #include <QTableWidgetItem>
+#include "stadiumtovisit.h"
 
 
 class Controller : public QObject
@@ -37,8 +38,13 @@ public:
     void uploadStadiumFile();
     void uploadStadiumDistancesFile();
 
+    void customTrip();
+
     QSqlQueryModel *getStadiumsQueryModel(QString query);
     QSqlQueryModel *getSouvenirsQueryModel(QString query);
+    QSqlQueryModel *getStadiumDistancesQueryModel();
+
+    QVector<QString> customTripList;
 
 private:
     QSqlDatabase m_database;

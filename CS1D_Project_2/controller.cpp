@@ -345,3 +345,29 @@ void Controller::uploadStadiumDistancesFile() {
         }
     }
 }
+
+QSqlQueryModel *Controller::getStadiumDistancesQueryModel() {
+
+    QSqlQueryModel* model = new QSqlQueryModel();
+    QSqlQuery qry;
+    QString query = "select DISTINCT [Originated Stadium] from [Stadium Distances]";
+
+    qry.prepare(query);
+
+    if (!qry.exec()) {
+
+        qDebug() << "getStadiumDistancesQueryModel() failed.";
+    }
+
+    model->setQuery(qry);
+
+    return model;
+
+}
+
+void Controller::customTrip() {
+
+    QVector<StadiumToVisit>* stadiums = new QVector<StadiumToVisit>;
+
+
+}

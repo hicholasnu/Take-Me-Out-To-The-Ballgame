@@ -100,6 +100,15 @@ public:
     QPushButton *pushButtonReturnFromShortestTripScreen;
     QWidget *CustomTripScreen;
     QPushButton *pushButtonReturnFromCustomTripScreen;
+    QTableView *tableViewCustomTrip;
+    QTextBrowser *textBrowserDisplaySelectedTrip;
+    QWidget *horizontalLayoutWidget_2;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *pushButtonCreateCustomDirectTrip;
+    QPushButton *pushButtonResetDisplaySelectedTrip;
+    QWidget *DirectTripScreen;
+    QTextBrowser *textBrowserDisplayDirectTrip;
+    QLabel *labelShowTotalDistanceFromDirectTrip;
     QWidget *AdminMaintenanceScreen;
     QLabel *labelMaintenanceScreenTitle;
     QPushButton *pushButtonLogoutFromAdminMaintenance;
@@ -519,7 +528,40 @@ public:
         pushButtonReturnFromCustomTripScreen->setObjectName(QString::fromUtf8("pushButtonReturnFromCustomTripScreen"));
         pushButtonReturnFromCustomTripScreen->setGeometry(QRect(670, 20, 75, 23));
         pushButtonReturnFromCustomTripScreen->setFont(font);
+        tableViewCustomTrip = new QTableView(CustomTripScreen);
+        tableViewCustomTrip->setObjectName(QString::fromUtf8("tableViewCustomTrip"));
+        tableViewCustomTrip->setGeometry(QRect(20, 20, 321, 491));
+        textBrowserDisplaySelectedTrip = new QTextBrowser(CustomTripScreen);
+        textBrowserDisplaySelectedTrip->setObjectName(QString::fromUtf8("textBrowserDisplaySelectedTrip"));
+        textBrowserDisplaySelectedTrip->setGeometry(QRect(475, 60, 261, 401));
+        textBrowserDisplaySelectedTrip->setTextInteractionFlags(Qt::TextBrowserInteraction);
+        horizontalLayoutWidget_2 = new QWidget(CustomTripScreen);
+        horizontalLayoutWidget_2->setObjectName(QString::fromUtf8("horizontalLayoutWidget_2"));
+        horizontalLayoutWidget_2->setGeometry(QRect(500, 470, 213, 41));
+        horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_2);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        pushButtonCreateCustomDirectTrip = new QPushButton(horizontalLayoutWidget_2);
+        pushButtonCreateCustomDirectTrip->setObjectName(QString::fromUtf8("pushButtonCreateCustomDirectTrip"));
+
+        horizontalLayout_2->addWidget(pushButtonCreateCustomDirectTrip);
+
+        pushButtonResetDisplaySelectedTrip = new QPushButton(horizontalLayoutWidget_2);
+        pushButtonResetDisplaySelectedTrip->setObjectName(QString::fromUtf8("pushButtonResetDisplaySelectedTrip"));
+
+        horizontalLayout_2->addWidget(pushButtonResetDisplaySelectedTrip);
+
         stackedWidget->addWidget(CustomTripScreen);
+        DirectTripScreen = new QWidget();
+        DirectTripScreen->setObjectName(QString::fromUtf8("DirectTripScreen"));
+        textBrowserDisplayDirectTrip = new QTextBrowser(DirectTripScreen);
+        textBrowserDisplayDirectTrip->setObjectName(QString::fromUtf8("textBrowserDisplayDirectTrip"));
+        textBrowserDisplayDirectTrip->setGeometry(QRect(30, 20, 411, 491));
+        labelShowTotalDistanceFromDirectTrip = new QLabel(DirectTripScreen);
+        labelShowTotalDistanceFromDirectTrip->setObjectName(QString::fromUtf8("labelShowTotalDistanceFromDirectTrip"));
+        labelShowTotalDistanceFromDirectTrip->setGeometry(QRect(510, 80, 141, 21));
+        labelShowTotalDistanceFromDirectTrip->setFrameShape(QFrame::Box);
+        stackedWidget->addWidget(DirectTripScreen);
         AdminMaintenanceScreen = new QWidget();
         AdminMaintenanceScreen->setObjectName(QString::fromUtf8("AdminMaintenanceScreen"));
         labelMaintenanceScreenTitle = new QLabel(AdminMaintenanceScreen);
@@ -827,7 +869,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(6);
         pushButtonResetLogin->setDefault(false);
 
 
@@ -879,6 +921,9 @@ public:
         pushButtonReturnFromDFSBFSMST->setText(QCoreApplication::translate("MainWindow", "Return", nullptr));
         pushButtonReturnFromShortestTripScreen->setText(QCoreApplication::translate("MainWindow", "Return", nullptr));
         pushButtonReturnFromCustomTripScreen->setText(QCoreApplication::translate("MainWindow", "Return", nullptr));
+        pushButtonCreateCustomDirectTrip->setText(QCoreApplication::translate("MainWindow", "Create Direct Trip", nullptr));
+        pushButtonResetDisplaySelectedTrip->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
+        labelShowTotalDistanceFromDirectTrip->setText(QString());
         labelMaintenanceScreenTitle->setText(QCoreApplication::translate("MainWindow", "Administrator Maintenance", nullptr));
         pushButtonLogoutFromAdminMaintenance->setText(QCoreApplication::translate("MainWindow", "Logout", nullptr));
         pushButtonChangeToSouvenirs->setText(QCoreApplication::translate("MainWindow", "Souvenirs", nullptr));

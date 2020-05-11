@@ -111,6 +111,13 @@ private slots:
 
     void on_pushButtonToCustomTripScreen_clicked();
 
+
+    void on_tableViewCustomTrip_activated(const QModelIndex &index);
+
+    void on_pushButtonResetDisplaySelectedTrip_clicked();
+
+    void on_pushButtonCreateCustomDirectTrip_clicked();
+
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;
