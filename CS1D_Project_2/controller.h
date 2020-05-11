@@ -15,6 +15,7 @@
 #include <QSpinBox>
 #include <QSize>
 #include <QTableWidgetItem>
+#include "stadiumtovisit.h"
 
 
 class Controller : public QObject
@@ -32,10 +33,20 @@ public:
     void deleteSouvenir(QString souvenir, QString stadium);
     void editSouvenir(QString stadium, QString souvenir, double price);
     void createSouvenir(QString college, QString souvenir, double price);
+    void editStadium(QString stadiumName, QString seatingCapacity, QString location, QString playingSurface, QString league, QString teamName, QString dateOpened, QString DistanceToCenterField, QString BallparkTypology, QString RoofType);
+
+    void uploadStadiumFile();
+    void uploadStadiumDistancesFile();
+
+    void customTrip();
 
     QSqlQueryModel *getStadiumsQueryModel(QString query);
     QSqlQueryModel *getSouvenirsQueryModel(QString query);
     QSqlQueryModel *getTeamNamesAndStadiumsQueryModel();
+    QSqlQueryModel *getStadiumDistancesQueryModel();
+
+    QVector<QString> customTripList;
+
 
 private:
     QSqlDatabase m_database;

@@ -83,15 +83,9 @@ private slots:
 
     void on_pushButtonBFS_clicked();
 
-    void on_comboBox_activated(const QString &arg1);
-
     void on_pushButtonDFS_clicked();
 
-    void on_pushButtonDFSBFS_clicked();
-
     void on_pushButtonMST_2_clicked();
-
-    void on_comboBoxChooseFieldToEdit_activated(const QString &arg1);
 
     void hideInputFieldsADMIN();
 
@@ -106,6 +100,36 @@ private slots:
     void on_pushButtonShowTeamNamesAndStadiums_clicked();
 
     void on_pushButtonReturnToShortestTripScreen_clicked();
+
+    void on_pushButtonUploadNewStadium_clicked();
+
+    void on_pushButtonReturnFromDFSBFSMST_clicked();
+
+    void on_pushButtonUploadNewStadiumDistances_clicked();
+
+    void on_pushButtonLogoutFromAdminMaintenance_clicked();
+
+    void on_pushButtonToUserScreen_clicked();
+
+    void on_pushButtonReturnFromShortestTripScreen_clicked();
+
+    void on_pushButtonReturnFromCustomTripScreen_clicked();
+
+    void on_pushButtonLogoutFromUserSelection_clicked();
+
+    void on_pushButtonToDFSBFSMSTScreen_clicked();
+
+    void on_pushButtonToShortestTripScreen_clicked();
+
+    void on_pushButtonToCustomTripScreen_clicked();
+
+
+    void on_tableViewCustomTrip_activated(const QModelIndex &index);
+
+    void on_pushButtonResetDisplaySelectedTrip_clicked();
+
+    void on_pushButtonCreateCustomDirectTrip_clicked();
+
 
 private:
     Ui::MainWindow *ui;

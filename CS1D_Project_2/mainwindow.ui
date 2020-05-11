@@ -27,7 +27,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>10</y>
+      <y>20</y>
       <width>761</width>
       <height>531</height>
      </rect>
@@ -39,7 +39,7 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="LoginScreen">
      <property name="styleSheet">
@@ -178,6 +178,104 @@
       </property>
       <property name="flat">
        <bool>false</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="UserSelectionScreen">
+     <widget class="QPushButton" name="pushButtonLogoutFromUserSelection">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>20</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>Logout</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>180</y>
+        <width>443</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="pushButtonToUserScreen">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Sort Stadiums</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButtonToDFSBFSMSTScreen">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>DFS/BFS/MST</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButtonToShortestTripScreen">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Shortest Trip</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButtonToCustomTripScreen">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Custom Trip</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>110</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>User Selection</string>
       </property>
      </widget>
     </widget>
@@ -619,15 +717,20 @@ font: 8pt &quot;Courier&quot;;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="TripScreen">
+    <widget class="QWidget" name="DFSBFSMSTScreen">
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>480</x>
+        <x>460</x>
         <y>440</y>
-        <width>91</width>
+        <width>121</width>
         <height>16</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
       </property>
       <property name="text">
        <string>Total Distance</string>
@@ -641,6 +744,11 @@ font: 8pt &quot;Courier&quot;;</string>
         <width>121</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -658,15 +766,25 @@ font: 8pt &quot;Courier&quot;;</string>
         <height>491</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
+      </property>
      </widget>
      <widget class="QComboBox" name="comboBox">
       <property name="geometry">
        <rect>
         <x>460</x>
-        <y>20</y>
+        <y>60</y>
         <width>291</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
       </property>
      </widget>
      <widget class="QWidget" name="verticalLayoutWidget">
@@ -681,6 +799,11 @@ font: 8pt &quot;Courier&quot;;</string>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QPushButton" name="pushButtonDFS">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
          <property name="text">
           <string>DFS</string>
          </property>
@@ -688,6 +811,11 @@ font: 8pt &quot;Courier&quot;;</string>
        </item>
        <item>
         <widget class="QPushButton" name="pushButtonBFS">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
          <property name="text">
           <string>BFS</string>
          </property>
@@ -695,6 +823,11 @@ font: 8pt &quot;Courier&quot;;</string>
        </item>
        <item>
         <widget class="QPushButton" name="pushButtonMST_2">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
          <property name="text">
           <string>MST</string>
          </property>
@@ -859,30 +992,214 @@ font: 8pt &quot;Courier&quot;;</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButtonChangeToSouvenirs">
+     <widget class="QPushButton" name="pushButtonReturnFromDFSBFSMST">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>150</y>
+        <x>670</x>
+        <y>20</y>
         <width>75</width>
         <height>23</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
+      </property>
       <property name="text">
-       <string>Souvenirs</string>
+       <string>Return</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonChangeToStadiums">
+    </widget>
+    <widget class="QWidget" name="ShortestTripScreen">
+     <widget class="QPushButton" name="pushButtonReturnFromShortestTripScreen">
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>150</y>
+        <x>670</x>
+        <y>20</y>
         <width>75</width>
         <height>23</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Stadiums</string>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
       </property>
+      <property name="text">
+       <string>Return</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="CustomTripScreen">
+     <widget class="QPushButton" name="pushButtonReturnFromCustomTripScreen">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>20</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>Return</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tableViewCustomTrip">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>321</width>
+        <height>491</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowserDisplaySelectedTrip">
+      <property name="geometry">
+       <rect>
+        <x>475</x>
+        <y>60</y>
+        <width>261</width>
+        <height>401</height>
+       </rect>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextBrowserInteraction</set>
+      </property>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>470</y>
+        <width>213</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="pushButtonCreateCustomDirectTrip">
+         <property name="text">
+          <string>Create Direct Trip</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButtonResetDisplaySelectedTrip">
+         <property name="text">
+          <string>Reset</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="DirectTripScreen">
+     <widget class="QTextBrowser" name="textBrowserDisplayDirectTrip">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>411</width>
+        <height>491</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelShowTotalDistanceFromDirectTrip">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>80</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="AdminMaintenanceScreen">
+     <widget class="QLabel" name="labelMaintenanceScreenTitle">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>100</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>Administrator Maintenance</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonLogoutFromAdminMaintenance">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>20</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>Logout</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="formLayoutWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>140</y>
+        <width>195</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formLayout_5">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButtonChangeToSouvenirs">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Souvenirs</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pushButtonChangeToStadiums">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Stadiums</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="AdminSouvenirsScreen">
@@ -890,20 +1207,31 @@ font: 8pt &quot;Courier&quot;;</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>50</y>
+        <y>60</y>
         <width>461</width>
-        <height>301</height>
+        <height>381</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+        <pointsize>8</pointsize>
+       </font>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButtonResetAllSouvenirs">
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>370</y>
+        <y>460</y>
         <width>93</width>
         <height>28</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
       </property>
       <property name="text">
        <string>Reset</string>
@@ -918,159 +1246,201 @@ font: 8pt &quot;Courier&quot;;</string>
         <height>22</height>
        </rect>
       </property>
-     </widget>
-     <widget class="QPushButton" name="pushButtonEditPrice">
-      <property name="geometry">
-       <rect>
-        <x>500</x>
-        <y>180</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Edit Price</string>
-      </property>
-     </widget>
-     <widget class="QDoubleSpinBox" name="doubleSpinBoxEditPrice">
-      <property name="geometry">
-       <rect>
-        <x>500</x>
-        <y>150</y>
-        <width>151</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="maximum">
-       <double>99999.000000000000000</double>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelShowStadium">
-      <property name="geometry">
-       <rect>
-        <x>500</x>
-        <y>90</y>
-        <width>161</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelShowItem">
-      <property name="geometry">
-       <rect>
-        <x>500</x>
-        <y>120</y>
-        <width>161</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
-      </property>
-      <property name="lineWidth">
-       <number>1</number>
-      </property>
-      <property name="text">
-       <string>No Souvenir Selected!</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButtonDeleteSouvenir">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>180</y>
-        <width>51</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Delete</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelPromptNewItem">
-      <property name="geometry">
-       <rect>
-        <x>500</x>
-        <y>260</y>
-        <width>111</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
-      </property>
-      <property name="lineWidth">
-       <number>1</number>
-      </property>
-      <property name="text">
-       <string>New Souvenir To Add</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEditNewItem">
-      <property name="geometry">
-       <rect>
-        <x>500</x>
-        <y>300</y>
-        <width>201</width>
-        <height>20</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButtonAddNewSouvenir">
-      <property name="geometry">
-       <rect>
-        <x>500</x>
-        <y>370</y>
-        <width>51</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QDoubleSpinBox" name="doubleSpinBoxNewSouvenirPrice">
-      <property name="geometry">
-       <rect>
-        <x>500</x>
-        <y>330</y>
-        <width>151</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="maximum">
-       <double>99999.000000000000000</double>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButtonReturnToMaintenanceScreen">
       <property name="geometry">
        <rect>
-        <x>660</x>
+        <x>670</x>
         <y>20</y>
         <width>75</width>
         <height>23</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
+      </property>
       <property name="text">
        <string>Return</string>
       </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>80</y>
+        <width>231</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="labelShowStadium">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="labelShowItem">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="lineWidth">
+          <number>1</number>
+         </property>
+         <property name="text">
+          <string>No Souvenir Selected!</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="doubleSpinBoxEditPrice">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="maximum">
+          <double>99999.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="formLayoutWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>200</y>
+        <width>195</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formLayout_6">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButtonEditPrice">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Edit Price</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pushButtonDeleteSouvenir">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Delete</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>290</y>
+        <width>231</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLabel" name="labelPromptNewItem">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="lineWidth">
+          <number>1</number>
+         </property>
+         <property name="text">
+          <string>New Souvenir To Add</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEditNewItem">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="doubleSpinBoxNewSouvenirPrice">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="maximum">
+          <double>99999.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButtonAddNewSouvenir">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Add</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="AdminStadiumScreen">
      <widget class="QPushButton" name="pushButtonReturnToMaintenanceScreen_2">
       <property name="geometry">
        <rect>
-        <x>660</x>
+        <x>670</x>
         <y>20</y>
         <width>75</width>
         <height>23</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
       </property>
       <property name="text">
        <string>Return</string>
@@ -1085,15 +1455,26 @@ font: 8pt &quot;Courier&quot;;</string>
         <height>101</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
      </widget>
      <widget class="QPushButton" name="pushButtonResetAllStadiumsTableADMIN">
       <property name="geometry">
        <rect>
         <x>650</x>
-        <y>170</y>
+        <y>180</y>
         <width>75</width>
         <height>23</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
       </property>
       <property name="text">
        <string>Reset</string>
@@ -1108,136 +1489,281 @@ font: 8pt &quot;Courier&quot;;</string>
         <height>22</height>
        </rect>
       </property>
-     </widget>
-     <widget class="QPushButton" name="pushButtonEditData">
-      <property name="geometry">
-       <rect>
-        <x>490</x>
-        <y>440</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Edit</string>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBoxChooseFieldToEdit">
+     <widget class="QWidget" name="formLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>220</y>
-        <width>131</width>
-        <height>22</height>
+        <x>20</x>
+        <y>290</y>
+        <width>381</width>
+        <height>140</height>
        </rect>
       </property>
-      <item>
-       <property name="text">
-        <string>StadiumName</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>SeatingCapacity</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Location</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>PlayingSurface</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>League</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>DateOpened</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>DistanceToCenter</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>BallParkTypology</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>RoofType</string>
-       </property>
-      </item>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="1" column="0">
+        <widget class="QLabel" name="labelSeatingCapacity">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Seating Capacity:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="labelLocation">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Location:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="labelStadiumName">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Stadium Name:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="labelPlayingSurface">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Playing Surface:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="labelLeague">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>League:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineEditStadiumName">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="spinBoxSeatingCapacity">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="lineEditLocation">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="lineEditPlayingSurface">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="lineEditLeague">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
-     <widget class="QLabel" name="labelChooseFieldToEdit">
+     <widget class="QWidget" name="formLayoutWidget_3">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>200</y>
-        <width>121</width>
-        <height>16</height>
+        <x>410</x>
+        <y>290</y>
+        <width>331</width>
+        <height>146</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Choose field to edit</string>
-      </property>
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="labelDateOpened">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Date Opened:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSpinBox" name="spinBoxDateOpened">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="labelDistanceToCenterField">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Distance To Center Field:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="spinBoxDistanceToCenterField">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="labelBallParkTypology">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Ballpark Typology:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="lineEditBallParkTypology">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="labelRoofType">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Roof Type:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="lineEditRoofType">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QPushButton" name="pushButtonEditData">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Edit</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
-     <widget class="QLabel" name="labelCurrentData">
+     <widget class="QWidget" name="formLayoutWidget_4">
       <property name="geometry">
        <rect>
-        <x>290</x>
-        <y>220</y>
-        <width>71</width>
-        <height>16</height>
+        <x>30</x>
+        <y>170</y>
+        <width>242</width>
+        <height>65</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Current Data:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelShowCurrentData">
-      <property name="geometry">
-       <rect>
-        <x>370</x>
-        <y>220</y>
-        <width>241</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
-      </property>
-      <property name="text">
-       <string>No Data Selected!</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEditInputStringData">
-      <property name="geometry">
-       <rect>
-        <x>370</x>
-        <y>250</y>
-        <width>241</width>
-        <height>20</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBoxInputIntData">
-      <property name="geometry">
-       <rect>
-        <x>370</x>
-        <y>250</y>
-        <width>42</width>
-        <height>22</height>
-       </rect>
-      </property>
+      <layout class="QFormLayout" name="formLayout_4">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButtonUploadNewStadium">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Upload New Stadium</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pushButtonUploadNewStadiumDistances">
+         <property name="font">
+          <font>
+           <family>Courier</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Upload New Stadium Distances</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>

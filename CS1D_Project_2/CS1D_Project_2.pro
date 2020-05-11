@@ -20,13 +20,15 @@ SOURCES += \
     graph.cpp \
     login.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    stadiumtovisit.cpp
 
 HEADERS += \
     controller.h \
     graph.h \
     login.h \
-    mainwindow.h
+    mainwindow.h \
+    stadiumtovisit.h
 
 FORMS += \
     mainwindow.ui
