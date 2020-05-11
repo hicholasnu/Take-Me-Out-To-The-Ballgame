@@ -86,10 +86,12 @@ public:
     QPushButton *pushButtonDFS;
     QPushButton *pushButtonBFS;
     QPushButton *pushButtonMST_2;
+    QPushButton *pushButtonReturnFromDFSBFSMST;
     QWidget *AdminMaintenanceScreen;
     QLabel *labelMaintenanceScreenTitle;
     QPushButton *pushButtonChangeToSouvenirs;
     QPushButton *pushButtonChangeToStadiums;
+    QPushButton *pushButtonLogoutFromAdminMaintenance;
     QWidget *AdminSouvenirsScreen;
     QTableView *tableviewAllSouvenirs;
     QPushButton *pushButtonResetAllSouvenirs;
@@ -132,6 +134,10 @@ public:
     QLabel *labelRoofType;
     QLineEdit *lineEditRoofType;
     QPushButton *pushButtonEditData;
+    QWidget *formLayoutWidget_4;
+    QFormLayout *formLayout_4;
+    QPushButton *pushButtonUploadNewStadium;
+    QPushButton *pushButtonUploadNewStadiumDistances;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -407,7 +413,7 @@ public:
         textBrowser->setGeometry(QRect(20, 20, 421, 491));
         comboBox = new QComboBox(TripScreen);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        comboBox->setGeometry(QRect(460, 20, 291, 22));
+        comboBox->setGeometry(QRect(460, 60, 291, 22));
         verticalLayoutWidget = new QWidget(TripScreen);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(470, 130, 160, 101));
@@ -429,6 +435,9 @@ public:
 
         verticalLayout->addWidget(pushButtonMST_2);
 
+        pushButtonReturnFromDFSBFSMST = new QPushButton(TripScreen);
+        pushButtonReturnFromDFSBFSMST->setObjectName(QString::fromUtf8("pushButtonReturnFromDFSBFSMST"));
+        pushButtonReturnFromDFSBFSMST->setGeometry(QRect(670, 20, 75, 23));
         stackedWidget->addWidget(TripScreen);
         AdminMaintenanceScreen = new QWidget();
         AdminMaintenanceScreen->setObjectName(QString::fromUtf8("AdminMaintenanceScreen"));
@@ -441,6 +450,9 @@ public:
         pushButtonChangeToStadiums = new QPushButton(AdminMaintenanceScreen);
         pushButtonChangeToStadiums->setObjectName(QString::fromUtf8("pushButtonChangeToStadiums"));
         pushButtonChangeToStadiums->setGeometry(QRect(490, 150, 75, 23));
+        pushButtonLogoutFromAdminMaintenance = new QPushButton(AdminMaintenanceScreen);
+        pushButtonLogoutFromAdminMaintenance->setObjectName(QString::fromUtf8("pushButtonLogoutFromAdminMaintenance"));
+        pushButtonLogoutFromAdminMaintenance->setGeometry(QRect(660, 20, 75, 23));
         stackedWidget->addWidget(AdminMaintenanceScreen);
         AdminSouvenirsScreen = new QWidget();
         AdminSouvenirsScreen->setObjectName(QString::fromUtf8("AdminSouvenirsScreen"));
@@ -615,6 +627,22 @@ public:
 
         formLayout_2->setWidget(4, QFormLayout::FieldRole, pushButtonEditData);
 
+        formLayoutWidget_4 = new QWidget(AdminStadiumScreen);
+        formLayoutWidget_4->setObjectName(QString::fromUtf8("formLayoutWidget_4"));
+        formLayoutWidget_4->setGeometry(QRect(30, 170, 163, 61));
+        formLayout_4 = new QFormLayout(formLayoutWidget_4);
+        formLayout_4->setObjectName(QString::fromUtf8("formLayout_4"));
+        formLayout_4->setContentsMargins(0, 0, 0, 0);
+        pushButtonUploadNewStadium = new QPushButton(formLayoutWidget_4);
+        pushButtonUploadNewStadium->setObjectName(QString::fromUtf8("pushButtonUploadNewStadium"));
+
+        formLayout_4->setWidget(0, QFormLayout::LabelRole, pushButtonUploadNewStadium);
+
+        pushButtonUploadNewStadiumDistances = new QPushButton(formLayoutWidget_4);
+        pushButtonUploadNewStadiumDistances->setObjectName(QString::fromUtf8("pushButtonUploadNewStadiumDistances"));
+
+        formLayout_4->setWidget(1, QFormLayout::LabelRole, pushButtonUploadNewStadiumDistances);
+
         stackedWidget->addWidget(AdminStadiumScreen);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -671,9 +699,11 @@ public:
         pushButtonDFS->setText(QApplication::translate("MainWindow", "DFS", nullptr));
         pushButtonBFS->setText(QApplication::translate("MainWindow", "BFS", nullptr));
         pushButtonMST_2->setText(QApplication::translate("MainWindow", "MST", nullptr));
+        pushButtonReturnFromDFSBFSMST->setText(QApplication::translate("MainWindow", "Return", nullptr));
         labelMaintenanceScreenTitle->setText(QApplication::translate("MainWindow", "Administrator Maintenance", nullptr));
         pushButtonChangeToSouvenirs->setText(QApplication::translate("MainWindow", "Souvenirs", nullptr));
         pushButtonChangeToStadiums->setText(QApplication::translate("MainWindow", "Stadiums", nullptr));
+        pushButtonLogoutFromAdminMaintenance->setText(QApplication::translate("MainWindow", "Logout", nullptr));
         pushButtonResetAllSouvenirs->setText(QApplication::translate("MainWindow", "Reset", nullptr));
         pushButtonEditPrice->setText(QApplication::translate("MainWindow", "Edit Price", nullptr));
         labelShowStadium->setText(QString());
@@ -694,6 +724,8 @@ public:
         labelBallParkTypology->setText(QApplication::translate("MainWindow", "Ballpark Typology:", nullptr));
         labelRoofType->setText(QApplication::translate("MainWindow", "Roof Type:", nullptr));
         pushButtonEditData->setText(QApplication::translate("MainWindow", "Edit", nullptr));
+        pushButtonUploadNewStadium->setText(QApplication::translate("MainWindow", "Upload New Stadium", nullptr));
+        pushButtonUploadNewStadiumDistances->setText(QApplication::translate("MainWindow", "Upload New Stadium Distances", nullptr));
     } // retranslateUi
 
 };

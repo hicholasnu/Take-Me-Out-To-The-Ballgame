@@ -34,6 +34,8 @@ public:
     void createSouvenir(QString college, QString souvenir, double price);
     void editStadium(QString stadiumName, QString seatingCapacity, QString location, QString playingSurface, QString league, QString teamName, QString dateOpened, QString DistanceToCenterField, QString BallparkTypology, QString RoofType);
 
+    void uploadStadiumFile();
+    void uploadStadiumDistancesFile();
 
     QSqlQueryModel *getStadiumsQueryModel(QString query);
     QSqlQueryModel *getSouvenirsQueryModel(QString query);

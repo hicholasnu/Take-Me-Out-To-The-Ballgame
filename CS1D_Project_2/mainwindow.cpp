@@ -243,7 +243,7 @@ void MainWindow::on_pushButtonChangeToSouvenirs_clicked()
 void MainWindow::on_pushButtonChangeToStadiums_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->AdminStadiumScreen);
-    ui->comboBoxChooseTeamNameADMIN->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums"));
+    ui->comboBoxChooseTeamNameADMIN->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums ORDER BY TeamName ASC"));
     on_pushButtonResetAllStadiumsTableADMIN_clicked();
 }
 
@@ -560,3 +560,23 @@ void MainWindow::on_pushButtonMST_2_clicked()
     ui->labelTotalDistance->setNum(distance);
 }
 
+void MainWindow::on_pushButtonUploadNewStadium_clicked()
+{
+    m_controller->uploadStadiumFile();
+    ui->comboBoxChooseTeamNameADMIN->setModel(m_controller->getStadiumsQueryModel("select DISTINCT TeamName from Stadiums ORDER BY TeamName ASC"));
+}
+
+void MainWindow::on_pushButtonReturnFromDFSBFSMST_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->UserScreen);
+}
+
+void MainWindow::on_pushButtonUploadNewStadiumDistances_clicked()
+{
+    m_controller->uploadStadiumDistancesFile();
+}
+
+void MainWindow::on_pushButtonLogoutFromAdminMaintenance_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->LoginScreen);
+}

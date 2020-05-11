@@ -637,7 +637,7 @@ font: 8pt &quot;Courier&quot;;</string>
       <property name="geometry">
        <rect>
         <x>460</x>
-        <y>20</y>
+        <y>60</y>
         <width>291</width>
         <height>22</height>
        </rect>
@@ -675,6 +675,19 @@ font: 8pt &quot;Courier&quot;;</string>
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QPushButton" name="pushButtonReturnFromDFSBFSMST">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>20</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Return</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="AdminMaintenanceScreen">
@@ -715,6 +728,19 @@ font: 8pt &quot;Courier&quot;;</string>
       </property>
       <property name="text">
        <string>Stadiums</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonLogoutFromAdminMaintenance">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>20</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Logout</string>
       </property>
      </widget>
     </widget>
@@ -1070,6 +1096,32 @@ font: 8pt &quot;Courier&quot;;</string>
         <widget class="QPushButton" name="pushButtonEditData">
          <property name="text">
           <string>Edit</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="formLayoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>170</y>
+        <width>163</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formLayout_4">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButtonUploadNewStadium">
+         <property name="text">
+          <string>Upload New Stadium</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pushButtonUploadNewStadiumDistances">
+         <property name="text">
+          <string>Upload New Stadium Distances</string>
          </property>
         </widget>
        </item>

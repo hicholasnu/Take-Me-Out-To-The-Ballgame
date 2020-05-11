@@ -93,6 +93,14 @@ private slots:
 
     void hideInputFieldsADMIN();
 
+    void on_pushButtonUploadNewStadium_clicked();
+
+    void on_pushButtonReturnFromDFSBFSMST_clicked();
+
+    void on_pushButtonUploadNewStadiumDistances_clicked();
+
+    void on_pushButtonLogoutFromAdminMaintenance_clicked();
+
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;
