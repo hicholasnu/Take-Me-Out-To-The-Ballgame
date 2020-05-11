@@ -186,3 +186,40 @@ void Controller::createSouvenir(QString stadium, QString souvenir, double price)
     }
 }
 
+void Controller::editStadium(QString stadiumName, QString seatingCapacity, QString location, QString playingSurface, QString teamName, QString league, QString dateOpened, QString distanceToCenterField, QString ballparkTypology, QString roofType)
+{
+    QSqlQuery qry;
+    qry.prepare("update [Stadiums] set        "
+                "StadiumName              = ?,"
+                "SeatingCapacity          = ?,"
+                "Location                 = ?,"
+                "PlayingSurface           = ?,"
+                "TeamName                 = ?,"
+                "League                   = ?,"
+                "DateOpened               = ?,"
+                "DistanceToCenterField    = ?,"
+                "BallparkTypology         = ?,"
+                "RoofType                 = ? "
+                "where TeamName           = ?;");
+
+    qry.addBindValue(stadiumName);
+    qry.addBindValue(seatingCapacity);
+    qry.addBindValue(location);
+    qry.addBindValue(playingSurface);
+    qry.addBindValue(teamName);
+    qry.addBindValue(league);
+    qry.addBindValue(dateOpened);
+    qry.addBindValue(distanceToCenterField);
+    qry.addBindValue(ballparkTypology);
+    qry.addBindValue(roofType);
+    qry.addBindValue(teamName);
+
+    if (!qry.exec()) {
+
+        qDebug() << "Can't edit stadium.";
+    }
+    else {
+
+        qDebug() << "Edited stadium!";
+    }
+}

@@ -415,67 +415,66 @@ void MainWindow::on_pushButtonResetAllStadiumsTableADMIN_clicked()
 
 void MainWindow::on_comboBoxChooseTeamNameADMIN_activated(const QString &arg1)
 {
+    QSqlQuery qry;
     QString query = "Select StadiumName, SeatingCapacity, Location, PlayingSurface, League, DateOpened, DistanceToCenterField, BallparkTypology, RoofType from Stadiums where TeamName = '"+arg1+"';";
     ui->tableViewAllStadiumsADMIN->setModel(m_controller->getStadiumsQueryModel(query));
     ui->tableViewAllStadiumsADMIN->resizeColumnsToContents();
-}
-
-void MainWindow::hideInputFieldsADMIN() {
-
-    ui->lineEditInputStringData->hide();
-    ui->spinBoxInputIntData->hide();
-    ui->labelShowCurrentData->setText("No Data Selected!");
-}
-
-void MainWindow::on_comboBoxChooseFieldToEdit_activated(const QString &arg1)
-{
-    QSqlQuery qry;
-    QString currentTeamName = ui->comboBoxChooseTeamNameADMIN->currentText();
-    QString query = "select '"+arg1+"' from Stadiums where TeamName = '"+currentTeamName+"';";
 
     qry.prepare(query);
 
     if (!qry.exec()) {
 
-        qDebug() << "Problem with void MainWindow::on_comboBoxChooseFieldToEdit_activated(const QString &arg1) ";
-    }
-
-    if (arg1 == "SeatingCapacity" || arg1 == "DateOpened" || arg1 == "DistanceToCenterField") {
-
-        ui->lineEditInputStringData->hide();
-        ui->spinBoxInputIntData->show();
-
-        qry.first();
-        int data = qry.value(0).toInt();
-//      ui->spinBoxInputIntData->setValue(data);
-        ui->labelShowCurrentData->setText(QString::number(data));
-        qDebug() << data;
-
-
+        qDebug() << "Something's wrong";
     }
     else {
 
-        ui->lineEditInputStringData->show();
-        ui->spinBoxInputIntData->hide();
+        if (qry.first()) {
 
-        qry.first();
-        QString data = qry.value(0).toString();
-        ui->labelShowCurrentData->setText(data);
-        qDebug() << data;
-
-
-
+            ui->lineEditStadiumName->setText(qry.value(0).toString());
+            ui->spinBoxSeatingCapacity->setValue(qry.value(1).toInt());
+            ui->lineEditLocation->setText(qry.value(2).toString());
+            ui->lineEditPlayingSurface->setText(qry.value(3).toString());
+            ui->lineEditLeague->setText(qry.value(4).toString());
+            ui->spinBoxDateOpened->setValue(qry.value(5).toInt());
+            ui->spinBoxDistanceToCenterField->setValue(qry.value(6).toInt());
+            ui->lineEditBallParkTypology->setText(qry.value(7).toString());
+            ui->lineEditRoofType->setText(qry.value(8).toString());
+        }
     }
-
 
 }
 
+void MainWindow::hideInputFieldsADMIN() {
+
+    ui->lineEditStadiumName->clear();
+    ui->spinBoxSeatingCapacity->clear();
+    ui->lineEditLocation->clear();
+    ui->lineEditPlayingSurface->clear();
+    ui->lineEditLeague->clear();
+    ui->spinBoxDateOpened->clear();
+    ui->spinBoxDistanceToCenterField->clear();
+    ui->lineEditBallParkTypology->clear();
+    ui->lineEditRoofType->clear();
+}
 
 void MainWindow::on_pushButtonEditData_clicked() // NOT DONE
 {
+    QString stadiumName = ui->lineEditStadiumName->text();
+    QString seatingCapacity = QString::number(ui->spinBoxSeatingCapacity->value());
+    QString location = ui->lineEditLocation->text();
+    QString playingSurface = ui->lineEditPlayingSurface->text();
+    QString league = ui->lineEditLeague->text();
+    QString teamName = ui->comboBoxChooseTeamNameADMIN->currentText();
+    QString dateOpened = QString::number(ui->spinBoxDateOpened->value());
+    QString distanceToCenterField = QString::number(ui->spinBoxDistanceToCenterField->value());
+    QString ballparkTypology = ui->lineEditBallParkTypology->text();
+    QString roofType = ui->lineEditRoofType->text();
 
+    m_controller->editStadium(stadiumName, seatingCapacity, location, playingSurface, teamName, league, dateOpened, distanceToCenterField, ballparkTypology, roofType);
+
+    ui->tableViewAllStadiumsADMIN->setModel(m_controller->getStadiumsQueryModel("select StadiumName, SeatingCapacity, Location, PlayingSurface, League, DateOpened, DistanceToCenterField, BallparkTypology, RoofType from Stadiums where TeamName = '"+teamName+"';"));
+    ui->tableViewAllStadiumsADMIN->resizeColumnsToContents();
 }
-
 
 
 void MainWindow::on_pushButtonBFS_clicked()

@@ -91,8 +91,6 @@ private slots:
 
     void on_pushButtonMST_2_clicked();
 
-    void on_comboBoxChooseFieldToEdit_activated(const QString &arg1);
-
     void hideInputFieldsADMIN();
 
 private:

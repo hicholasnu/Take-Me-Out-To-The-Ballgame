@@ -942,135 +942,138 @@ font: 8pt &quot;Courier&quot;;</string>
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonEditData">
+     <widget class="QWidget" name="formLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>440</y>
-        <width>93</width>
-        <height>28</height>
+        <x>20</x>
+        <y>290</y>
+        <width>381</width>
+        <height>131</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Edit</string>
-      </property>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="1" column="0">
+        <widget class="QLabel" name="labelSeatingCapacity">
+         <property name="text">
+          <string>Seating Capacity:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="labelLocation">
+         <property name="text">
+          <string>Location:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="labelStadiumName">
+         <property name="text">
+          <string>Stadium Name:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="labelPlayingSurface">
+         <property name="text">
+          <string>Playing Surface:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="labelLeague">
+         <property name="text">
+          <string>League:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineEditStadiumName"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="spinBoxSeatingCapacity">
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="lineEditLocation"/>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="lineEditPlayingSurface"/>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="lineEditLeague"/>
+       </item>
+      </layout>
      </widget>
-     <widget class="QComboBox" name="comboBoxChooseFieldToEdit">
+     <widget class="QWidget" name="formLayoutWidget_3">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>220</y>
-        <width>131</width>
-        <height>22</height>
+        <x>410</x>
+        <y>290</y>
+        <width>331</width>
+        <height>131</height>
        </rect>
       </property>
-      <item>
-       <property name="text">
-        <string>StadiumName</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>SeatingCapacity</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Location</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>PlayingSurface</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>League</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>DateOpened</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>DistanceToCenter</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>BallParkTypology</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>RoofType</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QLabel" name="labelChooseFieldToEdit">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>200</y>
-        <width>121</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Choose field to edit</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelCurrentData">
-      <property name="geometry">
-       <rect>
-        <x>290</x>
-        <y>220</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Current Data:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelShowCurrentData">
-      <property name="geometry">
-       <rect>
-        <x>370</x>
-        <y>220</y>
-        <width>241</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
-      </property>
-      <property name="text">
-       <string>No Data Selected!</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEditInputStringData">
-      <property name="geometry">
-       <rect>
-        <x>370</x>
-        <y>250</y>
-        <width>241</width>
-        <height>20</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBoxInputIntData">
-      <property name="geometry">
-       <rect>
-        <x>370</x>
-        <y>250</y>
-        <width>42</width>
-        <height>22</height>
-       </rect>
-      </property>
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="labelDateOpened">
+         <property name="text">
+          <string>Date Opened:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSpinBox" name="spinBoxDateOpened">
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="labelDistanceToCenterField">
+         <property name="text">
+          <string>Distance To Center Field:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="spinBoxDistanceToCenterField">
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="labelBallParkTypology">
+         <property name="text">
+          <string>Ballpark Typology:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="lineEditBallParkTypology"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="labelRoofType">
+         <property name="text">
+          <string>Roof Type:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="lineEditRoofType"/>
+       </item>
+       <item row="4" column="1">
+        <widget class="QPushButton" name="pushButtonEditData">
+         <property name="text">
+          <string>Edit</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>
