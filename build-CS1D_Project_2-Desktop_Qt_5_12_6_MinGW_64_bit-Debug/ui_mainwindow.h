@@ -118,7 +118,8 @@ public:
     QPushButton *pushButtonResetDisplaySelectedTrip;
     QWidget *DirectTripScreen;
     QTextBrowser *textBrowserDisplayDirectTrip;
-    QLabel *labelShowTotalDistanceFromDirectTrip;
+    QLabel *label_8;
+    QLabel *labelTotalDistanceDirectedPath;
     QWidget *AdminMaintenanceScreen;
     QLabel *labelMaintenanceScreenTitle;
     QPushButton *pushButtonLogoutFromAdminMaintenance;
@@ -602,10 +603,13 @@ public:
         textBrowserDisplayDirectTrip = new QTextBrowser(DirectTripScreen);
         textBrowserDisplayDirectTrip->setObjectName(QString::fromUtf8("textBrowserDisplayDirectTrip"));
         textBrowserDisplayDirectTrip->setGeometry(QRect(30, 20, 411, 491));
-        labelShowTotalDistanceFromDirectTrip = new QLabel(DirectTripScreen);
-        labelShowTotalDistanceFromDirectTrip->setObjectName(QString::fromUtf8("labelShowTotalDistanceFromDirectTrip"));
-        labelShowTotalDistanceFromDirectTrip->setGeometry(QRect(510, 80, 141, 21));
-        labelShowTotalDistanceFromDirectTrip->setFrameShape(QFrame::Box);
+        label_8 = new QLabel(DirectTripScreen);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+        label_8->setGeometry(QRect(480, 420, 91, 16));
+        labelTotalDistanceDirectedPath = new QLabel(DirectTripScreen);
+        labelTotalDistanceDirectedPath->setObjectName(QString::fromUtf8("labelTotalDistanceDirectedPath"));
+        labelTotalDistanceDirectedPath->setGeometry(QRect(580, 420, 121, 21));
+        labelTotalDistanceDirectedPath->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         stackedWidget->addWidget(DirectTripScreen);
         AdminMaintenanceScreen = new QWidget();
         AdminMaintenanceScreen->setObjectName(QString::fromUtf8("AdminMaintenanceScreen"));
@@ -914,7 +918,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(6);
         pushButtonResetLogin->setDefault(false);
 
 
@@ -976,7 +980,8 @@ public:
         pushButtonReturnFromCustomTripScreen->setText(QApplication::translate("MainWindow", "Return", nullptr));
         pushButtonCreateCustomDirectTrip->setText(QApplication::translate("MainWindow", "Create Direct Trip", nullptr));
         pushButtonResetDisplaySelectedTrip->setText(QApplication::translate("MainWindow", "Reset", nullptr));
-        labelShowTotalDistanceFromDirectTrip->setText(QString());
+        label_8->setText(QApplication::translate("MainWindow", "Total Distance:", nullptr));
+        labelTotalDistanceDirectedPath->setText(QString());
         labelMaintenanceScreenTitle->setText(QApplication::translate("MainWindow", "Administrator Maintenance", nullptr));
         pushButtonLogoutFromAdminMaintenance->setText(QApplication::translate("MainWindow", "Logout", nullptr));
         pushButtonChangeToSouvenirs->setText(QApplication::translate("MainWindow", "Souvenirs", nullptr));

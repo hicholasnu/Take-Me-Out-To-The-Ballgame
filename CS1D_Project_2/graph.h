@@ -305,13 +305,14 @@ protected:
              Dijkstra(vertex);
 
              location = findVertexIndex(nameVector[position]);
-             totalDistance += adjList[location].distance;
+             shortestDistance += adjList[location].distance;
              qDebug() << "Going to: " << adjList[location].name;
-             order.append(adjList[location].name);
-             startSpecificRoute(adjList[location].name, position+1, length);
+             qDebug() << shortestDistance;
+             order2.append(adjList[location].name);
+             startSpecificRoute(adjList[location].name, position + 1, length);
          }
 
-         qDebug() << totalDistance;
+         // qDebug() << shortestDistance;
     }
 
     void clearVisitedVertex()

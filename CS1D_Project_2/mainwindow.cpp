@@ -609,45 +609,34 @@ void MainWindow::on_pushButtonCreateCustomDirectTrip_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->DirectTripScreen);
 
-    QSqlQuery qry;
-    QString query, originatedStadium, destinationStadium, resultLine;
-    int totalDistance = 0;
+    graph.nameVector.clear();
+    graph.resetDistance();
+    graph.loadGraph(graph);
 
-    for (int i = 1; i < m_controller->customTripList.size(); i++) {
+    for(int i = 0; i < m_controller->customTripList.size(); i++)
+    {
+        graph.nameVector.push_back(m_controller->customTripList[i]);
+    }
 
-        originatedStadium = m_controller->customTripList[i-1];
-        destinationStadium = m_controller->customTripList[i];
+    graph.startSpecificRoute(graph.nameVector.first(), graph.nameVector.size());
 
-        qDebug() << "loop no: " + QString::number(i);
+    QVector<QString> list = graph.getOrder2();
 
-        query = "select * from [Stadium Distances] where [Originated Stadium] = '"+originatedStadium+"' and [Destination Stadium] = '"+destinationStadium+"';";
-        qry.prepare(query);
+    for(int j = 0; j < list.size(); j++)
+    {
+        ui->textBrowserDisplayDirectTrip->append(list[j]);
+    }
 
-        if (!qry.exec()) {
-
-            qDebug() << "error in on_pushButtonCreateCustomDirectTrip_clicked";
-        }
-        else {
-
-            if (qry.first()) {
-
-                totalDistance += qry.value(2).toInt();
-                qDebug() << qry.value(0).toString() + " to " + qry.value(1).toString();
-                resultLine = qry.value(0).toString() + " to " + qry.value(1).toString() + " is " + qry.value(2).toString();
-                ui->textBrowserDisplayDirectTrip->append("jeff" + QString::number(i));
-                qry.clear();
-            }
-        }
-     }
-
-    ui->labelShowTotalDistanceFromDirectTrip->setText(QString::number(totalDistance));
-    // ui->textBrowser->
+    ui->labelTotalDistanceDirectedPath->setNum(graph.getShortestDistance());
 }
 
 void MainWindow::on_pushButtonDodgerStadium_clicked()
 {
     ui->textBrowserShortestPath->clear();
     ui->labelShorestDistance->clear();
+
+    graph.nameVector.clear();
+    graph.resetDistance();
 
     graph.loadGraph(graph);
 
@@ -657,9 +646,10 @@ void MainWindow::on_pushButtonDodgerStadium_clicked()
     QVector<QString> destination = graph.getOrder1();
     QVector<int> distance = graph.getDistanceList();
 
+    int parentIdx = graph.findVertexIndex("Dodger Stadium");
     int idx = graph.findVertexIndex(ui->comboBoxShortestPath->currentText());
 
-    ui->textBrowserShortestPath->append(parent[idx] + " to " + destination[idx]);
+    ui->textBrowserShortestPath->append(parent[parentIdx] + " to " + destination[idx]);
 
     ui->labelShorestDistance->setNum(distance[idx]);
 }
@@ -667,32 +657,30 @@ void MainWindow::on_pushButtonDodgerStadium_clicked()
 void MainWindow::on_pushButtonMarlinsPark_clicked()
 {
     ui->textBrowserShortestPath->clear();
-       ui->labelShorestDistance->clear();
+    ui->labelShorestDistance->clear();
 
-       graph.nameVector.clear();
-       graph.resetDistance();
+    graph.nameVector.clear();
+    graph.resetDistance();
 
-       graph.loadGraph(graph);
+    graph.loadGraph(graph);
 
-       graph.nameVector.push_back("Marlins Park");
-       for(int i = 0; i < ui->comboBoxShortestPath->count(); i++)
+    graph.nameVector.push_back("Marlins Park");
+    for(int i = 0; i < ui->comboBoxShortestPath->count(); i++)
+    {
+       if (ui->comboBoxShortestPath->itemText(i) != "Marlins Park")
        {
-           if (ui->comboBoxShortestPath->itemText(i) != "Marlins Park")
-           {
-               graph.nameVector.push_back(ui->comboBoxShortestPath->itemText(i));
-           }
+           graph.nameVector.push_back(ui->comboBoxShortestPath->itemText(i));
        }
+    }
 
-       graph.recursiveDijkstra("Marlins Park", ui->comboBoxShortestPath->count());
+    graph.recursiveDijkstra("Marlins Park", ui->comboBoxShortestPath->count());
 
-       QVector<QString> list = graph.getOrder2();
+    QVector<QString> list = graph.getOrder2();
 
-       for (int j = 0; j < list.size(); j++)
-       {
-           ui->textBrowserShortestPath->append(list[j]);
-       }
+    for (int j = 0; j < list.size(); j++)
+    {
+       ui->textBrowserShortestPath->append(list[j]);
+    }
 
-       ui->labelShorestDistance->setNum(graph.getShortestDistance());
-
-       list.clear();
+    ui->labelShorestDistance->setNum(graph.getShortestDistance());
 }

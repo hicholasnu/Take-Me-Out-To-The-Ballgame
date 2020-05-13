@@ -185,6 +185,8 @@ void Graph::Dijkstra(QString vertex)
             {
                 adjList[foundEdgeVertex].distance = adjList[foundVertex].distance + adjList[foundVertex].adjacent[i].weight;
 
+                qDebug() << adjList[foundVertex].name << endl;
+
                 parent[foundEdgeVertex] = foundVertex;
                 Q.push(adjList[foundEdgeVertex]);
             }
@@ -285,8 +287,9 @@ void Graph::startSpecificRoute(QString vertex, int timesToRecurse)
     order.clear();
     this->clearEdgeType();
     this->clearVisitedVertex();
-    order.append(vertex);
-    totalDistance = 0;
+
+    order2.append(vertex);
+    shortestDistance = 0;
     startSpecificRoute(vertex, 1, timesToRecurse);
 
     this->clearEdgeType();
