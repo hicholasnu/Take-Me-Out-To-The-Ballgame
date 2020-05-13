@@ -2,6 +2,7 @@
 #define GRAPH_H
 
 #include <iostream>
+#include <string>
 #include <QString>
 #include <list>
 #include <QVector>
@@ -40,31 +41,94 @@ public:
 class Graph
 {
 public:
+    /**
+     * @brief Graph - no-arg Constructor
+     */
     Graph();
+
+    /**
+     * @brief ~Graph() - Destructor
+     */
     ~Graph(){}
 
+    /**
+     * @brief addEdge - adding new Edges to the graph
+     * @param vertex1 - QString value of starting vertex
+     * @param vertex2 - QString value of ending vertex
+     * @param weight - integer value of destination
+     */
     void addEdge(QString vertex1, QString vertex2, int weight);
 
+    /**
+     * @brief addVertex - adding new Vertix to the graph
+     * @param vertex - QString value of vertex
+     */
     void addVertex(QString vertex);
 
+    /**
+     * @brief vertexExists - determine if the vertex exist in the graph
+     * @param vertex - QString values of vertex
+     * @return boolean value
+     */
     bool vertexExists(QString vertex);
 
+    /**
+     * @brief getWeight - get distance between two vertices
+     * @param vertex1 - QString value of vertex
+     * @param vertex2 - QString value of vertex
+     * @return integer value
+     */
     int getWeight(QString vertex1, QString vertex2);
 
+    /**
+     * @brief printAdjList - display the adjacent martrix
+     */
     void printAdjList();
 
+    /**
+     * @brief findVertexIndex - find corresponding index of the vertex
+     * @param vertex - QString vertex of the value
+     * @return integer value
+     */
     int findVertexIndex(QString vertex);
 
+    /**
+     * @brief DFS - function performs DFS algorithm
+     * @param vertex - QString value of vertex
+     */
     void DFS(QString vertex);
 
+    /**
+     * @brief BFS - function performs BFS algorithm
+     * @param vertex - QString value of vertex
+     */
     void BFS(QString vertex);
 
+    /**
+     * @brief Dijkstra - function performs Dijkstra algorithm with adjacent list
+     * @param vertex - QString value of vertex
+     */
     void Dijkstra(QString vertex);
 
+    /**
+     * @brief MST - function performs MST algorithm
+     * @param vertex - QString value of vertex
+     * @return integer value
+     */
     int MST(QString vertex);
 
+    /**
+     * @brief recursiveDijkstra - function performs recursive Dijkstra algorithm with adjacent list
+     * @param vertex - QString value of vertex
+     * @param timesToRecurse - integer value of counter
+     */
     void recursiveDijkstra(QString vertex, int timesToRecurse);
 
+    /**
+     * @brief startSpecificRoute
+     * @param vertex
+     * @param timesToRecurse
+     */
     void startSpecificRoute(QString vertex, int timesToRecurse);
 
     QVector<QString> getOrder();
@@ -85,6 +149,49 @@ public:
 
     void loadGraph(Graph &g);
 
+    /**
+     * @brief DijkstraWithMatrix
+     * @param size - integer value presents the matrix size
+     * @param matrix - adjacent matrix
+     * @param sc - starting point
+     */
+    void DijkstraWithMatrix(int size, QVector<QVector<int>> matrix, int sc);
+
+    /**
+     * @brief initialize
+     */
+    void initialize();
+
+    /**
+     * @brief getClosestUnmarkedNode
+     * @return integer value
+     */
+    int getClosestUnmarkedNode();
+
+    /**
+     * @brief calculateDistance
+     * @param vertices - adjacent matrix
+     * @param size - size of the matrix
+     */
+    void calculateDistance(QVector<QVector<int>> matrix, const int size);
+
+    /**
+     * @brief output
+     * @param start - QString array of all the starting point
+     * @param size - size of the QString array
+     * @param destinationIdx - index of destination value
+     * @return integer value
+     */
+    int output(QString start[], const int size, int destinationIdx);
+
+    /**
+     * @brief printPath
+     * @param node - index
+     * @param start - QString array of all the starting point
+     * @param strSize - size of the QString array
+     */
+    void printPath(int node, QString start[], const int strSize);
+
     QVector<QString> nameVector;
     int numberOfVertex;
     QVector<Vertex> adjList;
@@ -97,6 +204,14 @@ public:
     QVector<int> distanceList;
 
 protected:
+
+    int adjMatrix[100][100];
+    int predecessor[100];
+    int distance[100];
+    bool mark[100];
+    int source;
+    int verticesIdx;
+    int infinity = 99999;
 
     int findSmallestEdgeIndex(QVector<Edge> *ptr)
     {

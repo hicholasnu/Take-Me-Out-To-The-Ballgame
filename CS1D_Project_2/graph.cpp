@@ -155,6 +155,8 @@ void Graph::Dijkstra(QString vertex)
     Vertex u;
     QVector<int> parent(numberOfVertex);
 
+    QVector<QString> paths;
+
     // Code to set the distance array
     for(int i = 0; i < adjList.size(); i++)
     {
@@ -174,6 +176,7 @@ void Graph::Dijkstra(QString vertex)
 
     while(!Q.empty())
     {
+        qDebug() << "Start: " << Q.top().name;
         u = Q.top();
         Q.pop();
         for(int i = 0; i < adjList[findVertexIndex(u.name)].adjacent.size(); i++)
@@ -181,24 +184,33 @@ void Graph::Dijkstra(QString vertex)
             int foundVertex = findVertexIndex(u.name);
             int foundEdgeVertex = findVertexIndex(adjList[foundVertex].adjacent[i].destination);
 
+            // qDebug() << "Destination: " << adjList[foundVertex].adjacent[i].destination;
+
+            // qDebug() << "-> " + adjList[foundEdgeVertex].adjacent[i].destination;
+
             if(adjList[foundVertex].distance + adjList[foundVertex].adjacent[i].weight < adjList[foundEdgeVertex].distance)
             {
                 adjList[foundEdgeVertex].distance = adjList[foundVertex].distance + adjList[foundVertex].adjacent[i].weight;
+                adjList[foundEdgeVertex].name = adjList[foundVertex].adjacent[i].destination;
 
-                qDebug() << adjList[foundVertex].name << endl;
+                qDebug() << "\nPath: " << adjList[foundEdgeVertex].name;
 
                 parent[foundEdgeVertex] = foundVertex;
                 Q.push(adjList[foundEdgeVertex]);
+                // paths.append(adjList[foundEdgeVertex].name);
             }
+
+
         }
     }
+
 
     totalDistance = 0;
 
 
     for(int i = 0; i < adjList.size(); i++)
     {
-        // qDebug() << "Distance from " << adjList[start].name << " to " << adjList[i].name << " is " << adjList[i].distance << endl;
+        qDebug() << "Distance from " << adjList[start].name << " to " << adjList[i].name << " is " << adjList[i].distance << endl;
         order.append(adjList[start].name);
         order1.append(adjList[i].name);
         distanceList.append(adjList[i].distance);
@@ -381,3 +393,106 @@ void Graph::loadGraph(Graph &g)
         }
     }
 }
+
+void Graph::DijkstraWithMatrix(int size, QVector<QVector<int>> matrix, int sc)
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            adjMatrix[i][j] = matrix[i][j];
+            mark[i] = false;
+            predecessor[i] = -1;
+            distance[i] = infinity;
+        }
+    }
+
+    source = sc;
+    verticesIdx = size;
+    distance[source] = 0;
+}
+
+int Graph::getClosestUnmarkedNode()
+{
+    int minDist = infinity;
+    int cloestUnmarkedNode = -1;
+
+    for (int i = 0; i < verticesIdx; i++)
+    {
+        if ((!mark[i]) && (minDist >= distance[i]))
+        {
+            minDist = distance[i];
+            cloestUnmarkedNode = i;
+        }
+    }
+
+    return cloestUnmarkedNode;
+}
+
+void Graph::calculateDistance(QVector<QVector<int>> matrix, const int size)
+{
+    int closestUnmarkedNode;
+    int count = 0;
+
+    while (count < verticesIdx)
+    {
+        closestUnmarkedNode = getClosestUnmarkedNode();
+        mark[closestUnmarkedNode] = true;
+
+        for (int i = 0; i < verticesIdx; i++)
+        {
+            if ((!mark[i]) && (matrix[closestUnmarkedNode][i] > 0))
+            {
+                if (distance[i] > distance[closestUnmarkedNode] + matrix[closestUnmarkedNode][i])
+                {
+                    distance[i] = distance[closestUnmarkedNode] + matrix[closestUnmarkedNode][i];
+                    predecessor[i] = closestUnmarkedNode;
+                }
+            }
+        }
+
+        count++;
+    }
+}
+
+int Graph::output(QString names[], const int strSize, int destinationIdx)
+{
+    qDebug() << "Dijkstra's Algorithm\n\n";
+
+    for (int i = 0; i < verticesIdx; i++)
+    {
+        if (i == destinationIdx)
+        {
+            qDebug() << names[source] << " to " << names[i] << endl;
+
+            if (source == i)
+            {
+                qDebug() << names[source] << endl << names[source];
+            }
+            else
+            {
+                printPath(i, names, strSize);
+                qDebug() << "\nDistance: " << distance[i] << endl << endl;
+                return distance[i];
+            }
+        }
+    }
+}
+
+void Graph::printPath(int node, QString names[], const int strSize)
+{
+    if (node == source)
+    {
+        qDebug() << names[node];
+    }
+    else if (predecessor[node] == -1)
+    {
+        qDebug() << "No path to " << names[node] << endl;
+    }
+    else
+    {
+        printPath(predecessor[node], names, strSize);
+        qDebug() << " -> "  << names[node];
+    }
+}
+
