@@ -646,8 +646,7 @@ void MainWindow::on_pushButtonCreateCustomDirectTrip_clicked()
 
 void MainWindow::on_pushButtonDodgerStadium_clicked()
 {
-    ui->textBrowserShortestPath->clear();
-    ui->labelShorestDistance->clear();
+    graph.resetAll();
 
     graph.loadGraph(graph);
 
@@ -677,8 +676,7 @@ void MainWindow::on_pushButtonDodgerStadium_clicked()
 
 void MainWindow::on_pushButtonMarlinsPark_clicked()
 {   
-    ui->textBrowserShortestPath->clear();
-    ui->labelShorestDistance->clear();
+    graph.resetAll();
 
     graph.nameVector.clear();
     graph.resetDistance();
@@ -771,3 +769,28 @@ void MainWindow::on_pushButtonExitFromPurchaseSouvenirsScreen_clicked()
     ui->spinBoxPurchaseQuantity->clear();
     ui->stackedWidget->setCurrentWidget(ui->UserSelectionScreen);
 }
+
+void MainWindow::on_pushButtonResetShortestTrip_clicked()
+{
+    graph.resetAll();
+    ui->textBrowserShortestPath->clear();
+    ui->labelShorestDistance->clear();
+    ui->textBrowserShortestPath->setText("");
+}
+
+//void MainWindow::on_pushButton_clicked()
+//{
+//    QVector<QVector<int>> adjMatrix= graph.createAdjMatrix();
+//    QString o;
+
+//    for (int i = 0; i < adjMatrix.size(); i++) {
+
+//        for (int j = 0; j < adjMatrix.size(); j++) {
+
+//            o += (QString::number(adjMatrix[i][j]) + "  ");
+//        }
+//        o += "\n";
+//    }
+
+//    ui->textBrowser_2->setText(o);
+//}

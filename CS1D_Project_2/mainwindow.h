@@ -132,6 +132,10 @@ private slots:
 
     void on_pushButtonExitFromPurchaseSouvenirsScreen_clicked();
 
+    void on_pushButtonResetShortestTrip_clicked();
+
+//    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;

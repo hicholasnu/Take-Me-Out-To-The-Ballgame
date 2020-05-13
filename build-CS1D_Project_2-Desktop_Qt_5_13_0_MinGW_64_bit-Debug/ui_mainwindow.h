@@ -53,6 +53,8 @@ public:
     QPushButton *pushButtonToShortestTripScreen;
     QPushButton *pushButtonToCustomTripScreen;
     QLabel *label_2;
+    QPushButton *pushButton;
+    QTextBrowser *textBrowser_2;
     QWidget *UserScreen;
     QTableView *tableviewAllStadiums;
     QLabel *labelShowCurrentSort;
@@ -109,6 +111,7 @@ public:
     QLabel *label_7;
     QLabel *labelShorestDistance;
     QPushButton *pushButtonPurchaseSouvenirsFromShortestTrip;
+    QPushButton *pushButtonResetShortestTrip;
     QWidget *CustomTripScreen;
     QPushButton *pushButtonReturnFromCustomTripScreen;
     QTableView *tableViewCustomTrip;
@@ -285,6 +288,12 @@ public:
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(330, 110, 111, 16));
         label_2->setFont(font);
+        pushButton = new QPushButton(UserSelectionScreen);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(660, 290, 93, 28));
+        textBrowser_2 = new QTextBrowser(UserSelectionScreen);
+        textBrowser_2->setObjectName(QString::fromUtf8("textBrowser_2"));
+        textBrowser_2->setGeometry(QRect(20, 240, 631, 271));
         stackedWidget->addWidget(UserSelectionScreen);
         UserScreen = new QWidget();
         UserScreen->setObjectName(QString::fromUtf8("UserScreen"));
@@ -579,6 +588,9 @@ public:
         pushButtonPurchaseSouvenirsFromShortestTrip = new QPushButton(ShortestTripScreen);
         pushButtonPurchaseSouvenirsFromShortestTrip->setObjectName(QString::fromUtf8("pushButtonPurchaseSouvenirsFromShortestTrip"));
         pushButtonPurchaseSouvenirsFromShortestTrip->setGeometry(QRect(420, 480, 131, 28));
+        pushButtonResetShortestTrip = new QPushButton(ShortestTripScreen);
+        pushButtonResetShortestTrip->setObjectName(QString::fromUtf8("pushButtonResetShortestTrip"));
+        pushButtonResetShortestTrip->setGeometry(QRect(430, 20, 93, 28));
         stackedWidget->addWidget(ShortestTripScreen);
         CustomTripScreen = new QWidget();
         CustomTripScreen->setObjectName(QString::fromUtf8("CustomTripScreen"));
@@ -958,7 +970,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(7);
+        stackedWidget->setCurrentIndex(1);
         pushButtonResetLogin->setDefault(false);
 
 
@@ -979,6 +991,7 @@ public:
         pushButtonToShortestTripScreen->setText(QCoreApplication::translate("MainWindow", "Shortest Trip", nullptr));
         pushButtonToCustomTripScreen->setText(QCoreApplication::translate("MainWindow", "Custom Trip", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "User Selection", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         labelShowCurrentSort->setText(QCoreApplication::translate("MainWindow", "Currently Sorted By: All", nullptr));
         labelSortByTeam->setText(QCoreApplication::translate("MainWindow", "Sort by Team Name", nullptr));
         labelSortByLeague->setText(QCoreApplication::translate("MainWindow", "Sort by League", nullptr));
@@ -1018,6 +1031,7 @@ public:
         label_7->setText(QCoreApplication::translate("MainWindow", "Total Distance:", nullptr));
         labelShorestDistance->setText(QString());
         pushButtonPurchaseSouvenirsFromShortestTrip->setText(QCoreApplication::translate("MainWindow", "Purchase souvenirs", nullptr));
+        pushButtonResetShortestTrip->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
         pushButtonReturnFromCustomTripScreen->setText(QCoreApplication::translate("MainWindow", "Return", nullptr));
         pushButtonCreateCustomDirectTrip->setText(QCoreApplication::translate("MainWindow", "Create Direct Trip", nullptr));
         pushButtonResetDisplaySelectedTrip->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));

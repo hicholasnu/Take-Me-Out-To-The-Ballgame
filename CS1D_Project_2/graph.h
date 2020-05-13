@@ -87,6 +87,10 @@ public:
 
     void loadGraph(Graph &g);
 
+    void resetAll();
+
+    QVector<QVector<int>> createAdjMatrix();
+
     QVector<QString> nameVector;
     int numberOfVertex;
     QVector<Vertex> adjList;

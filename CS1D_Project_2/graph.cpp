@@ -378,3 +378,109 @@ void Graph::loadGraph(Graph &g)
         }
     }
 }
+
+void Graph::resetAll() {
+
+    nameVector.clear();
+    numberOfVertex = 0;
+    adjList.clear();
+    totalDistance = 0;
+    shortestDistance = 0;
+    location = 0;
+    order.clear();
+    order1.clear();
+    order2.clear();
+    traversalList.clear();
+    distanceList.clear();
+}
+
+QVector<QVector<int>> Graph::createAdjMatrix() {
+
+    QSqlQuery qry;
+    QString query;
+
+    QVector<QString> adjMatrixStadiums;
+
+    query = "select DISTINCT [Originated Stadium] from [Stadium Distances]";
+
+    qry.prepare(query);
+
+    if (!qry.exec()) {
+
+       qDebug() << "error in adjmatrixstadiums.";
+    }
+    else {
+
+        while (qry.next()) {
+
+            adjMatrixStadiums.append(qry.value(0).toString());
+        }
+    }
+
+    qry.clear();
+
+    QVector<QVector<int>> adjMatrix(adjMatrixStadiums.size());
+
+    for (int i = 0; i < adjMatrix.size(); i++) {
+
+        adjMatrix[i].resize(adjMatrixStadiums.size());
+    }
+
+    for (int i = 0; i < adjMatrix.size(); i++) {
+
+        for (int j = 0; j < adjMatrix[i].size(); j++) {
+
+            adjMatrix[i][j] = 9999;
+        }
+    }
+
+    qDebug() << adjMatrix.size();
+
+
+
+    query = "select * from [Stadium Distances]";
+
+    qry.prepare(query);
+
+    if (!qry.exec()) {
+
+        qDebug() << "error in adjMatrix";
+    }
+    else {
+
+        while (qry.next()) {
+
+            for (int i = 0; i < adjMatrix.size(); i++) {
+
+                for (int j = 0; j < adjMatrix[i].size(); j++) {
+
+                    if (i == j) {
+
+                        adjMatrix[i][j] = 0;
+                    }
+                    else if (qry.value(0).toString() == adjMatrixStadiums[i]) {
+
+                        int x = adjMatrixStadiums.indexOf(qry.value(1).toString());
+                        adjMatrix[i][x] = qry.value(2).toInt();
+                        qDebug() << i;
+                        qDebug() << x;
+
+                        if (x < 0 || x > 29) {
+
+                            qDebug() << "matrix: " << adjMatrixStadiums[i];
+                            qDebug() << "qry: " << qry.value(0).toString();
+                            qDebug() << qry.value(1).toString();
+                            qDebug() << "----------------------------------";
+                        }
+                    }
+                }
+            }
+        }
+
+        qDebug() << "out of qry.next";
+    }
+
+    qDebug() << "end";
+
+    return adjMatrix;
+}
