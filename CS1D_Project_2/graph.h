@@ -73,6 +73,8 @@ public:
 
     QVector<QString> getOrder2();
 
+    QVector<QString> getTraversalList();
+
     QVector<int> getDistanceList();
 
     int getTotalDistance();
@@ -94,6 +96,7 @@ public:
     QVector<QString> order;
     QVector<QString> order1;
     QVector<QString> order2;
+    QVector<QString> traversalList;
     QVector<int> distanceList;
 
 protected:

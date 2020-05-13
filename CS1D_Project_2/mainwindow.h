@@ -122,6 +122,16 @@ private slots:
 
     void on_pushButtonMarlinsPark_clicked();
 
+    void on_pushButtonPurchaseSouvenirsFromShortestTrip_clicked();
+
+    void on_comboBoxTripListStadiums_activated(const QString &arg1);
+
+    void on_tableView_activated(const QModelIndex &index);
+
+    void on_pushButtonBuy_clicked();
+
+    void on_pushButtonExitFromPurchaseSouvenirsScreen_clicked();
+
 private:
     Ui::MainWindow *ui;
     Controller *m_controller;

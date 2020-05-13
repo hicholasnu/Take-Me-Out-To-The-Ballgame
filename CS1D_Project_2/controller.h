@@ -45,6 +45,9 @@ public:
     QSqlQueryModel *getStadiumDistancesQueryModel();
 
     QVector<QString> customTripList;
+    QVector<QString> tripList;
+
+    double totalPrice;
 
 private:
     QSqlDatabase m_database;

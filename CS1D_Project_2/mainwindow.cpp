@@ -662,37 +662,112 @@ void MainWindow::on_pushButtonDodgerStadium_clicked()
     ui->textBrowserShortestPath->append(parent[idx] + " to " + destination[idx]);
 
     ui->labelShorestDistance->setNum(distance[idx]);
+
+//    m_controller->tripList.
+
+//    m_controller->tripList.push_back("Dodger Stadium");
+//    for (int i = 1; i <= destination.size(); i++) {
+
+//        m_controller->tripList.push_back(destination[i]);
+//    }
+
+    m_controller->tripList.push_back("Dodger Stadium");
+    m_controller->tripList.push_back(ui->comboBoxShortestPath->currentText());
 }
 
 void MainWindow::on_pushButtonMarlinsPark_clicked()
-{
+{   
     ui->textBrowserShortestPath->clear();
-       ui->labelShorestDistance->clear();
+    ui->labelShorestDistance->clear();
 
-       graph.nameVector.clear();
-       graph.resetDistance();
+    graph.nameVector.clear();
+    graph.resetDistance();
 
-       graph.loadGraph(graph);
+    graph.loadGraph(graph);
 
-       graph.nameVector.push_back("Marlins Park");
-       for(int i = 0; i < ui->comboBoxShortestPath->count(); i++)
+    graph.nameVector.push_back("Marlins Park");
+    for(int i = 0; i < ui->comboBoxShortestPath->count(); i++)
+    {
+       if (ui->comboBoxShortestPath->itemText(i) != "Marlins Park")
        {
-           if (ui->comboBoxShortestPath->itemText(i) != "Marlins Park")
-           {
-               graph.nameVector.push_back(ui->comboBoxShortestPath->itemText(i));
-           }
+           graph.nameVector.push_back(ui->comboBoxShortestPath->itemText(i));
        }
+    }
 
-       graph.recursiveDijkstra("Marlins Park", ui->comboBoxShortestPath->count());
+    graph.recursiveDijkstra("Marlins Park", ui->comboBoxShortestPath->count());
 
-       QVector<QString> list = graph.getOrder2();
+    QVector<QString> list = graph.getOrder2();
 
-       for (int j = 0; j < list.size(); j++)
-       {
-           ui->textBrowserShortestPath->append(list[j]);
-       }
+    for (int j = 0; j < list.size(); j++)
+    {
+       ui->textBrowserShortestPath->append(list[j]);
+       qDebug() << list[j];
+    }
 
-       ui->labelShorestDistance->setNum(graph.getShortestDistance());
+    ui->labelShorestDistance->setNum(graph.getShortestDistance());
 
-       list.clear();
+    m_controller->tripList.clear();
+
+    for (int i = 0; i < list.size(); i++) {
+
+        m_controller->tripList.push_back(list[i]);
+    }
+
+    list.clear();
+}
+
+void MainWindow::on_pushButtonPurchaseSouvenirsFromShortestTrip_clicked()
+{
+    m_controller->totalPrice = 0.00;
+
+    ui->stackedWidget->setCurrentWidget(ui->purchaseSouvenirsScreen);
+    ui->comboBoxTripListStadiums->clear();
+
+    for (int i = 0; i < m_controller->tripList.size(); i++) {
+
+        QString stadiumName = m_controller->tripList.value(i);
+        ui->comboBoxTripListStadiums->addItem(stadiumName);
+    }
+}
+
+
+void MainWindow::on_comboBoxTripListStadiums_activated(const QString &arg1)
+{
+    QString query = "select * from [Stadium Souvenirs] where Stadium = '"+arg1+"';";
+    ui->tableView->setModel(m_controller->getSouvenirsQueryModel(query));
+}
+
+void MainWindow::on_tableView_activated(const QModelIndex &index)
+{
+    double price;
+
+    if (index.column() == 1) {
+
+        qDebug() << "siblingatrow" + index.siblingAtRow(2).data().toString();
+        qDebug() << "siblingatcolumn" + index.siblingAtColumn(2).data().toString();
+
+        ui->labelSelectedSouvenir->setText(index.data().toString());
+        price = index.siblingAtColumn(2).data().toDouble();
+        ui->labelSelectedSouvenirPrice->setText(QString::number(price));
+    }
+}
+
+void MainWindow::on_pushButtonBuy_clicked()
+{
+    int quantity = ui->spinBoxPurchaseQuantity->value();
+    double price = ui->labelSelectedSouvenirPrice->text().toDouble();
+
+    m_controller->totalPrice += (price * quantity);
+
+    ui->labelShowTotalPrice->setNum(m_controller->totalPrice);
+}
+
+void MainWindow::on_pushButtonExitFromPurchaseSouvenirsScreen_clicked()
+{
+    m_controller->totalPrice = 0.00;
+    m_controller->tripList.clear();
+    ui->labelSelectedSouvenir->clear();
+    ui->labelSelectedSouvenirPrice->clear();
+    ui->spinBoxPurchaseQuantity->clear();
+    ui->stackedWidget->setCurrentWidget(ui->UserSelectionScreen);
 }

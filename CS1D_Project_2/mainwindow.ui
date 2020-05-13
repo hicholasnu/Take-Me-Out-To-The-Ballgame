@@ -39,7 +39,7 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="LoginScreen">
      <property name="styleSheet">
@@ -946,7 +946,7 @@ font: 8pt &quot;Courier&quot;;</string>
       <property name="geometry">
        <rect>
         <x>430</x>
-        <y>460</y>
+        <y>430</y>
         <width>91</width>
         <height>16</height>
        </rect>
@@ -958,8 +958,8 @@ font: 8pt &quot;Courier&quot;;</string>
      <widget class="QLabel" name="labelShorestDistance">
       <property name="geometry">
        <rect>
-        <x>530</x>
-        <y>450</y>
+        <x>540</x>
+        <y>420</y>
         <width>151</width>
         <height>41</height>
        </rect>
@@ -969,6 +969,19 @@ font: 8pt &quot;Courier&quot;;</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonPurchaseSouvenirsFromShortestTrip">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>480</y>
+        <width>131</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Purchase souvenirs</string>
       </property>
      </widget>
     </widget>
@@ -1059,6 +1072,115 @@ font: 8pt &quot;Courier&quot;;</string>
         <y>80</y>
         <width>141</width>
         <height>21</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="purchaseSouvenirsScreen">
+     <widget class="QPushButton" name="pushButtonExitFromPurchaseSouvenirsScreen">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>20</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Done</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tableView">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>30</y>
+        <width>341</width>
+        <height>471</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBoxTripListStadiums">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>30</y>
+        <width>181</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelSelectedSouvenir">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>140</y>
+        <width>221</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelSelectedSouvenirPrice">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>180</y>
+        <width>221</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBoxPurchaseQuantity">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>220</y>
+        <width>42</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>1000000</number>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonBuy">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>270</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Buy</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelShowTotalPrice">
+      <property name="geometry">
+       <rect>
+        <x>464</x>
+        <y>350</y>
+        <width>171</width>
+        <height>16</height>
        </rect>
       </property>
       <property name="frameShape">
